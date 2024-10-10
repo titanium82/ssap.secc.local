@@ -1,0 +1,18 @@
+{
+    "Date": "Ngày",
+    "The list of logs is empty!": "Danh sách nhật ký trống!",
+    "All": "Tất cả",
+    "Emergency": "Khẩn cấp",
+    "Alert": "Báo động",
+    "Critical": "Quan trọng",
+    "Error": "Lỗi",
+    "Warning": "Cảnh báo",
+    "Notice": "Chú ý",
+    "Info": "Thông tin",
+    "Debug": "Debug",
+    "Actions": "Hành động",
+    "Logs": "Nhật ký hoạt động",
+    "entries": "Mục",
+    "Log": "Nhật ký",
+    "LogViewer": "Trình xem nhật ký"
+}
