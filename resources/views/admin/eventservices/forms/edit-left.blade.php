@@ -30,14 +30,14 @@
             <div class="col-12">
                 <div class="mb-3">
                     <label class="form-label">@lang('Price'):</label>
-                    <x-core-input class="input-format-number" name="price" :value="$eventservice->price" :required="true"
+                    <x-core-input class="input-format-number" name="price" :value="number_format($eventservice->price)" :required="true"
                         :placeholder="__('Price')" />
                 </div>
             </div>
             <div class="col-12">
                 <div class="mb-3">
                     <label class="form-label">@lang('Desc'):</label>
-                    <x-core-input name="desc" :value="$eventservice->desc" :required="true"
+                    <x-core-input name="desc" :value="$eventservice->desc"
                         :placeholder="__('Desc')" />
                 </div>
             </div>

@@ -32,7 +32,7 @@ class EventServiceTypeController extends Controller
             return view('admin.eventservices.types.modals.modal-create');
         }
 
-        return view('admin.event_service_type.create')
+        return view('admin.eventservices.types.create')
         ->with('breadcrums', $this->breadcrums()->addByRouteName(trans('Event Service Type'), 'admin.event_service_type.index')
         ->addByRouteName(trans('Event Services Types'), 'admin.event_service_type.index')
         ->add(trans('Add'))

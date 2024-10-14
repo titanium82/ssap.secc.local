@@ -94,7 +94,8 @@ return [
                 'title' => 'Order Event Services',
                 'route_name' => '',
                 'icon' => '<i class="ti ti-list"></i>'
-            ],[
+            ],
+            [
                 'title' => 'Event Services',
                 'route_name' => 'admin.event_service.index',
                 'icon' => '<i class="ti ti-list"></i>'
@@ -102,6 +103,11 @@ return [
             [
                 'title' => 'Event Service Type',
                 'route_name' => 'admin.event_service_type.index',
+                'icon' => '<i class="ti ti-list"></i>'
+            ],
+            [
+                'title' => 'Event Services Unit',
+                'route_name' => 'admin.event_service_unit.index',
                 'icon' => '<i class="ti ti-list"></i>'
             ]
         ]

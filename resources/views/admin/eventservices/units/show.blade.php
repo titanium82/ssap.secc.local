@@ -6,12 +6,12 @@
             <div class="card">
                 <div class="card-header justify-content-between">
                     <h2 class="mb-0">@lang('list')</h2>
-                    @adminaccessroutename('admin.event_service_type.create')
-                        <button type="button" data-route="{{ route('admin.event_service_type.create') }}" class="btn btn-primary open-modal-form">
-                            <i class="ti ti-plus"></i>
-                            <span>@lang('add')</span>
-                        </button>
-                    @endadminaccessroutename
+                    @adminaccessroutename('admin.event_service.create')
+                    <a href="{{ route('admin.event_service.create') }}" class="btn btn-primary">
+                        <i class="ti ti-plus"></i>
+                        <span>@lang('add')</span>
+                    </a>
+                @endadminaccessroutename
                 </div>
                 <div class="card-body">
                     <div class="table-responsive position-relative">

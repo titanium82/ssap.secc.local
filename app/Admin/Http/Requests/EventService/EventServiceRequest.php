@@ -23,7 +23,6 @@ class EventServiceRequest extends Request
             'price'=>['nullable','numeric'],
             'desc' => ['nullable', 'string']
         ];
-        dd($event_service_type_id);
     }
 
     protected function methodPut()
@@ -31,7 +30,7 @@ class EventServiceRequest extends Request
         return [
             'id' => ['required', 'exists:App\Models\EventService,id'],
             'event_service_type_id' => ['required', 'exists:App\Models\EventServiceType,id'],
-            'name' => ['required', 'string', 'unique:App\Models\EventService,name'],
+            'name' => ['nullable', 'string'],
             'unit' =>['required', new Enum(Unit::class)],
             'price'=>['nullable','numeric'],
             'desc' => ['nullable', 'string']

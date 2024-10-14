@@ -308,6 +308,33 @@ return [
             'addClass' => 'text-center'
         ],
     ],
+    'event_service_unit' => [
+        'name' => [
+            'title' => 'Event Service Unit Name',
+            'orderable' => false,
+        ],
+        'event_service_type_id' => [
+            'title' => 'Event Service Types',
+            'orderable' => false,
+            'width' => '400px',
+        ],
+        'desc' => [
+            'title' => 'Event Service Unit Desc',
+            'orderable' => false,
+        ],
+        'created_at' => [
+            'title' => 'createdAt',
+            'orderable' => false,
+            'visible' => false,
+        ],
+        'action' => [
+            'title' => 'action',
+            'orderable' => false,
+            'exportable' => false,
+            'printable' => false,
+            'addClass' => 'text-center'
+        ],
+    ],
     'event_service_type' => [
         'name' => [
             'title' => 'Event Service Type Name',

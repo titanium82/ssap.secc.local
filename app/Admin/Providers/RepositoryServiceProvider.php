@@ -19,6 +19,7 @@ class RepositoryServiceProvider extends ServiceProvider
         'App\Admin\Repositories\Contract\ContractTypeRepositoryInterface'           => 'App\Admin\Repositories\Contract\ContractTypeRepository',
         'App\Admin\Repositories\EventService\EventServiceTypeRepositoryInterface'   => 'App\Admin\Repositories\EventService\EventServiceTypeRepository',
         'App\Admin\Repositories\EventService\EventServiceRepositoryInterface'       => 'App\Admin\Repositories\EventService\EventServiceRepository',
+        'App\Admin\Repositories\EventService\EventServiceUnitRepositoryInterface'   => 'App\Admin\Repositories\EventService\EventServiceUnitRepository',
         'App\Admin\Repositories\Department\DepartmentRepositoryInterface'           => 'App\Admin\Repositories\Department\DepartmentRepository',
     ];
     /**

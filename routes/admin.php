@@ -141,7 +141,7 @@ Route::middleware([App\Admin\Http\Middleware\AuthAdminMiddleware::class, App\Adm
         Route::get('/edit/{id}', 'edit')->name('edit');
         Route::delete('/delete/{id}', 'delete')->name('delete');
     });
-
+    //Manager Event Service
     Route::prefix('/event-service')->controller(App\Admin\Http\Controllers\EventService\EventServiceController::class)
     ->name('event_service.')
     ->group(function () {
@@ -154,6 +154,20 @@ Route::middleware([App\Admin\Http\Middleware\AuthAdminMiddleware::class, App\Adm
         Route::get('/search-select', 'searchSelect')->name('search_select');
         Route::get('/show/{id}', 'show')->name('show');
     });
+    //Manager Event Service Unit
+    Route::prefix('/event-service-unit')->controller(App\Admin\Http\Controllers\EventService\EventServiceUnitController::class)
+    ->name('event_service_unit.')
+    ->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
+        Route::put('/update', 'update')->name('update');
+        Route::get('/edit/{id}', 'edit')->name('edit');
+        Route::delete('/delete/{id}', 'delete')->name('delete');
+        Route::get('/search-select', 'searchSelect')->name('search_select');
+        Route::get('/show/{id}', 'show')->name('show');
+    });
+        //Manager Event Service Type
     Route::prefix('/event-service-type')->controller(App\Admin\Http\Controllers\EventService\EventServiceTypeController::class)
     ->name('event_service_type.')
     ->group(function () {
