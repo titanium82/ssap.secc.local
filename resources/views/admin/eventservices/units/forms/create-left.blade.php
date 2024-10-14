@@ -12,9 +12,9 @@
             <!-- name -->
             <div class="col-12">
                 <div class="mb-3">
-                    <label class="form-label">@lang('Name'):</label>
+                    <label class="form-label">@lang('Unit'):</label>
                     <x-core-input name="name" :value="old('unit')" :required="true"
-                        :placeholder="__('Name')" />
+                        :placeholder="__('Unit')" />
                 </div>
             </div>
         </div>

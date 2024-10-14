@@ -309,8 +309,8 @@ return [
         ],
     ],
     'event_service_unit' => [
-        'name' => [
-            'title' => 'Event Service Unit Name',
+        'unit' => [
+            'title' => 'Event Service Unit',
             'orderable' => false,
         ],
         'event_service_type_id' => [

@@ -16,17 +16,17 @@ class EventServiceUnitDataTable extends DataTables
     protected function setViewColumns(): void
     {
         $this->viewColumns = [
-            'action' => 'admin.eventservices.units.datatable.action',
-            'name' => 'admin.eventservices.units.datatable.name',
-            'type' => 'admin.eventservices.units.datatable.type',
-            'desc' => 'admin.eventservices.units.datatable.desc',
+            'action'    => 'admin.eventservices.units.datatable.action',
+            'unit'      => 'admin.eventservices.units.datatable.unit',
+            'type'      => 'admin.eventservices.units.datatable.type',
+            'desc'      => 'admin.eventservices.units.datatable.desc',
 
         ];
     }
 
     protected function setColumnHasSearch(): void
     {
-        $this->columnHasSearch = ['name', 'created_at'];
+        $this->columnHasSearch = ['unit', 'created_at'];
     }
 
     protected function setColumnSearchDate(): void
@@ -47,15 +47,15 @@ class EventServiceUnitDataTable extends DataTables
      */
     public function query()
     {
-        return $this->repository->orderBy('id', 'desc');
+        return $this->repository->getByQueryBuilder([], ['type']);
     }
 
     protected function setEditColumns(): void
     {
         $this->editColumns = [
-            'name' => $this->viewColumns['name'],
+            'unit'                  => $this->viewColumns['unit'],
             'event_service_type_id' => $this->viewColumns['type'],
-            'created_at' => '{{ date(config("core.format.date"), strtotime($created_at)) }}'
+            'created_at'            => '{{ date(config("core.format.date"), strtotime($created_at)) }}'
         ];
     }
 
@@ -68,6 +68,6 @@ class EventServiceUnitDataTable extends DataTables
 
     protected function setRawColumns(): void
     {
-        $this->rawColumns = ['name','event_service_type_id','action'];
+        $this->rawColumns = ['unit','event_service_type_id','action'];
     }
 }
