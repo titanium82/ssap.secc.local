@@ -40,14 +40,22 @@ class EventServiceUnitController extends Controller
         )
         ->with('eventservice', $eventserviceunit);
     }
-    public function create(): View
+    public function create(Request $request): View
     {
         $types = $this ->repoEventServiceType->getAll();
+        if($request->ajax())
+        {
+            return view('admin.eventservices.units.modals.modal-create')
+            ->with('types',$types)
+            ->with('unit',Unit::asSelectArray());
+        }
 
         return view('admin.eventservices.units.create')
-        ->with('breadcrums', $this->breadcrums()->addByRouteName(trans('Event Service Unit'), 'admin.event_service_unit.index')->add(trans('Add')))
-        ->with('unit', Unit::asSelectArray())
-        ->with('types',$types);
+        ->with('breadcrums', $this->breadcrums()->addByRouteName(trans('Event Service Unit'), 'admin.event_service_unit.index')
+        ->addByRouteName(trans('Event Services Unit'), 'admin.event_service_unit.index')
+        ->add(trans('Add'))
+
+    );
     }
 
     public function store(EventServiceUnitRequest $request): RedirectResponse
@@ -79,14 +87,20 @@ class EventServiceUnitController extends Controller
         }
     }
 
-    public function edit($id): View
+    public function edit($id, Request $request): View
     {
         $types = $this->repoEventServiceType->getAll();
-        $eventserviceunit = $this->repository->findOrFail($id);
-
-        return view('admin.eventservices.edit')
-        ->with('breadcrums', $this->breadcrums()->addByRouteName(trans('Event Service'), 'admin.event_service.index')->add(trans('Edit')))
-        ->with('eventservice', $eventserviceunit)
+        $event_service_unit = $this->repository->findOrFail($id);
+        if($request->ajax())
+        {
+            return view('admin.eventservices.units.modals.modal-edit')
+            ->with('event_service_unit', $event_service_unit)
+            ->with('types', $types)
+            ->with('unit', Unit::asSelectArray());
+        }
+        return view('admin.eventservices.units.edit')
+        ->with('breadcrums', $this->breadcrums()->addByRouteName(trans('Event Service Unit'), 'admin.event_service_unit.index')->add(trans('Edit')))
+        ->with('event_service_unit', $event_service_unit)
         ->with('unit', Unit::asSelectArray())
         ->with('types', $types);
     }
@@ -96,13 +110,13 @@ class EventServiceUnitController extends Controller
         {
             try {
 
-                $eventserviceunit = $this->service->update($request);
+                $event_service_unit = $this->service->update($request);
 
-                if($eventserviceunit)
+                if($event_service_unit)
                 {
                     return $request->input('submitter') == 'save'
                         ? back()->with('success', __('notifySuccess'))
-                        : to_route('admin.event_service.index')->with('success', __('notifySuccess'));
+                        : to_route('admin.event_service_unit.index')->with('success', __('notifySuccess'));
                 }
 
                 return back()->withInput()->withErrors(['errors' => trans('notifyFail')]);

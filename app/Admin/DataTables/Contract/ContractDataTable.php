@@ -24,6 +24,7 @@ class ContractDataTable extends DataTables
             'code'              => 'admin.contracts.datatable.code',
             'contract_type'     => 'admin.contracts.datatable.contract-type',
             'customer'          => 'admin.contracts.datatable.customer',
+            'short_name'        =>  'admin.contracts.datable.short-name',
             'status'            => 'admin.contracts.datatable.status',
         ];
     }
@@ -38,7 +39,7 @@ class ContractDataTable extends DataTables
 
     protected function setColumnHasSearch(): void
     {
-        $this->columnHasSearch = ['code', 'name', 'contract_type_id', 'customer_id', 'status', 'admin_id', 'created_at'];
+        $this->columnHasSearch = ['code', 'name', 'short_name','contract_type_id', 'customer_id', 'status', 'admin_id', 'created_at'];
     }
 
     protected function setColumnSearchDate(): void

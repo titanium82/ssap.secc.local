@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Admin\Enums\EventService\Unit;
+
 
 class EventServiceUnit extends Model
 {
@@ -13,17 +15,17 @@ class EventServiceUnit extends Model
     protected $table = 'event_service_units';
 
     protected $fillable = [
-        'name',
+        'event_service_type_id',
         'admin_id',
         'unit',
-        'dimensions',
-        'banner_status',
-        'banner_sides',
-        'vertical_banner',
-        'horizontal_banner',
-        'led_locations',
         'desc'
     ];
+    public function casts():  array
+    {
+        return[
+            'unit' => Unit::class
+        ];
+    }
     public function isCreator()
     {
         return $this->admin_id === auth('admin')->id();

@@ -25,6 +25,7 @@ class ContractRequest extends Request
             'contract.currency_id' => ['required', 'string', 'exists:App\Models\Currency,id'],
             'contract.code' => ['required', 'string', new ContractCodeUnique($this->input('contract.contract_type_id'))],
             'contract.name' => ['required', 'string'],
+            'contract.short_name' => ['required', 'string'],    //tên viết tắt cho tên sự kiện
             'contract.day_begin' => ['required', 'date_format:Y-m-d'],
             'contract.day_end' => ['required', 'date_format:Y-m-d'],
             'contract.deposit' => ['nullable', 'numeric', 'min:0'],
@@ -53,6 +54,7 @@ class ContractRequest extends Request
         return [
             'id' => ['required', 'exists:App\Models\Contract,id'],
             'contract.name' => ['required', 'string'],
+            'contract.short_name' => ['required', 'string'],    //tên viết tắt cho tên sự kiện
             'contract.day_begin' => ['required', 'date_format:Y-m-d'],
             'contract.day_end' => ['required', 'date_format:Y-m-d'],
             'contract.deposit' => ['nullable', 'numeric', 'min:0'],

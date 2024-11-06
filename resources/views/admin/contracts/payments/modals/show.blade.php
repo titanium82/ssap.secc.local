@@ -10,7 +10,7 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-12 col-md-6">
+                    <div class="col-12 col-md-4">
                         <div class="mb-3">
                             <label class="form-label">@lang('Code contract'):</label>
                             <x-core-input name="contract_id" :value="$contract_payment->contract?->code" readonly />

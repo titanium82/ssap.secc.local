@@ -17,7 +17,6 @@ return new class extends Migration
             $table->unsignedBigInteger('event_service_types_id');
             $table->string('unit');
             $table->string('dimensions');
-            $table->string('banner_status'); //trạng thái in hoặc treo hoặc cả hai của dịch vụ banner
             $table->string('banner_sides'); //trạn thái một mặt hoặc 2 mặt của banner
             $table->string('vertical_banner'); //banner dọc
             $table->string('horizontal_banner'); //banner ngang

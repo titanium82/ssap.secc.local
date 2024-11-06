@@ -13,8 +13,18 @@
             <div class="col-12">
                 <div class="mb-3">
                     <label class="form-label">@lang('Unit'):</label>
-                    <x-core-input name="name" :value="old('unit')" :required="true"
-                        :placeholder="__('Unit')" />
+                    <x-core-select name="unit" :required="true">
+                        @foreach ($unit as $key => $value)
+                            <x-core-select-option :value="$key" :title="$value" />
+                        @endforeach
+                    </x-core-select>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="mb-3">
+                     <label class="form-label">@lang('Desc'):</label>
+                     <x-core-input name="desc" :value="old('desc')"
+                        :placeholder="__('Desc')" />
                 </div>
             </div>
         </div>

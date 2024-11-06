@@ -5,8 +5,8 @@
             <div class="col-12">
                 <div class="mb-3">
                     <label class="form-label">@lang('Name'):</label>
-                    <x-core-input name="name" :value="$event_service_type->name" :required="true"
-                        :placeholder="__('Name')" />
+                    <x-core-input name="unit" :value="$event_service_unit->unit" :required="true"
+                        :placeholder="__('Unit')" />
                 </div>
             </div>
         </div>

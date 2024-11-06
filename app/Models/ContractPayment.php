@@ -18,6 +18,7 @@ class ContractPayment extends Model
     protected $fillable = [
         'admin_id',
         'contract_id',
+        'contract_shortname',
         'expired_at',
         'period',
         'amount',
@@ -95,11 +96,11 @@ class ContractPayment extends Model
     public function scopeCurrentAuth($q)
     {
         $auth = auth('admin')->user();
-        
+
         if($auth->managerContract() == false && $auth->checkIsSuperAdmin() == false)
         {
             $q->where(function($query) use($auth) {
-                
+
                 $query->where('admin_id', $auth->id)
                 ->orWhereHas('sharers', fn($q) => $q->where('admins.id', $auth->id));
             });
