@@ -31,7 +31,7 @@ class CustomerRequest extends Request
             'shortname' => ['nullable', 'string'],
             'short_name' => ['nullable', 'string'],
             'gender' => ['required', new Enum(Gender::class)],
-            'phone' => ['required', 'regex:/((09|03|07|08|05)+([0-9]{8})\b)/'],
+            'phone' => ['required', 'regex:/((0[2|9|3|7|8|5]|[4|8])+([0-9]{8})\b)/'],
             'fax' => ['nullable', 'string'],
             'email' => ['required', 'email', 'unique:App\Models\Customer,email'],
             'taxcode' => ['nullable', 'unique:App\Models\Customer,taxcode'],
@@ -41,7 +41,7 @@ class CustomerRequest extends Request
             'delegate' => ['nullable'],
             'website' => ['nullable'],
             'note' => ['nullable']
-            
+
         ];
     }
 
@@ -56,7 +56,7 @@ class CustomerRequest extends Request
             'shortname' => ['nullable', 'string'],
             'short_name' => ['nullable', 'string'],
             'gender' => ['required', new Enum(Gender::class)],
-            'phone' => ['required', 'regex:/((09|03|07|08|05)+([0-9]{8})\b)/'],
+            'phone' => ['required', 'regex:/((0[2|9|3|7|8|5]|[4|8])+([0-9]{8})\b)/'],
             'fax' => ['nullable', 'string'],
             'email' => ['required', 'email', 'unique:App\Models\Customer,email,'.$this->id],
             'taxcode' => ['nullable', 'unique:App\Models\Customer,taxcode,'.$this->id],
