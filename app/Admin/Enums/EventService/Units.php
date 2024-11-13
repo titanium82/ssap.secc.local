@@ -3,7 +3,7 @@
 namespace App\Admin\Enums\EventService;
 
 use App\Core\Supports\Enum;
-enum    Unit: string
+enum    Units: string
 {
     use Enum;
         case Cable = 'Cable';
@@ -41,7 +41,7 @@ enum banner_sides: string
     use Enum;
     case null = "Nullable";
     case oneside = "Một Mặt";               //Banner 1 mặt
-    case twosides = "Hai Mặt";               //Banner 2 mặt
+    case doubled_sided = "Hai Mặt";               //Banner 2 mặt
 }
 enum led_locations: string
 {

@@ -57,8 +57,6 @@ class EventServiceUnit
 
             $data = $request->validated();
 
-            $types = $data['event_service_type_id'];
-
             $eventserviceunit = $this->repo->update($data['id'], $data);
 
             // $eventservices->type()->sync($types);

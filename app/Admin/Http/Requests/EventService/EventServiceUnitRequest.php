@@ -2,7 +2,7 @@
 
 namespace App\Admin\Http\Requests\EventService;
 
-use App\Admin\Enums\EventService\Unit;
+use App\Admin\Enums\EventService\Units;
 use App\Core\Http\Requests\Request;
 use Illuminate\Validation\Rules\Enum;
 
@@ -17,9 +17,16 @@ class EventServiceUnitRequest extends Request
     {
         return [
             'admin_id'              => ['required', 'exists:App\Models\Admin,id'],
-            'event_service_type_id' => ['required', 'exists:App\Models\EventServiceType,id'],
-            'unit'                  => ['required', new Enum(Unit::class)],
-            'desc'                  => ['nullable', 'string']
+            'event_service_type_id' => ['required', 'string', 'exists:App\Models\EventServiceType,id'],
+            'name'                  => ['required','string'],
+            'unit'                  => ['required', new Enum(Units::class)],
+            'width'                 => ['nullable','numeric'],
+            'height'                => ['nullable','numeric'],  //numeric dùng validated cho các biến định dạng số(double, float,..)
+            'sides'                 => ['nullable','string'],
+            'sound_system'          => ['nullable','string'],
+            'wireless_micro'        => ['nullable','string'],
+            'backdrop'              => ['nullable','string'],
+            'desc'                  => ['nullable','string']
         ];
     }
 
@@ -27,9 +34,14 @@ class EventServiceUnitRequest extends Request
     {
         return [
             'id'                    => ['required', 'exists:App\Models\EventServiceUnit,id'],
-            'event_service_type_id' => ['required', 'exists:App\Models\EventServiceType,id'],
-            'unit'                  => ['required', new Enum(Unit::class)],
-            'desc'                  => ['nullable', 'integer']
+            'unit'                  => ['nullable', new Enum(Units::class)],
+            'width'                 => ['nullable','numeric'],
+            'height'                => ['nullable','numeric'],
+            'sides'                 => ['nullable','string'],
+            'sound_system'          => ['nullable','string'],
+            'wireless_micro'        => ['nullable','string'],
+            'backdrop'              => ['nullable','string'],
+            'desc'                  => ['nullable','string']
         ];
     }
 

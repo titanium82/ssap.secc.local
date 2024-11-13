@@ -136,6 +136,7 @@
     "Event Service Unit Desc":          "Diễn Giải",
     "Price":                            "Đơn giá",
     "Cable":                            "Sợi",
+    "The contract.code must be unique": "Số hợp đồng đã tồn tại trong hệ thống",
     "listAdmin":                        "Danh sách admin",
     "infoAdmin":                        "Thông tin admin",
     "addAdmin":                         "Thêm admin",

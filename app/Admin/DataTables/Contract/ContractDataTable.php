@@ -65,6 +65,7 @@ class ContractDataTable extends DataTables
     public function query()
     {
         return $this->repository->getByQueryBuilder([], ['type', 'customer', 'sharers', 'admin'])->currentAuth();
+
     }
 
     protected function setFilterColumns(): void

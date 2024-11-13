@@ -26,7 +26,7 @@
                         <div class="col-4">
                             <div class="mb-3">
                                 <label class="form-label">@lang('Exhibition Location Stretch'):</label>
-                                <x-core-input name="stretch" :value="$exhibition_location->stretch" :required="true"
+                                <x-core-input name="stretch" :value="$exhibition_location->stretch"
                                     :placeholder="__('Exhibition Location Stretch')" />
                             </div>
                         </div>

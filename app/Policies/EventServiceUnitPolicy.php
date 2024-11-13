@@ -2,9 +2,8 @@
 
 namespace App\Policies;
 
-use App\Admin\Services\EventService\EventServiceUnit;
 use App\Models\Admin;
-use App\Models\EventService;
+use App\Models\EventServiceUnit;
 use Illuminate\Auth\Access\Response;
 
 class EventServiceUnitPolicy
@@ -29,7 +28,7 @@ class EventServiceUnitPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(Admin $admin, EventServiceUnit $eventServiceUnit): bool
+    public function view(Admin $admin, EventServiceUnit $EventServiceUnit): bool
     {
         //
         return true;
@@ -47,25 +46,25 @@ class EventServiceUnitPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(Admin $admin, EventServiceUnit $eventServiceUnit): bool
+    public function update(Admin $admin, EventServiceUnit $EventServiceUnit): bool
     {
         //
-        return $admin->id == $eventServiceUnit->admin_id;
+        return $admin->id == $EventServiceUnit->admin_id;
     }
 
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(Admin $admin, EventServiceUnit $eventServiceUnit): bool
+    public function delete(Admin $admin, EventServiceUnit $EventServiceUnit): bool
     {
         //
-        return $admin->id == $eventServiceUnit->admin_id;
+        return $admin->id == $EventServiceUnit->admin_id;
     }
 
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(Admin $admin, EventServiceUnit $eventServiceUnit): bool
+    public function restore(Admin $admin, EventServiceUnit $EventServiceUnit): bool
     {
         //
     }
@@ -73,7 +72,7 @@ class EventServiceUnitPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(Admin $admin, EventServiceUnit $eventServiceUnit): bool
+    public function forceDelete(Admin $admin, EventServiceUnit $EventServiceUnit): bool
     {
         //
     }

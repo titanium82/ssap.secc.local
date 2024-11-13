@@ -88,7 +88,7 @@
                     $('#error_message').text('Số tiền vượt quá tổng giá trị phụ lục');
                     $('#error_message').show();
             }
-            else if(totalAmount > totalNumber && subtotalNumber ==0){
+            else if(totalAmount > totalNumber && subtotalNumber==0){
                     $('#error_message').text('Số tiền vượt quá tổng giá trị');
                     $('#error_message').show();
             }

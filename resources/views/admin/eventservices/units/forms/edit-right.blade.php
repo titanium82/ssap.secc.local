@@ -10,7 +10,7 @@
                     @lang('save&exit')
                 </button>
             </div>
-            <button type="button" class="btn btn-danger open-modal-delete" data-route="{{ route('admin.event_service_type.delete', $event_service_type->id) }}" data-target="#modalDelete">
+            <button type="button" class="btn btn-danger open-modal-delete" data-route="{{ route('admin.event_service_unit.delete', $event_service_unit->id) }}" data-target="#modalDelete">
                 @lang('Delete')
             </button>
         </div>

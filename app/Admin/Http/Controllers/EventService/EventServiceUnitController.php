@@ -11,7 +11,7 @@ use App\Admin\Services\EventService\EventServiceUnit;
 use Illuminate\Http\{JsonResponse, RedirectResponse, Request};
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
-use App\Admin\Enums\EventService\Unit;
+use App\Admin\Enums\EventService\Units;
 
 class EventServiceUnitController extends Controller
 {
@@ -38,7 +38,7 @@ class EventServiceUnitController extends Controller
             ->addByRouteName(trans('Event Service'), 'admin.event_service_unit.index')
             ->add(trans('Show'))
         )
-        ->with('eventservice', $eventserviceunit);
+        ->with('eventserviceunit', $eventserviceunit);
     }
     public function create(Request $request): View
     {
@@ -47,7 +47,7 @@ class EventServiceUnitController extends Controller
         {
             return view('admin.eventservices.units.modals.modal-create')
             ->with('types',$types)
-            ->with('unit',Unit::asSelectArray());
+            ->with('unit',Units::asSelectArray());
         }
 
         return view('admin.eventservices.units.create')
@@ -87,22 +87,16 @@ class EventServiceUnitController extends Controller
         }
     }
 
-    public function edit($id, Request $request): View
+    public function edit($id): View
     {
-        $types = $this->repoEventServiceType->getAll();
-        $event_service_unit = $this->repository->findOrFail($id);
-        if($request->ajax())
-        {
-            return view('admin.eventservices.units.modals.modal-edit')
-            ->with('event_service_unit', $event_service_unit)
-            ->with('types', $types)
-            ->with('unit', Unit::asSelectArray());
-        }
+        $event_service_unit = $this->repository->findOrFail($id,['type']);
         return view('admin.eventservices.units.edit')
-        ->with('breadcrums', $this->breadcrums()->addByRouteName(trans('Event Service Unit'), 'admin.event_service_unit.index')->add(trans('Edit')))
+        ->with('breadcrums', $this->breadcrums()
+        ->addByRouteName(trans('Event Service Unit'), 'admin.event_service_unit.index')
+        ->add(trans('Edit'))
+        )
         ->with('event_service_unit', $event_service_unit)
-        ->with('unit', Unit::asSelectArray())
-        ->with('types', $types);
+        ->with('unit', Units::asSelectArray());
     }
 
     public function update(EventServiceUnitRequest $request): RedirectResponse
