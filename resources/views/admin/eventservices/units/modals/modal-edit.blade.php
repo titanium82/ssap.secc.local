@@ -11,17 +11,17 @@
                     <div class="row">
                         <div class="col-12 mb-3">
                             <label class="form-label">@lang('Event Service Type'):</label>
-                            {{-- <x-core-select name="event_service_type_id" :required="true">
-                                @foreach ($types as $type)
-                                    <x-core-select-option :value="$type->id" :title="$type->name" />
+                            <x-core-select name="event_service_type_id" :required="true">
+                                @foreach ($event_service_unit->types as $sector)
+                                    <x-core-select-option :option="$sector->id" :value="$sector->id" :title="$sector->name" />
                                 @endforeach
-                            </x-core-select> --}}
+                            </x-core-select>
                         </div>
                         <div class="col-12">
                             <div class="mb-3">
                                 <label class="form-label">@lang('Edit Event Service Unit'):</label>
-                                <x-core-input name="unit" :value="$event_service_unit->unit" :required="true"
-                                    :placeholder="__('Event Service Unit')" />
+                                {{-- <x-core-input name="unit" :value="$event_service_unit->unit" :required="true"
+                                    :placeholder="__('Event Service Unit')" /> --}}
                             </div>
                         </div>
                     </div>
