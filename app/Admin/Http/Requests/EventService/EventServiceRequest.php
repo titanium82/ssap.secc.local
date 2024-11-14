@@ -16,12 +16,12 @@ class EventServiceRequest extends Request
     protected function methodPost()
     {
         return [
-            'admin_id' => ['required', 'exists:App\Models\Admin,id'],
+            'admin_id'              => ['required', 'exists:App\Models\Admin,id'],
             'event_service_type_id' => ['required', 'exists:App\Models\EventServiceType,id'],
-            'name' => ['required', 'string', 'unique:App\Models\EventService,name'],
-            'unit' =>['required', new Enum(Unit::class)],
-            'price'=>['nullable','numeric'],
-            'desc' => ['nullable', 'string']
+            'name'                  => ['required', 'string', 'unique:App\Models\EventService,name'],
+            'unit'                  => ['required', new Enum(Unit::class)],
+            'price'                 => ['nullable','numeric'],
+            'desc'                  => ['nullable', 'string']
         ];
     }
 

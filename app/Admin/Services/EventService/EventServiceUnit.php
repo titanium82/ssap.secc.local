@@ -24,18 +24,18 @@ class EventServiceUnit
 
             $types = $data['event_service_type_id'];
 
-            $eventservicesunit = $this->repo->create($data);
+            $eventserviceunit = $this->repo->create($data);
 
             logger()->info(trans('User ID :uid add customer ID :cid', [
                 'uid' => auth('admin')->id(),
-                'cid' => $eventservicesunit->id
+                'cid' => $eventserviceunit->id
             ]), [
                 'user' => auth('admin')->user()->toArray(),
                 'request' => $request->all()
             ]);
 
             DB::commit();
-            return $eventservicesunit;
+            return $eventserviceunit;
 
         } catch (\Throwable $th) {
 
@@ -57,22 +57,20 @@ class EventServiceUnit
 
             $data = $request->validated();
 
-            $types = $data['event_service_type_id'];
-
-            $eventservicesunit = $this->repo->update($data['id'], $data);
+            $eventserviceunit = $this->repo->update($data['id'], $data);
 
             // $eventservices->type()->sync($types);
 
             logger()->info(trans('User ID :uid update customer ID :cid', [
                 'uid' => auth('admin')->id(),
-                'cid' => $eventservicesunit->id
+                'cid' => $eventserviceunit->id
             ]), [
                 'user' => auth('admin')->user()->toArray(),
                 'request' => $request->all()
             ]);
 
             DB::commit();
-            return $eventservicesunit;
+            return $eventserviceunit;
 
         } catch (\Throwable $th) {
 

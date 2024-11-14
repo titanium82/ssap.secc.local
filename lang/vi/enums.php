@@ -13,24 +13,24 @@ return [
         App\Core\Enums\Gender::Other->value => 'Khác'
 
     ],
-    App\Admin\Enums\EventService\Unit::class =>[
-        App\Admin\Enums\EventService\Unit::Cable->value => 'Sợi',
-        App\Admin\Enums\EventService\Unit::Pieces->value => 'Cái',
-        App\Admin\Enums\EventService\Unit::set->value => 'Gói',
-
-    ],
     App\Admin\Enums\Contract\ContractPaymentMethod::class =>[
         App\Admin\Enums\Contract\ContractPaymentMethod::Banking->value => 'Chuyển Khoản',
         App\Admin\Enums\Contract\ContractPaymentMethod::Cash->value => 'Tiền Mặt'
     ],
     App\Admin\Enums\Contract\ContractStatus::class =>[
-        App\Admin\Enums\Contract\ContractStatus::Pending->value => "Chờ xác nhận",
-        App\Admin\Enums\Contract\ContractStatus::Processing->value => "Đang triển khai",
-        App\Admin\Enums\Contract\ContractStatus::Completed->value => "Hoàn Tất"
+        App\Admin\Enums\Contract\ContractStatus::Pending->value => 'Chờ xác nhận',
+        App\Admin\Enums\Contract\ContractStatus::Processing->value => 'Đang triển khai',
+        App\Admin\Enums\Contract\ContractStatus::Completed->value => 'Hoàn Tất'
     ],
     App\Admin\Enums\Contract\ContractPaymentStatus::class =>[
-        App\Admin\Enums\Contract\ContractPaymentStatus::Paid->value => "Đã thanh toán",
-        App\Admin\Enums\Contract\ContractPaymentStatus::Unpaid->value => "Chưa thanh toán",
-        App\Admin\Enums\Contract\ContractPaymentStatus::Late->value => "Trễ hạn thanh toán"
+        App\Admin\Enums\Contract\ContractPaymentStatus::Paid->value => 'Đã thanh toán',
+        App\Admin\Enums\Contract\ContractPaymentStatus::Unpaid->value => 'Chưa thanh toán',
+        App\Admin\Enums\Contract\ContractPaymentStatus::Late->value => 'Trễ hạn thanh toán'
     ],
+    App\admin\Enums\EventService\Units::class =>[
+        App\admin\Enums\EventService\Units::Cable->value =>'Sợi',
+        App\admin\Enums\EventService\Units::Plate->value =>'Tấm',
+        App\admin\Enums\EventService\Units::Pieces->value =>'Cái',
+        App\admin\Enums\EventService\Units::Set->value =>'Gói'
+    ]
 ];

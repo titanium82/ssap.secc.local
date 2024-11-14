@@ -23,6 +23,7 @@ class Contract extends Model
         'customer_id',
         'currency_id',
         'name',
+        'short_name', //Bổ sung thêm tên viết tắt cho tên triển lãm.
         'status',
         'day_begin',
         'day_end',

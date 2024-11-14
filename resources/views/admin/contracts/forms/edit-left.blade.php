@@ -39,11 +39,18 @@
                     <x-core-input name="contract[code]" :value="$contract->code" readonly />
                 </div>
             </div>
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-4">
                 <div class="mb-3">
                     <label class="form-label">@lang('Name'):</label>
                     <x-core-input name="contract[name]" :value="$contract->name" :required="true"
                         :placeholder="__('Name')" />
+                </div>
+            </div>
+            <div class="col-12 col-md-2">
+                <div class="mb-3">
+                    <label class="form-label">@lang('Contract Exhibition Short Name'):</label>
+                    <x-core-input name="contract[short_name]" :value="$contract->short_name" :required="true"
+                        :placeholder="__('Contract Exhibition Short Name')" />
                 </div>
             </div>
             <div class="col-12 col-md-6">

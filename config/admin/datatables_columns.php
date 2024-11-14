@@ -4,10 +4,14 @@ return [
     'contract' => [
         'code' => [
             'title' => 'Contract Code',
-            'orderable' => false,
+            'orderable' => true,
         ],
         'name' => [
             'title' => 'Contract Name',
+            'orderable' => false,
+        ],
+        'short_name' => [
+            'title' => 'Contract Short Name',
             'orderable' => false,
         ],
         'contract_type_id' => [
@@ -42,11 +46,17 @@ return [
     'contract_payment' => [
         'contract_id' => [
             'title' => 'Contract Code',
+            'orderable' => true,
+        ],
+        'contract_short_name' => [
+            'title' => 'Contract Short Name',
             'orderable' => false,
+            'width' => '200px',
         ],
         'period' => [
             'title' => 'Period',
             'orderable' => false,
+            'width' => '100px',
         ],
         'amount' => [
             'title' => 'Amount',
@@ -309,14 +319,20 @@ return [
         ],
     ],
     'event_service_unit' => [
+        'event_service_type_id' => [
+            'title' => 'Event Service Types',
+            'orderable' => true,
+            'width' => '300px',
+        ],
+        'name' => [
+            'title' => 'Event Service Name',
+            'orderable' => false,
+            'width' => '400px',
+        ],
         'unit' => [
             'title' => 'Event Service Unit',
             'orderable' => false,
-        ],
-        'event_service_type_id' => [
-            'title' => 'Event Service Types',
-            'orderable' => false,
-            'width' => '400px',
+            'width' => '100px',
         ],
         'desc' => [
             'title' => 'Event Service Unit Desc',

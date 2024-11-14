@@ -15,10 +15,15 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('admin_id');
             $table->unsignedBigInteger('event_service_types_id');
+            $table->string('name');
             $table->string('unit');
-            $table->string('dimensions');
-            $table->string('banner_status'); //trạng thái in hoặc treo hoặc cả hai của dịch vụ banner
-            $table->string('banner_sides'); //trạn thái một mặt hoặc 2 mặt của banner
+            $table->string('width');
+            $table->string('height');
+            $table->integer('hours');
+            $table->string('sound_system');
+            $table->string('wireless_micro');
+            $table->string('backdrop');
+            $table->string('slides'); //trạn thái một mặt hoặc 2 mặt của banner
             $table->string('vertical_banner'); //banner dọc
             $table->string('horizontal_banner'); //banner ngang
             $table->string('led_locations'); //vị trí cổng led

@@ -63,7 +63,7 @@ class AdminRequest extends Request
         if($this->input('admin.is_superadmin', false))
         {
             $data['roles'] = $data['permissions'] = [];
-            
+
             $this->validator->setData($data);
         }else {
             if($this->isMethod('put'))

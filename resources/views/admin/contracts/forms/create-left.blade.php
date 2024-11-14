@@ -61,11 +61,18 @@
                     @endif
                 </div>
             </div>
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-4">
                 <div class="mb-3">
                     <label class="form-label">@lang('Contract Exhibition Name'):</label>
                     <x-core-input name="contract[name]" :value="old('contract.name')" :required="true"
                         :placeholder="__('Contract Exhibition Name')" />
+                </div>
+            </div>
+            <div class="col-12 col-md-2">
+                <div class="mb-3">
+                    <label class="form-label">@lang('Exhibition Short Name'):</label>
+                    <x-core-input name="contract[short_name]" :value="old('contract.short_name')" :required="true"
+                        :placeholder="__('Exhibition Short Name')" />
                 </div>
             </div>
             <div class="col-12 col-md-3">

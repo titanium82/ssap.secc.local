@@ -22,7 +22,7 @@
                         <x-core-select-option :value="$type->id" :title="$type->name" />
                     @endforeach
                 </x-core-select>
-            </div>            
+            </div>
             <div class="col-12 col-md-6">
                 <div class="mb-3">
                     <label class="form-label">@lang('Tel'):</label>

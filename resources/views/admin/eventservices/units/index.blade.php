@@ -7,10 +7,10 @@
                 <div class="card-header justify-content-between">
                     <h2 class="mb-0">@lang('list')</h2>
                     @adminaccessroutename('admin.event_service_unit.create')
-                    <a href="{{ route('admin.event_service_unit.create') }}" class="btn btn-primary">
+                    <button type="button" data-route="{{ route('admin.event_service_unit.create') }}" class="btn btn-primary open-modal-form">
                         <i class="ti ti-plus"></i>
                         <span>@lang('add')</span>
-                    </a>
+                    </button>
                     @endadminaccessroutename
                 </div>
                 <div class="card-body">

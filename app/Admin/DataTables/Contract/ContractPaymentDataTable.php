@@ -21,6 +21,7 @@ class ContractPaymentDataTable extends DataTables
         $this->viewColumns = [
             'action' => 'admin.contracts.payments.datatable.action',
             'code_contract' => 'admin.contracts.payments.datatable.code-contract',
+            'short_name_contract' => 'admin.contracts.payments.datatable.short-name-contract',
             'status' => 'admin.contracts.payments.datatable.status',
         ];
     }
@@ -35,7 +36,7 @@ class ContractPaymentDataTable extends DataTables
 
     protected function setColumnHasSearch(): void
     {
-        $this->columnHasSearch = ['contract_id', 'period', 'expired_at', 'status', 'admin_id', 'created_at'];
+        $this->columnHasSearch = ['contract_id','contract_short_name', 'period', 'expired_at', 'status', 'admin_id', 'created_at'];
     }
 
     protected function setColumnSearchDate(): void
@@ -75,6 +76,7 @@ class ContractPaymentDataTable extends DataTables
     {
         $this->editColumns = [
             'contract_id' => $this->viewColumns['code_contract'],
+            'contract_short_name' => $this->viewColumns['short_name_contract'],
             'status' => $this->viewColumns['status'],
             'amount' => fn($cp) => format_price($cp->amount, '', $cp->contract?->currency->name),
             'admin_id' => fn($item) => $item->admin->fullname,
@@ -92,6 +94,6 @@ class ContractPaymentDataTable extends DataTables
 
     protected function setRawColumns(): void
     {
-        $this->rawColumns = ['contract_id', 'status', 'action'];
+        $this->rawColumns = ['contract_id','contract_short_name', 'status', 'action'];
     }
 }
