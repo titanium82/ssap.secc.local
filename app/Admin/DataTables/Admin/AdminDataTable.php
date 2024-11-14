@@ -11,14 +11,16 @@ class AdminDataTable extends DataTables
 
     public function __construct(
         public AdminRepositoryInterface $repository
-    ){
+    )
+    {
     }
 
     protected function setViewColumns(): void
     {
         $this->viewColumns = [
-            'action' => 'admin.admins.datatable.action',
-            'fullname' => 'admin.admins.datatable.fullname',
+            'action'        => 'admin.admins.datatable.action',
+            'fullname'      => 'admin.admins.datatable.fullname',
+            'department'    => 'admin.admins.datatable.department',
         ];
     }
 
@@ -40,7 +42,7 @@ class AdminDataTable extends DataTables
             ]
         ];
     }
-    
+
     /**
      * Get query source of dataTable.
      *
@@ -56,6 +58,7 @@ class AdminDataTable extends DataTables
     {
         $this->editColumns = [
             'fullname' => $this->viewColumns['fullname'],
+            'admin[department_id]'=>$this->viewColumns['department'],
             'created_at' => '{{ date(config("core.format.date"), strtotime($created_at)) }}'
         ];
     }
@@ -69,6 +72,6 @@ class AdminDataTable extends DataTables
 
     protected function setRawColumns(): void
     {
-        $this->rawColumns = ['fullname', 'action'];
+        $this->rawColumns = ['fullname','department_id', 'action'];
     }
 }

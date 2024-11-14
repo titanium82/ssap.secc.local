@@ -410,6 +410,10 @@ return [
             'title' => 'name',
             'orderable' => false,
         ],
+        'shortname' => [
+            'title' => 'shortname',
+            'orderable' => false,
+        ],
         'created_at' => [
             'title' => 'createdAt',
             'orderable' => false,
@@ -431,6 +435,7 @@ return [
         'phone' => [
             'title' => 'phone',
             'orderable' => false,
+            'width'=>'200px',
         ],
         'email' => [
             'title' => 'email',
@@ -444,6 +449,11 @@ return [
             'title' => 'createdAt',
             'orderable' => false,
             'visible' => false,
+        ],
+        'department_id' => [
+            'title' => 'Department',
+            'orderable' => false,
+            'width'=>'300px',
         ],
         'action' => [
             'title' => 'action',

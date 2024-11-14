@@ -16,35 +16,36 @@ class AdminRequest extends Request
     protected function methodPost()
     {
         return [
-            'admin.email' => ['required', 'email', 'unique:App\Models\Admin,email'],
-            'admin.fullname' => ['required', 'string'],
-            'admin.phone' => ['required', 'regex:/((09|03|07|08|05)+([0-9]{8})\b)/', 'unique:App\Models\Admin,phone'],
-            'admin.password' => ['required', 'string', 'confirmed'],
-            'admin.birthday' => ['nullable', 'date_format:Y-m-d'],
-            'admin.gender' => ['required', new Enum(Gender::class)],
-            'admin.is_superadmin' => ['nullable', 'boolean'],
-            'permissions' => ['nullable', 'array'],
-            'permissions.*' => ['nullable', 'exists:App\Models\Permission,id'],
-            'roles' => ['nullable', 'array'],
-            'roles.*' => ['nullable', 'exists:App\Models\Role,id'],
+            'admin.email'           => ['required', 'email', 'unique:App\Models\Admin,email'],
+            'admin.department_id'   => ['required', 'exists:App\Models\Department,id'],
+            'admin.fullname'        => ['required', 'string'],
+            'admin.phone'           => ['required', 'regex:/((09|03|07|08|05)+([0-9]{8})\b)/', 'unique:App\Models\Admin,phone'],
+            'admin.password'        => ['required', 'string', 'confirmed'],
+            'admin.birthday'        => ['nullable', 'date_format:Y-m-d'],
+            'admin.gender'          => ['required', new Enum(Gender::class)],
+            'admin.is_superadmin'   => ['nullable', 'boolean'],
+            'permissions'           => ['nullable', 'array'],
+            'permissions.*'         => ['nullable', 'exists:App\Models\Permission,id'],
+            'roles'                 => ['nullable', 'array'],
+            'roles.*'               => ['nullable', 'exists:App\Models\Role,id'],
         ];
     }
 
     protected function methodPut()
     {
         return [
-            'id' => ['required', 'exists:App\Models\Admin,id'],
-            'admin.email' => ['required', 'email', 'unique:App\Models\Admin,email,'.$this->id],
-            'admin.fullname' => ['required', 'string'],
-            'admin.phone' => ['required', 'regex:/((09|03|07|08|05)+([0-9]{8})\b)/', 'unique:App\Models\Admin,phone,'.$this->id],
-            'admin.password' => ['nullable', 'string', 'confirmed'],
-            'admin.birthday' => ['nullable', 'date_format:Y-m-d'],
-            'admin.gender' => ['required', new Enum(Gender::class)],
-            'admin.is_superadmin' => ['nullable', 'boolean'],
-            'permissions' => ['nullable', 'array'],
-            'permissions.*' => ['nullable', 'exists:App\Models\Permission,id'],
-            'roles' => ['nullable', 'array'],
-            'roles.*' => ['nullable', 'exists:App\Models\Role,id']
+            'id'                    => ['required', 'exists:App\Models\Admin,id'],
+            'admin.email'           => ['required', 'email', 'unique:App\Models\Admin,email,'.$this->id],
+            'admin.fullname'        => ['required', 'string'],
+            'admin.phone'           => ['required', 'regex:/((09|03|07|08|05)+([0-9]{8})\b)/', 'unique:App\Models\Admin,phone,'.$this->id],
+            'admin.password'        => ['nullable', 'string', 'confirmed'],
+            'admin.birthday'        => ['nullable', 'date_format:Y-m-d'],
+            'admin.gender'          => ['required', new Enum(Gender::class)],
+            'admin.is_superadmin'   => ['nullable', 'boolean'],
+            'permissions'           => ['nullable', 'array'],
+            'permissions.*'         => ['nullable', 'exists:App\Models\Permission,id'],
+            'roles'                 => ['nullable', 'array'],
+            'roles.*'               => ['nullable', 'exists:App\Models\Role,id']
         ];
     }
 

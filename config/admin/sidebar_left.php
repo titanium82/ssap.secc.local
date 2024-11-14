@@ -78,6 +78,11 @@ return [
                 'icon' => '<i class="ti ti-list"></i>'
             ],
             [
+                'title' => 'Exhibition Event',
+                'route_name' => '',
+                'icon' => '<i class="ti ti-list"></i>'
+            ],
+            [
                 'title' => 'Exhibition Calendar',
                 'route_name' => '',
                 'icon' => '<i class="ti ti-list"></i>'

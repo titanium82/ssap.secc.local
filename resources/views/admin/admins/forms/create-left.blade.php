@@ -32,25 +32,33 @@
                         data-parsley-equalto-message="{{ trans('passwordMismatch') }}" />
                 </div>
             </div>
-            <div class="col-md-4 col-12">
-                <div class="mb-3">
-                    <label class="form-label">@lang('phone'):</label>
-                    <x-core-input-phone name="admin[phone]" :value="old('admin.phone')" :required="true" />
-                </div>
+            <div class="col-md-3 col-12">
+                <label class="form-label">@lang('Department'):</label>
+                <x-core-select name="admin[department_id]" :required="true">
+                    @foreach ($departments as $department)
+                        <x-core-select-option :value="$department->id" :title="$department->name" />
+                    @endforeach
+                </x-core-select>
             </div>
-            <div class="col-md-4 col-12">
-                <div class="mb-3">
-                    <label class="form-label">@lang('birthday'):</label>
-                    <x-core-input type="date" name="admin[birthday]" :value="old('admin.birthday')" />
-                </div>
-            </div>
-            <div class="col-12 col-md-4">
+            <div class="col-md-3 col-12">
                 <label class="form-label">@lang('Gender'):</label>
                 <x-core-select name="admin[gender]" :required="true">
                     @foreach ($gender as $key => $value)
                         <x-core-select-option :value="$key" :title="$value" />
                     @endforeach
                 </x-core-select>
+            </div>
+            <div class="col-md-3 col-12">
+                <div class="mb-3">
+                    <label class="form-label">@lang('phone'):</label>
+                    <x-core-input-phone name="admin[phone]" :value="old('admin.phone')" :required="true" />
+                </div>
+            </div>
+            <div class="col-md-3 col-12">
+                <div class="mb-3">
+                    <label class="form-label">@lang('birthday'):</label>
+                    <x-core-input type="date" name="admin[birthday]" :value="old('admin.birthday')" />
+                </div>
             </div>
         </div>
     </div>

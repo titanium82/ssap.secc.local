@@ -13,6 +13,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Casts\AsArrayObject;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 #[ObservedBy([AdminObserver::class])]
 class Admin extends Authenticatable
@@ -25,6 +26,7 @@ class Admin extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'department_id',
         'username',
         'fullname',
         'phone',
@@ -48,7 +50,7 @@ class Admin extends Authenticatable
         'password',
         'remember_token',
     ];
-    
+
     /**
      * Get the attributes that should be cast.
      *
@@ -69,7 +71,7 @@ class Admin extends Authenticatable
     {
         return $this->belongsToMany(ContractPayment::class, 'contract_paymens_share_admins', 'admin_id', 'contract_payment_id');
     }
-    
+
     public function contractShares()
     {
         return $this->belongsToMany(Contract::class, 'contracts_share_admins', 'admin_id', 'contract_id');
@@ -81,6 +83,10 @@ class Admin extends Authenticatable
 
     public function permissions(){
         return $this->belongsToMany(Permission::class, 'admin_has_permissions', 'admin_id', 'permission_id');
+    }
+    public function departments():BelongsTo
+    {
+        return $this->belongsTo(Department::class, foreignKey:'department_id');
     }
 
     protected function fullname(): Attribute

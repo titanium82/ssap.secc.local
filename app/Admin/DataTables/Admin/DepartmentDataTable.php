@@ -16,8 +16,10 @@ class DepartmentDataTable extends DataTables
     protected function setViewColumns(): void
     {
         $this->viewColumns = [
-            'action' => 'admin.department.datatable.action',
-            'name' => 'admin.department.datatable.name',
+            'action'    => 'admin.admins.departments.datatable.action',
+            'name'      => 'admin.admins.departments.datatable.name',
+            'shortname' => 'admin.admins.departments.datatable.shortname',
+
         ];
     }
 
