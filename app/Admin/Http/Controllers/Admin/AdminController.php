@@ -6,6 +6,7 @@ use App\Admin\DataTables\Admin\AdminDataTable;
 use App\Admin\Http\Controllers\Controller;
 use App\Admin\Http\Requests\Admin\AdminRequest;
 use App\Admin\Repositories\{Role\RoleRepositoryInterface, Permission\PermissionRepositoryInterface, Admin\AdminRepositoryInterface};
+use App\Admin\Repositories\Department\DepartmentRepositoryInterface;
 use App\Core\Enums\Gender;
 use Illuminate\Http\{JsonResponse, RedirectResponse, Request};
 use Illuminate\View\View;
@@ -15,7 +16,8 @@ class AdminController extends Controller
     public function __construct(
         protected AdminRepositoryInterface $repository,
         protected RoleRepositoryInterface $repoRole,
-        protected PermissionRepositoryInterface $repoPermission
+        protected PermissionRepositoryInterface $repoPermission,
+        protected DepartmentRepositoryInterface $repoDepartment,
     )
     {
     }
@@ -33,11 +35,14 @@ class AdminController extends Controller
 
         $permissions = $this->repoPermission->getAll();
 
+        $departments = $this->repoDepartment->getAll();
+;
         return view('admin.admins.create')
         ->with('breadcrums', $this->breadcrums()->addByRouteName(trans('Admin'), 'admin.admin.index')->addByRouteName(trans('Add')))
         ->with('roles', $roles)
         ->with('gender', Gender::asSelectArray())
-        ->with('permissions', $permissions);
+        ->with('permissions', $permissions)
+        ->with('departments',$departments);
     }
 
     public function store(AdminRequest $request): RedirectResponse
@@ -50,8 +55,8 @@ class AdminController extends Controller
 
             if($admin)
             {
-                return $request->input('submitter') == 'save' 
-                    ? to_route('admin.admin.edit', $admin->id)->with('success', __('notifySuccess')) 
+                return $request->input('submitter') == 'save'
+                    ? to_route('admin.admin.edit', $admin->id)->with('success', __('notifySuccess'))
                     : to_route('admin.admin.index')->with('success', __('notifySuccess'));
             }
         } catch (\Throwable $th) {
@@ -67,14 +72,18 @@ class AdminController extends Controller
 
         $roles = $this->repoRole->getAll();
 
+        $departments = $this->repoDepartment->getAll();
+
+
         $permissions = $this->repoPermission->getAll();
-        
+
         return view('admin.admins.edit')
         ->with('breadcrums', $this->breadcrums()->addByRouteName(trans('Admin'), 'admin.admin.index')->addByRouteName(trans('Edit')))
         ->with('admin', $admin)
         ->with('roles', $roles)
         ->with('gender', Gender::asSelectArray())
         ->with('permissions', $permissions)
+        ->with('departments',$departments)
         ->with('admin_has_roles', $admin->roles->pluck('id')->toArray())
         ->with('admin_has_permissions', $admin->permissions->pluck('id')->toArray());
     }
@@ -89,7 +98,7 @@ class AdminController extends Controller
 
             if($admin)
             {
-                return $request->input('submitter') == 'save' 
+                return $request->input('submitter') == 'save'
                     ? back()->with('success', __('notifySuccess'))
                     : to_route('admin.admin.index')->with('success', __('notifySuccess'));
             }
@@ -103,7 +112,7 @@ class AdminController extends Controller
     public function delete($id, Request $request): RedirectResponse|JsonResponse
     {
         try {
-            
+
             $this->repository->delete($id);
 
             if($request->ajax())
@@ -112,7 +121,7 @@ class AdminController extends Controller
                     'msg' => trans('notifySuccess')
                 ]);
             }
-        
+
             return to_route('admin.admin.index')->with('success', __('notifySuccess'));
         } catch (\Throwable $th) {
 

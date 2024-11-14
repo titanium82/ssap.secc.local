@@ -20,7 +20,7 @@ class DepartmentController extends Controller
 
     public function index(DepartmentDataTable $datatable): View|JsonResponse
     {
-        return $datatable->render('admin.department.index', [
+        return $datatable->render('admin.admins.departments.index', [
             'breadcrums' => $this->breadcrums()->add(trans('Department'))
         ]);
     }
@@ -29,7 +29,7 @@ class DepartmentController extends Controller
     {
         if($request->ajax())
         {
-            return view('admin.department.modals.modal-create');
+            return view('admin.admins.departments.modals.modal-create');
         }
 
         return view('admin.department.create')
@@ -57,8 +57,8 @@ class DepartmentController extends Controller
             if($department)
             {
                 return $request->input('submitter') == 'save'
-                    ? to_route('admin.department.edit', $department->id)->with('success', __('notifySuccess'))
-                    : to_route('admin.department.index')->with('success', __('notifySuccess'));
+                    ? to_route('admin.admins.departments.edit', $department->id)->with('success', __('notifySuccess'))
+                    : to_route('admin.admins.departments.index')->with('success', __('notifySuccess'));
             }
             return back()->withInput()->with('error', trans('notifyFail'));
         } catch (\Throwable $th) {
@@ -78,12 +78,12 @@ class DepartmentController extends Controller
 
         if($request->ajax())
         {
-            return view('admin.department.modals.modal-edit')->with('department', $department);
+            return view('admin.admins.departments.modals.modal-edit')->with('department', $department);
         }
 
         return view('admin.department.edit')
         ->with('breadcrums', $this->breadcrums()
-            ->addByRouteName(trans('Department'), 'admin.department.index')
+            ->addByRouteName(trans('Department'), 'admin.admins.departments.index')
             ->add(trans('Edit'))
         )
         ->with('department', $department);
@@ -107,7 +107,7 @@ class DepartmentController extends Controller
             {
                 return $request->input('submitter') == 'save'
                     ? back()->with('success', __('notifySuccess'))
-                    : to_route('admin.department.index')->with('success', __('notifySuccess'));
+                    : to_route('admin.admins.departments.index')->with('success', __('notifySuccess'));
             }
             return back()->withInput()->with('error', trans('notifyFail'));
         } catch (\Throwable $th) {
@@ -133,7 +133,7 @@ class DepartmentController extends Controller
                 ]);
             }
 
-            return to_route('admin.department.index')->with('success', __('notifySuccess'));
+            return to_route('admin.admins.departments.index')->with('success', __('notifySuccess'));
         } catch (\Throwable $th) {
 
             if($request->ajax())
