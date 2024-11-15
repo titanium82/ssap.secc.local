@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Admin\Http\Controllers\ExhibitionLocation;
+namespace App\Admin\Http\Controllers\Exhibition;
 
-use App\Admin\DataTables\ExhibitionLocation\ExhibitionLocationDataTable;
+use App\Admin\DataTables\Exhibition\ExhibitionLocationDataTable;
 use App\Admin\Http\Controllers\Controller;
-use App\Admin\Http\Requests\ExhibitionLocation\ExhibitionLocationRequest;
+use App\Admin\Http\Requests\Exhibition\ExhibitionLocationRequest;
 use App\Models\ExhibitionLocation;
 use Illuminate\Http\{JsonResponse, RedirectResponse, Request};
 use Illuminate\View\View;
@@ -21,7 +21,7 @@ class ExhibitionLocationController extends Controller
 
     public function index(ExhibitionLocationDataTable $datatable): View|JsonResponse
     {
-        return $datatable->render('admin.exhibition_locations.index', [
+        return $datatable->render('admin.exhibitions.locations.index', [
             'breadcrums' => $this->breadcrums()->add(trans('Exhibition location'))
         ]);
     }

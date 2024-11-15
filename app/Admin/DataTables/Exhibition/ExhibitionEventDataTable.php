@@ -1,26 +1,28 @@
 <?php
 
-namespace App\Admin\DataTables\ExhibitionLocation;
+namespace App\Admin\DataTables\Exhibition;
 
+use App\Admin\Repositories\Exhibition\ExhibitionEventRepositoryInterface;
 use App\Core\DataTables\DataTables;
-use App\Models\ExhibitionLocation;
 
-class ExhibitionLocationDataTable extends DataTables
+class ExhibitionEventDataTable extends DataTables
 {
 
     // protected string $dataTableVariable = 'dataTable';
 
     public function __construct(
-        public ExhibitionLocation $model
-    ){
+        public ExhibitionEventRepositoryInterface $repository
+    )
+    {
+        $this->repository = $repository;
     }
 
     protected function setViewColumns(): void
     {
         $this->viewColumns = [
-            'name' => 'admin.exhibition_locations.datatable.name',
-            'location' => 'admin.exhibition_locations.datatable.location',
-            'action' => 'admin.exhibition_locations.datatable.action',
+            'name'      => 'admin.exhibitions.events.datatable.name',
+            'location'  => 'admin.exhibitions.events.datatable.location',
+            'action'    => 'admin.exhibitions.events.datatable.action',
         ];
     }
 
@@ -47,7 +49,7 @@ class ExhibitionLocationDataTable extends DataTables
      */
     public function query()
     {
-        return $this->model->orderBy('id', 'desc');
+        return $this->repository->getByQueryBuilder([], ['customer', 'admin'])->currentAuth();
     }
 
     protected function setEditColumns(): void

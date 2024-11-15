@@ -45,7 +45,6 @@ class ContractRequest extends Request
             'payment.*.expired_at' => ['required', 'date_format:Y-m-d'],
             'payment.*.amount' => ['required', 'numeric', 'min:0'],
             'payment.*.file_send_mail' => ['nullable', 'json'],
-
         ];
     }
 

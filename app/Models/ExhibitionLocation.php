@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use app\admin\Enums\ExhibitionLocation\ScreenProjector;
 
 class ExhibitionLocation extends Model
 {
@@ -25,13 +24,7 @@ class ExhibitionLocation extends Model
         'light',
         'wifi',
         'air_conditioner',
-        'screen_backdrop'
-
+        'screen_backdrop',
+        'desc'
     ];
-    protected function screen_projector(): array
-    {
-        return [
-            'screen_projector' => ScreenProjector::class
-        ];
-    }
 }

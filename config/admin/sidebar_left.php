@@ -72,19 +72,20 @@ return [
         'route_name' => '',
         'icon' => '<i class="ti ti-image-in-picture"></i>',
         'sub' => [
-            [
-                'title' => 'Exhibition Location',
-                'route_name' => 'admin.exhibition_location.index',
-                'icon' => '<i class="ti ti-list"></i>'
-            ],
+
             [
                 'title' => 'Exhibition Event',
-                'route_name' => '',
+                'route_name' => 'admin.exhibition_event.index',
                 'icon' => '<i class="ti ti-list"></i>'
             ],
             [
                 'title' => 'Exhibition Calendar',
                 'route_name' => '',
+                'icon' => '<i class="ti ti-list"></i>'
+            ],
+            [
+                'title' => 'Exhibition Location',
+                'route_name' => 'admin.exhibition_location.index',
                 'icon' => '<i class="ti ti-list"></i>'
             ]
         ]

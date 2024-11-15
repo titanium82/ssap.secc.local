@@ -142,6 +142,61 @@ return [
             'addClass' => 'text-center'
         ],
     ],
+    'exhibition_event' => [
+        'name' => [
+            'title' => 'Exhibition Event Name',
+            'orderable' => false,
+            'width' => '200px',
+        ],
+        'shortname' => [
+            'title' => 'Exhibition Event Short Name',
+            'orderable' => false,
+            'width' => '100px',
+
+        ],
+        'exhibition_location_id' => [
+            'title' => 'Exhibition Location Area',
+            'orderable' => false,
+            'width' => '200px',
+
+        ],
+        'customer_id' => [
+            'title' => 'Exhibition Organization',
+            'orderable' => false,
+            'width' => '200px',
+
+        ],
+        'start_day' => [
+            'title' => 'Exhibition Event Start Day',
+            'orderable' => false,
+            'width' => '200px',
+
+        ],
+        'end_day' => [
+            'title' => 'Exhibition Event End Day',
+            'orderable' => false,
+            'width' => '200px',
+
+        ],
+        'event_manager' => [
+            'title' => 'Event Manager',
+            'orderable' => false,
+            'width' => '100px',
+
+        ],
+        'created_at' => [
+            'title' => 'createdAt',
+            'orderable' => false,
+            'visible' => false,
+        ],
+        'action' => [
+            'title' => 'action',
+            'orderable' => false,
+            'exportable' => false,
+            'printable' => false,
+            'addClass' => 'text-center'
+        ],
+    ],
     'contract_type' => [
         'name' => [
             'title' => 'Contract Type Name',
