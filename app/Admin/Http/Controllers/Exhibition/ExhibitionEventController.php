@@ -37,7 +37,7 @@ class ExhibitionEventController extends Controller
         $exhibitionevent = $this->repository->findOrFail($id, ['exhibitionlocation', 'customer']);
 
         return view('admin.exhibitions.events.show')->with('breadcrums', $this->breadcrums()
-            ->addByRouteName(trans('Contract'), 'admin.contract.index')
+            ->addByRouteName(trans('Exhibition Event'), 'admin.exhibition_event.index')
             ->add(trans('Show'))
         )
         ->with('exhibitionevent', $exhibitionevent);

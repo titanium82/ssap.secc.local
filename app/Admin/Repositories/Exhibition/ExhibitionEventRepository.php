@@ -14,7 +14,7 @@ class ExhibitionEventRepository extends EloquentRepository implements Exhibition
 
     public function searchSelect(string $keyword = '', int $limit = 10): array
     {
-        $customer = $this->model->select('id', 'code')
+        $customers = $this->model->select('id', 'code')
         ->currentAuth()
         ->whereAny($this->model->getFillable(), 'like', "%$keyword%")
         ->limit($limit)
