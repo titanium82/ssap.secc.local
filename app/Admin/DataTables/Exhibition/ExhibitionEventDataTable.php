@@ -14,7 +14,6 @@ class ExhibitionEventDataTable extends DataTables
         public ExhibitionEventRepositoryInterface $repository
     )
     {
-        $this->repository = $repository;
     }
 
     protected function setViewColumns(): void
@@ -22,13 +21,20 @@ class ExhibitionEventDataTable extends DataTables
         $this->viewColumns = [
             'name'      => 'admin.exhibitions.events.datatable.name',
             'location'  => 'admin.exhibitions.events.datatable.location',
+            'customer'  => 'admin.exhibitions.events.datatable.customer',
             'action'    => 'admin.exhibitions.events.datatable.action',
         ];
     }
-
+    protected function setRemoveColumns(): void
+    {
+        if(auth('admin')->user()->checkIsSuperAdmin() == false || auth('admin')->user()->managerContract())
+        {
+            $this->removeColumns = ['admin_id'];
+        }
+    }
     protected function setColumnHasSearch(): void
     {
-        $this->columnHasSearch = ['name', 'created_at'];
+        $this->columnHasSearch = ['name','exhibition_location_id','customer_id', 'created_at'];
     }
 
     protected function setColumnSearchDate(): void
@@ -49,13 +55,16 @@ class ExhibitionEventDataTable extends DataTables
      */
     public function query()
     {
-        return $this->repository->getByQueryBuilder([], ['customer', 'admin'])->currentAuth();
+        return $this->repository->getByQueryBuilder([],['exhibitionlocation', 'customer', 'admin']);
     }
 
     protected function setEditColumns(): void
     {
         $this->editColumns = [
-            'created_at' => '{{ date(config("core.format.date"), strtotime($created_at)) }}'
+            'name'                            =>$this->viewColumns['name'],
+            'exhibition_location_id'          =>$this->viewColumns['location'],
+            'customer_id'                     =>$this->viewColumns['customer'],
+            'created_at'                      => '{{ date(config("core.format.date"), strtotime($created_at)) }}'
         ];
     }
 
@@ -68,6 +77,6 @@ class ExhibitionEventDataTable extends DataTables
 
     protected function setRawColumns(): void
     {
-        $this->rawColumns = ['action'];
+        $this->rawColumns = ['name','exhibition_location_id','customer_id','action'];
     }
 }

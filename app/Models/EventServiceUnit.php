@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use App\Admin\Enums\EventService\Units;
+use App\Admin\Enums\EventService\Unit;
 
 class EventServiceUnit extends Model
 {
@@ -29,7 +29,7 @@ class EventServiceUnit extends Model
     public function casts():  array
     {
         return[
-            'unit' => Units::class
+            'unit' => Unit::class
         ];
     }
     public function isCreator()

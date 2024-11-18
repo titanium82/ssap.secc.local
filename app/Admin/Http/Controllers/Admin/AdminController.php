@@ -35,14 +35,14 @@ class AdminController extends Controller
 
         $permissions = $this->repoPermission->getAll();
 
-        $departments = $this->repoDepartment->getAll();
+        $department = $this->repoDepartment->getAll();
 ;
         return view('admin.admins.create')
         ->with('breadcrums', $this->breadcrums()->addByRouteName(trans('Admin'), 'admin.admin.index')->addByRouteName(trans('Add')))
         ->with('roles', $roles)
         ->with('gender', Gender::asSelectArray())
         ->with('permissions', $permissions)
-        ->with('departments',$departments);
+        ->with('department',$department);
     }
 
     public function store(AdminRequest $request): RedirectResponse
@@ -72,7 +72,7 @@ class AdminController extends Controller
 
         $roles = $this->repoRole->getAll();
 
-        $departments = $this->repoDepartment->getAll();
+        $department = $this->repoDepartment->getAll();
 
 
         $permissions = $this->repoPermission->getAll();
@@ -83,7 +83,7 @@ class AdminController extends Controller
         ->with('roles', $roles)
         ->with('gender', Gender::asSelectArray())
         ->with('permissions', $permissions)
-        ->with('departments',$departments)
+        ->with('department',$department)
         ->with('admin_has_roles', $admin->roles->pluck('id')->toArray())
         ->with('admin_has_permissions', $admin->permissions->pluck('id')->toArray());
     }

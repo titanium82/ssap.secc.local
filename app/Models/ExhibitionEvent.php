@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Admin\Enums\ExhibitionLocation\EventManager;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -18,11 +19,21 @@ class ExhibitionEvent extends Model
         'customer_id',  //Khách hàng
         'name', //tên sự kiện
         'shortname', // tên viết tắt
-        'start_day',  //ngày bắt đầu sự kiện
-        'end_day',  // ngày kết thúc sự kiện
+        'day_begin',  //ngày bắt đầu sự kiện
+        'day_end',  // ngày kết thúc sự kiện
         'event_manager',    //người quản lý sự kiện
         'desc'
     ];
+    // public function casts(): array
+    // {
+    //     [
+    //         'eventmanger' => EventManager::class
+    //     ];
+    // }
+    public function isCreator()
+    {
+        return $this->admin_id === auth('admin')->id();
+    }
     public function admin(): BelongsTo
     {
         return $this->belongsTo(Admin::class, 'admin_id');
@@ -34,5 +45,13 @@ class ExhibitionEvent extends Model
     public function customer(): BelongsTo
     {
         return $this->belongsTo(Customer::class, 'customer_id');
+    }
+    public function scopeCurrentAuth($q)
+    {
+        $auth = auth('admin')->user();
+        if(!$auth->managerContract() && !$auth->checkIsSuperAdmin())
+        {
+            $q->where('admin_id', $auth->id);
+        }
     }
 }

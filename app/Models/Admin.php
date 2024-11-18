@@ -84,7 +84,7 @@ class Admin extends Authenticatable
     public function permissions(){
         return $this->belongsToMany(Permission::class, 'admin_has_permissions', 'admin_id', 'permission_id');
     }
-    public function departments():BelongsTo
+    public function department():BelongsTo
     {
         return $this->belongsTo(Department::class, foreignKey:'department_id');
     }

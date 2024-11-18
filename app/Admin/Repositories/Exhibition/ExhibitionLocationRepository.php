@@ -14,7 +14,7 @@ class ExhibitionLocationRepository extends EloquentRepository implements Exhibit
 
     public function searchSelect(string $keyword = '', int $limit = 10): array
     {
-        $customers = $this->model->select('id', 'code')
+        $exhibitionlocations = $this->model->select('id', 'code')
         ->currentAuth()
         ->whereAny($this->model->getFillable(), 'like', "%$keyword%")
         ->limit($limit)
@@ -26,7 +26,7 @@ class ExhibitionLocationRepository extends EloquentRepository implements Exhibit
             ];
         });
 
-        return $customers->toArray();
+        return $exhibitionlocations->toArray();
     }
 
     public function findOrFail($id, array $relations = [])

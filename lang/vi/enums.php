@@ -27,10 +27,10 @@ return [
         App\Admin\Enums\Contract\ContractPaymentStatus::Unpaid->value => 'Chưa thanh toán',
         App\Admin\Enums\Contract\ContractPaymentStatus::Late->value => 'Trễ hạn thanh toán'
     ],
-    App\admin\Enums\EventService\Units::class =>[
-        App\admin\Enums\EventService\Units::Cable->value =>'Sợi',
-        App\admin\Enums\EventService\Units::Plate->value =>'Tấm',
-        App\admin\Enums\EventService\Units::Pieces->value =>'Cái',
-        App\admin\Enums\EventService\Units::Set->value =>'Gói'
-    ]
+    App\admin\Enums\EventService\Unit::class =>[
+        App\admin\Enums\EventService\Unit::Cable->value =>'Sợi',
+        App\admin\Enums\EventService\Unit::Plate->value =>'Tấm',
+        App\admin\Enums\EventService\Unit::Pieces->value =>'Cái',
+        App\admin\Enums\EventService\Unit::Set->value =>'Gói'
+    ],
 ];

@@ -26,7 +26,7 @@ class AdminDataTable extends DataTables
 
     protected function setColumnHasSearch(): void
     {
-        $this->columnHasSearch = ['fullname', 'phone', 'email', 'gender', 'created_at'];
+        $this->columnHasSearch = ['fullname', 'phone', 'email', 'gender','department_id', 'created_at'];
     }
 
     protected function setColumnSearchDate(): void
@@ -51,15 +51,15 @@ class AdminDataTable extends DataTables
      */
     public function query()
     {
-        return $this->repository->orderBy('id', 'desc');
+        return $this->repository->getByQueryBuilder([],['department']);
     }
 
     protected function setEditColumns(): void
     {
         $this->editColumns = [
-            'fullname' => $this->viewColumns['fullname'],
-            'admin[department_id]'=>$this->viewColumns['department'],
-            'created_at' => '{{ date(config("core.format.date"), strtotime($created_at)) }}'
+            'fullname'      =>$this->viewColumns['fullname'],
+            'department_id' =>$this->viewColumns['department'],
+            'created_at'    => '{{ date(config("core.format.date"), strtotime($created_at)) }}'
         ];
     }
 

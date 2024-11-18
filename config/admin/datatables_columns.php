@@ -166,14 +166,14 @@ return [
             'width' => '200px',
 
         ],
-        'start_day' => [
-            'title' => 'Exhibition Event Start Day',
+        'day_begin' => [
+            'title' => 'Exhibition Event Day Begin',
             'orderable' => false,
             'width' => '200px',
 
         ],
-        'end_day' => [
-            'title' => 'Exhibition Event End Day',
+        'day_end' => [
+            'title' => 'Exhibition Event Day End',
             'orderable' => false,
             'width' => '200px',
 

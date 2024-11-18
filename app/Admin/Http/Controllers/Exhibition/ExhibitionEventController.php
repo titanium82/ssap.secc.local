@@ -44,8 +44,8 @@ class ExhibitionEventController extends Controller
     }
     public function create(Request $request): View
     {
-        $cusomter = $this ->repoCustomer->getAll();
-        $exhibitionlocations = $this ->repoExhibitionLocation->getAll();
+        $customer           = $this ->repoCustomer->getAll();
+        $exhibitionlocation = $this ->repoExhibitionLocation->getAll();
         if($customer_id = $request->route()->parameter('customer_id'))
         {
             $customer = $this->repoCustomer->findOrFail($customer_id);
@@ -55,7 +55,7 @@ class ExhibitionEventController extends Controller
             ->addByRouteName(trans('Exhibition Event'), 'admin.exhibition_event.index')
             ->add(trans('Add'))
         )
-        ->with('exhibition_locations', $exhibitionlocations)
+        ->with('exhibition_locations', $exhibitionlocation)
         ->with('event_manager', EventManager::asSelectArray())
         ->with('customer', $customer ?? null);
     }
@@ -103,14 +103,14 @@ class ExhibitionEventController extends Controller
 
     public function edit($id, Request $request): View
     {
-        $exhibitionLocation = $this->repository->findOrFail($id,['customer','exhibition_location']);
+        $exhibitionevent = $this->repository->findOrFail($id,['customer','exhibition_location']);
 
-        return view('admin.contracts.edit')
+        return view('admin.exhibitions.events.edit')
         ->with('breadcrums', $this->breadcrums()
-            ->addByRouteName(trans('Contract'), 'admin.contract.index')
+            ->addByRouteName(trans('Exhibition Event'), 'admin.exhibition_event.index')
             ->add(trans('Edit'))
         )
-        ->with('exhibition_locations', $exhibitionlocations)
+        ->with('exhibition_events', $exhibitionevent)
         ->with('event_manager', EventManager::asSelectArray())
         ->with('customer', $customer ?? null);
     }

@@ -5,8 +5,8 @@
         <div class="container-xl">
             <x-core-form :action="route('admin.exhibition_location.store')" type="post" :validate="true">
                 <div class="row justify-content-center">
-                    @include('admin.contracts.exhibitions.events.forms.create-left')
-                    @include('admin.contracts.exhibitions.events.forms.create-right')
+                    @include('admin.exhibitions.events.forms.create-left')
+                    @include('admin.exhibitions.events.forms.create-right')
                 </div>
                 @include('admin.forms.actions-fixed')
             </x-core-form>
