@@ -57,7 +57,14 @@ class ExhibitionEventDataTable extends DataTables
     {
         return $this->repository->getByQueryBuilder([],['exhibitionlocation', 'customer', 'admin']);
     }
-
+    protected function setFilterColumns(): void
+    {
+        $this->filterColumns = [
+            'exhibition_location_id' => fn($q, $keyword) => $q->whereRelation('exhibitionlocation', 'fullname', 'like', "%{$keyword}%"),
+            'customer_id' => fn($q, $keyword) => $q->whereRelation('customer', 'shortname', 'like', "%{$keyword}%"),
+            'admin_id' => fn($q, $k) => $q->whereRelation('admin', 'fullname', 'like', "%$k%")
+        ];
+    }
     protected function setEditColumns(): void
     {
         $this->editColumns = [

@@ -18,7 +18,10 @@
             <div class="col-6 md-3">
                 <div class="mb-3">
                     <label class="form-label">@lang('Exhibition location'):</label>
-                    <x-core-select class="select2-bs5-ajax-many" name="exhibition_location_id[]" :required="true" :multiple="true" :data-url="route('admin.exhibition_location.search_select')">
+                    <x-core-select name="exhibition_event[exhibition_location_id]" :required="true">
+                        @foreach ($exhibition_locations as $exhibitionlocation)
+                            <x-core-select-option :value="$exhibitionlocation->id" :title="$exhibitionlocation->fullname" />
+                        @endforeach
                     </x-core-select>
                 </div>
             </div>

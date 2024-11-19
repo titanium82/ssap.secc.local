@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Admin\Http\Requests\ExhibitionLocation;
+namespace App\Admin\Http\Requests\Exhibition;
 
 use App\Core\Http\Requests\Request;
 

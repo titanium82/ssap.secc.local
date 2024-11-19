@@ -7,10 +7,10 @@
                 <div class="card-header justify-content-between">
                     <h2 class="mb-0">@lang('list')</h2>
                     @adminaccessroutename('admin.exhibition_event.create')
-                        <button type="button" data-route="{{ route('admin.exhibition_event.create') }}" class="btn btn-primary">
-                            <i class="ti ti-plus"></i>
-                            <span>@lang('add')</span>
-                        </button>
+                    <a href="{{ route('admin.exhibition_event.create') }}" class="btn btn-primary">
+                        <i class="ti ti-plus"></i>
+                        <span>@lang('add')</span>
+                    </a>
                     @endadminaccessroutename
                 </div>
                 <div class="card-body">
