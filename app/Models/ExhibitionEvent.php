@@ -45,7 +45,7 @@ class ExhibitionEvent extends Model
     }
     public function exhibitionlocations(): BelongsToMany
     {
-        return $this->belongsToMany(ExhibitionLocation::class,'exhibition_events_to_locations','exhibition_event_id','exhibition_location_id')
+        return $this->belongsToMany(ExhibitionLocation::class,'exhibition_events_to_locations','exhibition_event_id','exhibition_location_id');
     }
     public function customer(): BelongsTo
     {

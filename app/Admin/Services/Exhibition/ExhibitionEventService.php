@@ -29,10 +29,6 @@ class ExhibitionEventService
 
             $exhibitionevent->exhibitionLocations()->attach($data['exhibition_location_id']);
 
-            $exhibitionevent->customer()->attach($data['customer_id']);
-
-            $adminId = auth('admin')->id();
-
             DB::commit();
 
             return $exhibitionevent;

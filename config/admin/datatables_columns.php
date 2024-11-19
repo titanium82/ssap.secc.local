@@ -88,7 +88,7 @@ return [
         ],
     ],
     'exhibition_location' => [
-        'name' => [
+        'fullname' => [
             'title' => 'Exhibition Location Name',
             'orderable' => false,
             'width' => '200px',

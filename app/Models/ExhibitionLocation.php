@@ -13,7 +13,7 @@ class ExhibitionLocation extends Model
 
     protected $fillable = [
         'admin_id',
-        'name',
+        'fullname',
         'stretch',
         'location',
         'classroom',

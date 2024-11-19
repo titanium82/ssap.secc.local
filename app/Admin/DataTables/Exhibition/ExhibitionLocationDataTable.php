@@ -18,7 +18,7 @@ class ExhibitionLocationDataTable extends DataTables
     protected function setViewColumns(): void
     {
         $this->viewColumns = [
-            'name'          => 'admin.exhibitions.locations.datatable.name',
+            'fullname'      => 'admin.exhibitions.locations.datatable.fullname',
             'location'      => 'admin.exhibitions.locations.datatable.location',
             'action'        => 'admin.exhibitions.locations.datatable.action',
         ];
@@ -26,7 +26,7 @@ class ExhibitionLocationDataTable extends DataTables
 
     protected function setColumnHasSearch(): void
     {
-        $this->columnHasSearch = ['name', 'created_at'];
+        $this->columnHasSearch = ['fullname', 'created_at'];
     }
 
     protected function setColumnSearchDate(): void

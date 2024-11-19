@@ -15,13 +15,12 @@
                         :placeholder="__('Short Name')" />
                 </div>
             </div>
-            <div class="col-6 mb-3">
-                <label class="form-label">@lang('Exhibition Location Name'):</label>
-                <x-core-select name="exhibition_location_id" :required="true">
-                    @foreach ($exhibition_locations as $exhibitionlocation)
-                        <x-core-select-option :value="$exhibitionlocation->id" :title="$exhibitionlocation->name" />
-                    @endforeach
-                </x-core-select>
+            <div class="col-6 md-3">
+                <div class="mb-3">
+                    <label class="form-label">@lang('Exhibition location'):</label>
+                    <x-core-select class="select2-bs5-ajax-many" name="exhibition_location_id[]" :required="true" :multiple="true" :data-url="route('admin.exhibition_location.search_select')">
+                    </x-core-select>
+                </div>
             </div>
             <div class="col-6 mb-3">
                 <label class="form-label">@lang('Exhibition Event Organization'):</label>

@@ -15,7 +15,7 @@ class ExhibitionLocationRequest extends Request
     {
         return [
             'admin_id'          => ['required', 'exists:App\Models\Admin,id'],
-            'name'              => ['required', 'string'],
+            'fullname'          => ['required', 'string'],
             'stretch'           => ['nullable', 'integer'],
             'location'          => ['nullable', 'string'],
             'classroom'         => ['nullable', 'string'],
@@ -33,7 +33,7 @@ class ExhibitionLocationRequest extends Request
     {
         return [
             'id'                => ['required', 'exists:App\Models\ExhibitionLocation,id'],
-            'name'              => ['required', 'string'],
+            'fullname'          => ['required', 'string'],
             'stretch'           => ['nullable', 'integer'],
             'location'          => ['nullable', 'string'],
             'classroom'         => ['nullable', 'string'],
