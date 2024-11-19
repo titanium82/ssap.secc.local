@@ -6,6 +6,7 @@ use App\Admin\Enums\ExhibitionLocation\EventManager;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class ExhibitionEvent extends Model
 {
@@ -41,6 +42,10 @@ class ExhibitionEvent extends Model
     public function exhibitionlocation(): BelongsTo
     {
         return $this->belongsTo(ExhibitionLocation::class, 'exhibition_location_id');
+    }
+    public function exhibitionlocations(): BelongsToMany
+    {
+        return $this->belongsToMany(ExhibitionLocation::class,'exhibition_events_to_locations','exhibition_event_id','exhibition_location_id')
     }
     public function customer(): BelongsTo
     {
