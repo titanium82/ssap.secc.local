@@ -16,15 +16,15 @@ class ExhibitionEventRequest extends Request
     protected function methodPost()
     {
         return [
-            'event.admin_id'                  => ['required', 'exists:App\Models\Admin,id'],
-            'exhibition_location_id.*'        => ['required', 'exists:App\Models\ExhibitionLocation,id'],
-            'exhibition_location_id'          => ['required', 'array'],
-            'event.customer_id'               => ['required', 'exists:App\Models\Customer,id'],
-            'event.name'                      => ['required', 'string'],
-            'event.shortname'                 => ['required', 'string'],
-            'event.day_begin'                 => ['required', 'date_format:Y-m-d'],
-            'event.day_end'                   => ['required', 'date_format:Y-m-d'],
-            'event.event_manager'             => ['nullable', new Enum(EventManager::class)],
+            'admin_id'                  => ['required', 'exists:App\Models\Admin,id'],
+            'exhibition_location_id.*'  => ['required', 'exists:App\Models\ExhibitionLocation,id'],
+            'exhibition_location_id'    => ['required', 'array'],
+            'customer_id'               => ['required', 'exists:App\Models\Customer,id'],
+            'name'                      => ['required', 'string'],
+            'shortname'                 => ['required', 'string'],
+            'day_begin'                 => ['required', 'date_format:Y-m-d'],
+            'day_end'                   => ['required', 'date_format:Y-m-d'],
+            'event_manager'             => ['nullable', new Enum(EventManager::class)],
             'event.desc'                      => ['nullable','string'],
         ];
     }
@@ -32,16 +32,16 @@ class ExhibitionEventRequest extends Request
     protected function methodPut()
     {
         return [
-            'id'                              => ['required', 'exists:App\Models\ExhibitionEvent,id'],
-            'exhibition_location_id.*'        => ['required', 'exists:App\Models\ExhibitionLocation,id'],
-            'exhibition_location_id'          => ['required', 'array'],
-            'event.customer_id'               => ['required', 'exists:App\Models\Customer,id'],
-            'event.name'                      => ['required', 'string'],
-            'event.shortname'                 => ['required', 'string'],
-            'event.day_begin'                 => ['required', 'date_format:Y-m-d'],
-            'event.day_end'                   => ['required', 'date_format:Y-m-d'],
-            'event.event_manager'             => ['nullable', new Enum(EventManager::class)],
-            'event.desc'                      => ['nullable','string'],
+            'id'                        => ['required', 'exists:App\Models\ExhibitionEvent,id'],
+            'exhibition_location_id.*'  => ['required', 'exists:App\Models\ExhibitionLocation,id'],
+            'exhibition_location_id'    => ['required', 'array'],
+            'customer_id'               => ['required', 'exists:App\Models\Customer,id'],
+            'name'                      => ['required', 'string'],
+            'shortname'                 => ['required', 'string'],
+            'day_begin'                 => ['required', 'date_format:Y-m-d'],
+            'day_end'                   => ['required', 'date_format:Y-m-d'],
+            'event_manager'             => ['nullable', new Enum(EventManager::class)],
+            'desc'                      => ['nullable','string'],
          ];
     }
 

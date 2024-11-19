@@ -3,7 +3,7 @@
 @section('content')
     <div class="page-body">
         <div class="container-xl">
-            <x-core-form :action="route('admin.exhibition_location.store')" type="post" :validate="true">
+            <x-core-form :action="route('admin.exhibition_event.store')" type="post" :validate="true">
                 <div class="row justify-content-center">
                     @include('admin.exhibitions.events.forms.create-left')
                     @include('admin.exhibitions.events.forms.create-right')

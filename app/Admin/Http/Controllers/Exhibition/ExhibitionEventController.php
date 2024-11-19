@@ -55,7 +55,7 @@ class ExhibitionEventController extends Controller
             ->add(trans('Add'))
         )
         ->with('exhibition_locations', $exhibitionlocation)
-        ->with('event_manager', EventManager::asSelectArray())
+        ->with('eventmanager', EventManager::asSelectArray())
         ->with('customer', $customer ?? null);
     }
 

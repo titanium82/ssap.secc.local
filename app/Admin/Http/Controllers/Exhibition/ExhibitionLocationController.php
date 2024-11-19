@@ -171,14 +171,14 @@ class ExhibitionLocationController extends Controller
     {
         $keyword = $request->input('term', '');
 
-        $exhibitionLocation = $this->model->select('id', 'name')
+        $exhibitionLocation = $this->model->select('id', 'fullname')
         ->whereAny($this->model->getFillable(), 'like', "%$keyword%")
         ->limit(10)
         ->get()
         ->map(function($item) {
             return [
                 'id' => $item->id,
-                'text' => $item->name
+                'text' => $item->fullname
             ];
         });
 
