@@ -14,15 +14,14 @@ return new class extends Migration
         Schema::create('exhibition_events', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('admin_id');
-            $table->unsignedBigInteger('exhibition_location_id');   //Vị trí tổ chức sự kiện
             $table->unsignedBigInteger('customer_id');
             $table->string('name'); //tên sự kiện
             $table->string('shortname');    //tên viết tắt sự kiện
-            $table->dateTime('start_day');  //Ngày bắt đầu sự kiện
-            $table->dateTime('end_day');    //Ngày kết thúc sự kiện
-            $table->string('event_operator'); //Người vận hành sự kiện
+            $table->dateTime('day_begin');  //Ngày bắt đầu sự kiện
+            $table->dateTime('day_end');    //Ngày kết thúc sự kiện
+            $table->string('event_manager'); //Người vận hành sự kiện
+            $table->string('desc');           //Mô tả
             $table->foreign('admin_id')->references('id')->on('admins')->restrictOnDelete();
-            $table->foreign('exhibition_location_id')->references('id')->on('exhibition_locations')->restrictOnDelete();
             $table->foreign('customer_id')->references('id')->on('customers')->restrictOnDelete();
             $table->timestamps();
         });
