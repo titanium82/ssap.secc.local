@@ -39,7 +39,7 @@ class ContractPaymentAmount implements ValidationRule
         else{
             if($subTotal > $contract->sub_total_amount)
             {
-                $fail('Total amount contract payment greaterThan total amount contract.');
+                $fail('Total amount contract payment greaterThan Sub total amount contract.');
             }
         }
         // if($subTotal > $contract->total_amount)

@@ -43,8 +43,8 @@ class ExhibitionEventController extends Controller
     }
     public function create(Request $request): View
     {
-        $customer           = $this ->repoCustomer->getAll();
-        $exhibitionlocation = $this ->repoExhibitionLocation->getAll();
+        $customer = $this ->repoCustomer->getAll();
+        //  $exhibitionlocation = $this ->repoExhibitionLocation->getAll();
         if($customer_id = $request->route()->parameter('customer_id'))
         {
             $customer = $this->repoCustomer->findOrFail($customer_id);
@@ -54,7 +54,7 @@ class ExhibitionEventController extends Controller
             ->addByRouteName(trans('Exhibition Event'), 'admin.exhibition_event.index')
             ->add(trans('Add'))
         )
-        ->with('exhibition_locations', $exhibitionlocation)
+        // ->with('exhibition_locations', $exhibitionlocation)
         ->with('eventmanager', EventManager::asSelectArray())
         ->with('customer', $customer ?? null);
     }

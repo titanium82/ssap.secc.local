@@ -2,8 +2,8 @@
 
 namespace App\Admin\Services\Exhibition;
 
-use App\Admin\Repositories\Customer\CustomerRepositoryInterface as CustomerCustomerRepositoryInterface;
-use App\Admin\Repositories\Exhibition\{CustomerRepositoryInterface, ExhibitionEventRepositoryInterface, ExhibitionLocationRepositoryInterface};
+use App\Admin\Repositories\Customer\CustomerRepositoryInterface;
+use App\Admin\Repositories\Exhibition\{ExhibitionEventRepositoryInterface, ExhibitionLocationRepositoryInterface};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -13,7 +13,7 @@ class ExhibitionEventService
     public function __construct(
         public ExhibitionEventRepositoryInterface $repository,
         public ExhibitionLocationRepositoryInterface $repoExhibitionLocation,
-        public CustomerCustomerRepositoryInterface $repoCustomer,
+        public CustomerRepositoryInterface $repoCustomer,
     )
     {
 
@@ -27,7 +27,9 @@ class ExhibitionEventService
 
             $exhibitionevent = $this->repository->create($data['exhibitionevent']);
 
-            $exhibitionevent->exhibitionLocations()->attach($data['exhibition_location_id']);
+            $exhibitionevent->exhibitionlocations()->attach($data['exhibition_location_id']);
+
+            $adminId = auth('admin')->id();
 
             DB::commit();
 
@@ -50,7 +52,7 @@ class ExhibitionEventService
 
             $exhibitionevent->exhibitionLocations()->sync($data['exhibition_location_id']);
 
-            $exhibitionevent->contract()->sync($data['contract_id']);
+            // $exhibitionevent->contract()->sync($data['contract_id']);
 
             DB::commit();
             return $exhibitionevent;
