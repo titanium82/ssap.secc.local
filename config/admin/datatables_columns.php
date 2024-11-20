@@ -154,34 +154,34 @@ return [
             'width' => '100px',
 
         ],
-        'exhibition_location_id' => [
+        'exhibitionlocations' => [
             'title' => 'Exhibition Location Area',
             'orderable' => false,
-            'width' => '200px',
+            'width' => '250px',
 
         ],
         'customer_id' => [
-            'title' => 'Exhibition Organization',
+            'title' => 'Customer',
             'orderable' => false,
-            'width' => '200px',
+            'width' => '150px',
 
         ],
         'day_begin' => [
             'title' => 'Exhibition Event Day Begin',
             'orderable' => false,
-            'width' => '200px',
+            'width' => '180px',
 
         ],
         'day_end' => [
             'title' => 'Exhibition Event Day End',
             'orderable' => false,
-            'width' => '200px',
+            'width' => '180px',
 
         ],
         'event_manager' => [
             'title' => 'Event Manager',
             'orderable' => false,
-            'width' => '100px',
+            'width' => '200px',
 
         ],
         'created_at' => [

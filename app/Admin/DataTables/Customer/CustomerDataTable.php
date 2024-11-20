@@ -9,16 +9,17 @@ class CustomerDataTable extends DataTables
 {
     public function __construct(
         public CustomerRepositoryInterface $repository
-    ){
+    )
+    {
     }
 
     protected function setViewColumns(): void
     {
         $this->viewColumns = [
-            'action' => 'admin.customers.datatable.action',
-            'fullname' => 'admin.customers.datatable.fullname',
-            'type' => 'admin.customers.datatable.type',
-            'sectors' => 'admin.customers.datatable.sectors',
+            'action'    => 'admin.customers.datatable.action',
+            'fullname'  => 'admin.customers.datatable.fullname',
+            'type'      => 'admin.customers.datatable.type',
+            'sectors'   => 'admin.customers.datatable.sectors',
         ];
     }
 
@@ -29,7 +30,6 @@ class CustomerDataTable extends DataTables
             $this->removeColumns = ['admin_id'];
         }
     }
-
     protected function setColumnHasSearch(): void
     {
         $this->columnHasSearch = ['fullname', 'shortname', 'email', 'phone', 'customer_type_id', 'sectors', 'admin_id', 'created_at'];
@@ -59,20 +59,20 @@ class CustomerDataTable extends DataTables
     protected function setFilterColumns(): void
     {
         $this->filterColumns = [
-            'customer_type_id' => fn($q, $keyword) => $q->whereRelation('type', 'name', 'like', "%{$keyword}%"),
-            'sectors' => fn($q, $keyword) => $q->whereRelation('sectors', 'name', 'like', "%{$keyword}%"),
-            'admin_id' => fn($q, $k) => $q->whereRelation('admin', 'fullname', 'like', "%$k%")
+            'customer_type_id'  => fn($q, $keyword) => $q->whereRelation('type', 'name', 'like', "%{$keyword}%"),
+            'sectors'           => fn($q, $keyword) => $q->whereRelation('sectors', 'name', 'like', "%{$keyword}%"),
+            'admin_id'          => fn($q, $k) => $q->whereRelation('admin', 'fullname', 'like', "%$k%")
         ];
     }
 
     protected function setEditColumns(): void
     {
         $this->editColumns = [
-            'fullname' => $this->viewColumns['fullname'],
-            'customer_type_id' => $this->viewColumns['type'],
-            'sectors' => $this->viewColumns['sectors'],
-            'admin_id' => fn($item) => $item->admin->fullname,
-            'created_at' => '{{ date(config("core.format.date"), strtotime($created_at)) }}'
+            'fullname'          => $this->viewColumns['fullname'],
+            'customer_type_id'  => $this->viewColumns['type'],
+            'sectors'           => $this->viewColumns['sectors'],
+            'admin_id'          => fn($item) => $item->admin->fullname,
+            'created_at'        => '{{ date(config("core.format.date"), strtotime($created_at)) }}'
         ];
     }
 

@@ -1,7 +1,5 @@
-@if($exhibition_location_id)
-    @adminaccessroutename('admin.exhibition_location.edit')
-        <a href="{{ route('admin.exhibition_location.edit', $exhibition_location_id) }}">{{ $exhibitionlocation['fullname'] ?? '' }}</a>
-    @elseadminaccessroutename
-        <span>{{ $exhibitionlocation['fullname'] ?? '' }}</span>
-    @endadminaccessroutename
-@endif
+<div class="d-flex gap-1 flex-wrap">
+    @foreach ($exhibitionlocations as $exhibitionlocation)
+        <span class="badge bg-blue">{{ $exhibitionlocation['fullname'] ?? '' }}</span>
+    @endforeach
+</div>

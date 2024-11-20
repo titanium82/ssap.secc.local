@@ -7,9 +7,6 @@ use App\Core\DataTables\DataTables;
 
 class ExhibitionEventDataTable extends DataTables
 {
-
-    // protected string $dataTableVariable = 'dataTable';
-
     public function __construct(
         public ExhibitionEventRepositoryInterface $repository
     )
@@ -34,7 +31,7 @@ class ExhibitionEventDataTable extends DataTables
     }
     protected function setColumnHasSearch(): void
     {
-        $this->columnHasSearch = ['name','exhibition_location_id','customer_id', 'created_at'];
+        $this->columnHasSearch = ['name','exhibitionlocations','customer_id','locations', 'created_at'];
     }
 
     protected function setColumnSearchDate(): void
@@ -55,23 +52,23 @@ class ExhibitionEventDataTable extends DataTables
      */
     public function query()
     {
-        return $this->repository->getByQueryBuilder([],['exhibitionlocation', 'customer', 'admin']);
+        return $this->repository->getByQueryBuilder([],['exhibitionlocations', 'customer', 'admin']); //khai báo từ model cho relationship one to many
     }
     protected function setFilterColumns(): void
     {
         $this->filterColumns = [
-            'exhibition_location_id' => fn($q, $keyword) => $q->whereRelation('exhibitionlocation', 'fullname', 'like', "%{$keyword}%"),
-            'customer_id' => fn($q, $keyword) => $q->whereRelation('customer', 'shortname', 'like', "%{$keyword}%"),
-            'admin_id' => fn($q, $k) => $q->whereRelation('admin', 'fullname', 'like', "%$k%")
+            'exhibitionlocations'    => fn($q, $keyword)    => $q->whereRelation('exhibitionlocations', 'fullname', 'like', "%{$keyword}%"),
+            'customer_id'            => fn($q, $keyword)    => $q->whereRelation('customer', 'shortname', 'like', "%{$keyword}%"),
+            'admin_id'               => fn($q, $k)          => $q->whereRelation('admin', 'fullname', 'like', "%$k%")
         ];
     }
     protected function setEditColumns(): void
     {
         $this->editColumns = [
-            'name'                            =>$this->viewColumns['name'],
-            'exhibition_location_id'          =>$this->viewColumns['location'],
-            'customer_id'                     =>$this->viewColumns['customer'],
-            'created_at'                      => '{{ date(config("core.format.date"), strtotime($created_at)) }}'
+            'name'                              =>$this->viewColumns['name'],
+            'exhibitionlocations'               =>$this->viewColumns['location'],
+            'customer_id'                       =>$this->viewColumns['customer'],
+            'created_at'                        => '{{ date(config("core.format.date"), strtotime($created_at)) }}'
         ];
     }
 
@@ -84,6 +81,6 @@ class ExhibitionEventDataTable extends DataTables
 
     protected function setRawColumns(): void
     {
-        $this->rawColumns = ['name','exhibition_location_id','customer_id','action'];
+        $this->rawColumns = ['name','exhibitionlocations','customer_id','action'];
     }
 }

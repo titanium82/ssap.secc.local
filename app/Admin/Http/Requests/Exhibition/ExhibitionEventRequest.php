@@ -52,11 +52,10 @@ class ExhibitionEventRequest extends Request
         $data['exhibitionevent']['admin_id'] = auth('admin')->id();
         $this->replace($data);
     }
-    // protected function passedValidation(): void
-    // {
-    //     $data = $this->validator->getData();
-    //     $this->validator->setData($data);
-    //     dd($data);
+    protected function passedValidation(): void
+    {
+        $data = $this->validator->getData();
+        $this->validator->setData($data);
 
-    // }
+    }
 }
