@@ -178,6 +178,11 @@ return [
             'width' => '180px',
 
         ],
+        'status' => [
+            'title' => 'Status',
+            'orderable' => false,
+            'addClass' => 'text-center'
+        ],
         'event_manager' => [
             'title' => 'Event Manager',
             'orderable' => false,

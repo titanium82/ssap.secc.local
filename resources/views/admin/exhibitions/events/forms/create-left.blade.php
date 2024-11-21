@@ -30,21 +30,31 @@
                     @endforeach
                 </x-core-select>
             </div>
-            <div class="col-4">
+            <div class="col-3">
                 <div class="mb-3">
                     <label class="form-label">@lang('Day Begin'):</label>
                     <x-core-input type="date" name="exhibitionevent[day_begin]" :value="old('exhibitionevent.day_begin')" :required="true"
                         :placeholder="__('Day Begin')" />
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-3">
                 <div class="mb-3">
                     <label class="form-label">@lang('Day End'):</label>
                     <x-core-input type="date" name="exhibitionevent[day_end]" :value="old('exhibitionevent.day_end')" :required="true"
                         :placeholder="__('Day End')" />
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-3">
+                <div class="mb-3">
+                    <label class="form-label">@lang('Event Status'):</label>
+                    <x-core-select name="exhibitionevent[status]" :required="true">
+                        @foreach ($eventstatus as $key => $value)
+                            <x-core-select-option :value="$key" :title="$value" />
+                        @endforeach
+                    </x-core-select>
+                </div>
+            </div>
+            <div class="col-3">
                 <div class="mb-3">
                     <label class="form-label">@lang('Event Manager'):</label>
                     <x-core-select name="exhibitionevent[event_manager]" :required="true">

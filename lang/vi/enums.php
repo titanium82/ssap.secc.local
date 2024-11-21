@@ -33,4 +33,11 @@ return [
         App\admin\Enums\EventService\Unit::Pieces->value =>'Cái',
         App\admin\Enums\EventService\Unit::Set->value =>'Gói'
     ],
+    App\admin\Enums\ExhibitionEvent\EventStatus::class=>[
+        App\admin\Enums\ExhibitionEvent\EventStatus::upcoming->value=>'Sắp diễn ra',
+        App\admin\Enums\ExhibitionEvent\EventStatus::ongoing->value=>'Đang diễn ra',
+        App\admin\Enums\ExhibitionEvent\EventStatus::ended->value=>'Đã kết thúc',
+        App\admin\Enums\ExhibitionEvent\EventStatus::cancelled->value=>'Hủy',
+        App\admin\Enums\ExhibitionEvent\EventStatus::postponed->value=>'Hoãn'
+    ],
 ];

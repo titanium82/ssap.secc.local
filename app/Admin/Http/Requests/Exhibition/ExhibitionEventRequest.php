@@ -2,7 +2,8 @@
 
 namespace App\Admin\Http\Requests\Exhibition;
 
-use App\Admin\Enums\ExhibitionLocation\EventManager;
+use App\Admin\Enums\ExhibitionEvent\EventManager;
+use App\Admin\Enums\ExhibitionEvent\EventStatus;
 use App\Core\Http\Requests\Request;
 use Illuminate\Validation\Rules\Enum;
 
@@ -25,6 +26,7 @@ class ExhibitionEventRequest extends Request
             'exhibitionevent.day_begin'                 => ['required', 'date_format:Y-m-d'],
             'exhibitionevent.day_end'                   => ['required', 'date_format:Y-m-d'],
             'exhibitionevent.event_manager'             => ['nullable', new Enum(EventManager::class)],
+            'exhibitionevent.status'                    => ['nullable', new Enum(EventStatus::class)],
             'exhibitionevent.desc'                      => ['nullable','string'],
         ];
     }
@@ -41,6 +43,7 @@ class ExhibitionEventRequest extends Request
             'exhibitionevent.day_begin'                 => ['required', 'date_format:Y-m-d'],
             'exhibitionevent.day_end'                   => ['required', 'date_format:Y-m-d'],
             'exhibitionevent.event_manager'             => ['nullable', new Enum(EventManager::class)],
+            'exhibitionevent.status'                    => ['nullable', new Enum(EventStatus::class)],
             'exhibitionevent.desc'                      => ['nullable','string'],
          ];
     }
@@ -51,6 +54,7 @@ class ExhibitionEventRequest extends Request
 
         $data['exhibitionevent']['admin_id'] = auth('admin')->id();
         $this->replace($data);
+        // dd(vars: $data);
     }
     protected function passedValidation(): void
     {

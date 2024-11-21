@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Admin\Enums\ExhibitionLocation;
+namespace App\Admin\Enums\ExhibitionEvent;
 
 use App\Core\Supports\Enum;
 

@@ -2,6 +2,7 @@
 
 namespace App\Admin\DataTables\Exhibition;
 
+use App\Admin\Enums\ExhibitionEvent\EventStatus;
 use App\Admin\Repositories\Exhibition\ExhibitionEventRepositoryInterface;
 use App\Core\DataTables\DataTables;
 
@@ -20,6 +21,7 @@ class ExhibitionEventDataTable extends DataTables
             'location'  => 'admin.exhibitions.events.datatable.location',
             'customer'  => 'admin.exhibitions.events.datatable.customer',
             'action'    => 'admin.exhibitions.events.datatable.action',
+            'status'    =>  'admin.exhibitions.events.datatable.status',
         ];
     }
     protected function setRemoveColumns(): void
@@ -31,12 +33,20 @@ class ExhibitionEventDataTable extends DataTables
     }
     protected function setColumnHasSearch(): void
     {
-        $this->columnHasSearch = ['name','exhibitionlocations','customer_id','locations', 'created_at'];
+        $this->columnHasSearch = ['name','exhibitionlocations','customer_id','locations','status', 'created_at'];
     }
 
     protected function setColumnSearchDate(): void
     {
         $this->columnSearchDate = ['created_at'];
+    }
+    protected function setColumnSearchSelect(): void
+    {
+        $this->columnSearchSelect = [
+            'status' => [
+                'data' => EventStatus::asSelectArray()
+            ]
+        ];
     }
 
     // protected function urlFetchData(): void
@@ -68,6 +78,7 @@ class ExhibitionEventDataTable extends DataTables
             'name'                              =>$this->viewColumns['name'],
             'exhibitionlocations'               =>$this->viewColumns['location'],
             'customer_id'                       =>$this->viewColumns['customer'],
+            'status'                            =>$this->viewColumns['status'],
             'created_at'                        => '{{ date(config("core.format.date"), strtotime($created_at)) }}'
         ];
     }
@@ -81,6 +92,6 @@ class ExhibitionEventDataTable extends DataTables
 
     protected function setRawColumns(): void
     {
-        $this->rawColumns = ['name','exhibitionlocations','customer_id','action'];
+        $this->rawColumns = ['name','exhibitionlocations','customer_id','status','action'];
     }
 }

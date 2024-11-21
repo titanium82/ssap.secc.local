@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
-use App\Admin\Enums\ExhibitionLocation\EventManager;
+use App\Admin\Enums\ExhibitionEvent\EventManager;
+use App\Admin\Enums\ExhibitionEvent\EventStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Carbon\Carbon;
 
 class ExhibitionEvent extends Model
 {
@@ -22,15 +24,40 @@ class ExhibitionEvent extends Model
         'shortname', // tên viết tắt
         'day_begin',  //ngày bắt đầu sự kiện
         'day_end',  // ngày kết thúc sự kiện
-        'event_manager',    //người quản lý sự kiện
+        'event_manager',
+        'status',    //trạng thái sự kiện
         'desc'
     ];
-    // public function casts(): array
+    public function casts(): array
+    {
+        return [
+            'eventmanger'   => EventManager::class,
+            'status'        => EventStatus::class,
+
+        ];
+    }
+    //Cap nhat trang thai cho su kien
+    // public function updateStatusByDates()
     // {
-    //     [
-    //         'eventmanger' => EventManager::class
-    //     ];
+    //     $now = now();
+
+    //     if ($now->lt($this->start_date)) {
+    //         $this->status = EventStatus::upcoming;
+    //     } elseif ($now->between($this->start_date, $this->end_date)) {
+    //         $this->status = EventStatus::ongoing    ;
+    //     } else {
+    //         $this->status = EventStatus::ended;
+    //     }
+
+    //     $this->save();
     // }
+//     protected static function booted()
+// {
+//     static::saving(function ($event) {
+//         $event->updateStatusByDates(); // Tự động cập nhật status trước khi lưu
+//     });
+// }
+
     public function isCreator()
     {
         return $this->admin_id === auth('admin')->id();

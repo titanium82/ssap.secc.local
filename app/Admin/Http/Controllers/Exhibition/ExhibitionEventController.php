@@ -3,7 +3,8 @@
 namespace App\Admin\Http\Controllers\Exhibition;
 
 use App\Admin\DataTables\Exhibition\ExhibitionEventDataTable;
-use App\Admin\Enums\ExhibitionLocation\EventManager;
+use App\Admin\Enums\ExhibitionEvent\EventManager;
+use App\Admin\Enums\ExhibitionEvent\EventStatus;
 use App\Admin\Http\Controllers\Controller;
 use App\Admin\Http\Requests\Exhibition\ExhibitionEventRequest;
 use App\Admin\Repositories\Exhibition\{ExhibitionLocationRepositoryInterface,ExhibitionEventRepositoryInterface};
@@ -54,6 +55,7 @@ class ExhibitionEventController extends Controller
             ->add(trans('Add'))
         )
         ->with('eventmanager', EventManager::asSelectArray())
+        ->with('eventstatus', EventStatus::asSelectArray())
         ->with('customer', $customer ?? null);
     }
 
@@ -109,6 +111,7 @@ class ExhibitionEventController extends Controller
         )
         ->with('exhibition_events', $exhibitionevent)
         ->with('event_manager', EventManager::asSelectArray())
+        ->with('eventstatus',EventStatus::asSelectArray())
         ->with('customer', $customer ?? null);
     }
 
@@ -187,4 +190,12 @@ class ExhibitionEventController extends Controller
             'results' => $this->repository->searchSelect($request->input('term', ''))
         ];
     }
+    public function updateStatus(Request $request, $id)
+{
+    $event = Event::findOrFail($id);
+    $event->status = EventStatus::from($request->status);
+    $event->save();
+
+    return redirect()->back()->with('success', 'Trạng thái đã được cập nhật.');
+}
 }
