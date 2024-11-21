@@ -18,7 +18,7 @@ class ContractPayment extends Model
     protected $fillable = [
         'admin_id',
         'contract_id',
-        'contract_shortname',
+        // 'contract_short_name',
         'expired_at',
         'period',
         'amount',

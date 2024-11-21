@@ -19,33 +19,32 @@ class ContractRequest extends Request
     protected function methodPost()
     {
         return [
-            'contract.admin_id' => ['required', 'exists:App\Models\Admin,id'],
-            'contract.contract_type_id' => ['required', 'string', 'exists:App\Models\ContractType,id'],
-            'contract.customer_id' => ['required', 'string', 'exists:App\Models\Customer,id'],
-            'contract.currency_id' => ['required', 'string', 'exists:App\Models\Currency,id'],
-            'contract.code' => ['required', 'string', new ContractCodeUnique($this->input('contract.contract_type_id'))],
-            'contract.name' => ['required', 'string'],
-            'contract.short_name' => ['required', 'string'],    //tên viết tắt cho tên sự kiện
-            'contract.day_begin' => ['required', 'date_format:Y-m-d'],
-            'contract.day_end' => ['required', 'date_format:Y-m-d'],
-            'contract.deposit' => ['nullable', 'numeric', 'min:0'],
-            'contract.total_amount' => ['nullable', 'numeric', 'min:0', new ContractAmount($this->input('payment'))],
-            'contract.sub_total_amount' => ['nullable', 'numeric'],
-            'contract.payment_method' => ['required', new Enum(ContractPaymentMethod::class)],
-            'contract.annex' => ['nullable', 'array'],
-            'contract.annex.*' => ['nullable', 'json'],
-            'contract.files' => ['nullable', 'array'],
-            'contract.files.*' => ['nullable', 'json'],
-            'contract.note' => ['nullable'],
-            'exhibition_location_id' => ['required', 'array'],
-            'exhibition_location_id.*' => ['required', 'exists:App\Models\ExhibitionLocation,id'],
-            'sector_id' => ['required', 'array'],
-            'sector_id.*' => ['required', 'exists:App\Models\CustomerSector,id'],
-            'payment' => ['required', 'array'],
-            'payment.*.expired_at' => ['required', 'date_format:Y-m-d'],
-            'payment.*.amount' => ['required', 'numeric', 'min:0'],
-            'payment.*.file_send_mail' => ['nullable', 'json'],
-
+            'contract.admin_id'             => ['required', 'exists:App\Models\Admin,id'],
+            'contract.contract_type_id'     => ['required', 'string', 'exists:App\Models\ContractType,id'],
+            'contract.customer_id'          => ['required', 'string', 'exists:App\Models\Customer,id'],
+            'contract.currency_id'          => ['required', 'string', 'exists:App\Models\Currency,id'],
+            'contract.code'                 => ['required', 'string', new ContractCodeUnique($this->input('contract.contract_type_id'))],
+            'contract.name'                 => ['required', 'string'],
+            'contract.short_name'           => ['required', 'string'],    //tên viết tắt cho tên sự kiện
+            'contract.day_begin'            => ['required', 'date_format:Y-m-d'],
+            'contract.day_end'              => ['required', 'date_format:Y-m-d'],
+            'contract.deposit'              => ['nullable', 'numeric', 'min:0'],
+            'contract.total_amount'         => ['nullable', 'numeric', 'min:0', new ContractAmount($this->input('payment'))],
+            'contract.sub_total_amount'     => ['nullable', 'numeric'],
+            'contract.payment_method'       => ['required', new Enum(ContractPaymentMethod::class)],
+            'contract.annex'                => ['nullable', 'array'],
+            'contract.annex.*'              => ['nullable', 'json'],
+            'contract.files'                => ['nullable', 'array'],
+            'contract.files.*'              => ['nullable', 'json'],
+            'contract.note'                 => ['nullable'],
+            'exhibition_location_id'        => ['required', 'array'],
+            'exhibition_location_id.*'      => ['required', 'exists:App\Models\ExhibitionLocation,id'],
+            'sector_id'                     => ['required', 'array'],
+            'sector_id.*'                   => ['required', 'exists:App\Models\CustomerSector,id'],
+            'payment'                       => ['required', 'array'],
+            'payment.*.expired_at'          => ['required', 'date_format:Y-m-d'],
+            'payment.*.amount'              => ['required', 'numeric', 'min:0'],
+            'payment.*.file_send_mail'      => ['nullable', 'json'],
         ];
     }
 
@@ -88,8 +87,6 @@ class ContractRequest extends Request
                 $data['payment'][$key]['amount'] = format_to_number($item['amount']);
             }
         }
-
-
         $this->replace($data);
     }
 

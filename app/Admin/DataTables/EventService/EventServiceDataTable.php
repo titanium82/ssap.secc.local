@@ -15,9 +15,9 @@ class EventServiceDataTable extends DataTables
     protected function setViewColumns(): void
     {
         $this->viewColumns = [
-            'action' => 'admin.eventservices.datatable.action',
-            'name' => 'admin.eventservices.datatable.name',
-            'type' => 'admin.eventservices.datatable.type',
+            'action'     => 'admin.eventservices.datatable.action',
+            'name'       => 'admin.eventservices.datatable.name',
+            'type'       => 'admin.eventservices.datatable.type',
 
         ];
     }

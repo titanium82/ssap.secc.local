@@ -6,8 +6,8 @@
             <x-core-form :action="route('admin.exhibition_location.update')" type="put" :validate="true">
                 <x-core-input type="hidden" name="id" :value="$exhibition_location->id" />
                 <div class="row justify-content-center">
-                    @include('admin.contracts.exhibition_locations.forms.edit-left')
-                    @include('admin.contracts.exhibition_locations.forms.edit-right')
+                    @include('admin.exhibitions.locations.forms.edit-left')
+                    @include('admin.exhibitions.locations.forms.edit-right')
                 </div>
                 @include('admin.forms.actions-fixed')
             </x-core-form>

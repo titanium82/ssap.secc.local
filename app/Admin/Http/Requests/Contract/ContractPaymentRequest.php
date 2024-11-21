@@ -15,14 +15,14 @@ class ContractPaymentRequest extends Request
     protected function methodPost()
     {
         return [
-            'admin_id' => ['required', 'exists:App\Models\Admin,id'],
-            'contract_id' => ['required', 'exists:App\Models\Contract,id'],
-            'contract_short_name' => ['nullable', 'exists:App\Models\Contract,short_name'],
-            'period' => ['required', 'integer', 'min:1'],
-            'amount' => ['required', 'numeric', new ContractPaymentAmount($this->input('contract_id'))],
-            'expired_at' => ['required', 'date_format:Y-m-d'],
-            'license' => ['nullable'],
-            'file_send_mail' => ['nullable', 'json'],
+            'admin_id'                  => ['required', 'exists:App\Models\Admin,id'],
+            'contract_id'               => ['required', 'exists:App\Models\Contract,id'],
+            'contract_short_name'       => ['nullable', 'exists:App\Models\Contract,short_name'],
+            'period'                    => ['required', 'integer', 'min:1'],
+            'amount'                    => ['required', 'numeric', new ContractPaymentAmount($this->input('contract_id'))],
+            'expired_at'                => ['required', 'date_format:Y-m-d'],
+            'license'                   => ['nullable'],
+            'file_send_mail'            => ['nullable', 'json'],
         ];
     }
 

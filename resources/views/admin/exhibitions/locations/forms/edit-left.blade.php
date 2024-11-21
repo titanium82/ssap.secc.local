@@ -4,15 +4,15 @@
             <div class="col-12">
                 <div class="mb-3">
                     <label class="form-label">@lang('Name'):</label>
-                    <x-core-input name="name" :value="$contract_type->name" :required="true"
+                    <x-core-input name="fullname" :value="$exhibition_location->fullname" :required="true"
                         :placeholder="__('Name')" />
                 </div>
             </div>
             <div class="col-12">
                 <div class="mb-3">
                     <label class="form-label">@lang('Short Name'):</label>
-                    <x-core-input name="short_name" :value="$contract_type->short_name" :required="true"
-                        :placeholder="__('Short Name')" />
+                    <x-core-input name="stretch" :value="$exhibition_location->stretch" :required="true"
+                        :placeholder="__('Stretch')" />
                 </div>
             </div>
         </div>

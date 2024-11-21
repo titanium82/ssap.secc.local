@@ -88,7 +88,7 @@ return [
         ],
     ],
     'exhibition_location' => [
-        'name' => [
+        'fullname' => [
             'title' => 'Exhibition Location Name',
             'orderable' => false,
             'width' => '200px',
@@ -133,6 +133,70 @@ return [
             'title' => 'createdAt',
             'orderable' => false,
             'visible' => false,
+        ],
+        'action' => [
+            'title' => 'action',
+            'orderable' => false,
+            'exportable' => false,
+            'printable' => false,
+            'addClass' => 'text-center'
+        ],
+    ],
+    'exhibition_event' => [
+        'name' => [
+            'title' => 'Exhibition Event Name',
+            'orderable' => false,
+            'width' => '200px',
+        ],
+        'shortname' => [
+            'title' => 'Exhibition Event Short Name',
+            'orderable' => false,
+            'width' => '100px',
+
+        ],
+        'exhibitionlocations' => [
+            'title' => 'Exhibition Location Area',
+            'orderable' => false,
+            'width' => '250px',
+
+        ],
+        'customer_id' => [
+            'title' => 'Customer',
+            'orderable' => false,
+            'width' => '150px',
+
+        ],
+        'day_begin' => [
+            'title' => 'Exhibition Event Day Begin',
+            'orderable' => false,
+            'width' => '180px',
+
+        ],
+        'day_end' => [
+            'title' => 'Exhibition Event Day End',
+            'orderable' => false,
+            'width' => '180px',
+
+        ],
+        'status' => [
+            'title' => 'Status',
+            'orderable' => false,
+            'addClass' => 'text-center'
+        ],
+        'event_manager' => [
+            'title' => 'Event Manager',
+            'orderable' => false,
+            'width' => '200px',
+
+        ],
+        'created_at' => [
+            'title' => 'createdAt',
+            'orderable' => false,
+            'visible' => false,
+        ],
+        'admin_id' => [
+            'title' => 'Created by',
+            'orderable' => false,
         ],
         'action' => [
             'title' => 'action',

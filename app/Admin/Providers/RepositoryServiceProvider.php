@@ -21,6 +21,9 @@ class RepositoryServiceProvider extends ServiceProvider
         'App\Admin\Repositories\EventService\EventServiceRepositoryInterface'       => 'App\Admin\Repositories\EventService\EventServiceRepository',
         'App\Admin\Repositories\EventService\EventServiceUnitRepositoryInterface'   => 'App\Admin\Repositories\EventService\EventServiceUnitRepository',
         'App\Admin\Repositories\Department\DepartmentRepositoryInterface'           => 'App\Admin\Repositories\Department\DepartmentRepository',
+        'App\Admin\Repositories\Exhibition\ExhibitionEventRepositoryInterface'      => 'App\Admin\Repositories\Exhibition\ExhibitionEventRepository',
+        'App\Admin\Repositories\Exhibition\ExhibitionLocationRepositoryInterface'   => 'App\Admin\Repositories\Exhibition\ExhibitionLocationRepository',
+
     ];
     /**
      * Register services.

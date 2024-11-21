@@ -3,7 +3,7 @@
 namespace App\Admin\Enums\EventService;
 
 use App\Core\Supports\Enum;
-enum    Units: string
+enum    Unit: string
 {
     use Enum;
         case Cable = 'Cable';

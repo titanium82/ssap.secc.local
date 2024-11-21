@@ -11,7 +11,7 @@ use App\Admin\Services\EventService\EventServiceUnit;
 use Illuminate\Http\{JsonResponse, RedirectResponse, Request};
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
-use App\Admin\Enums\EventService\Units;
+use App\Admin\Enums\EventService\Unit;
 
 class EventServiceUnitController extends Controller
 {
@@ -47,7 +47,7 @@ class EventServiceUnitController extends Controller
         {
             return view('admin.eventservices.units.modals.modal-create')
             ->with('types',$types)
-            ->with('unit',Units::asSelectArray());
+            ->with('unit',Unit::asSelectArray());
         }
 
         return view('admin.eventservices.units.create')
@@ -96,7 +96,7 @@ class EventServiceUnitController extends Controller
         ->add(trans('Edit'))
         )
         ->with('event_service_unit', $event_service_unit)
-        ->with('unit', Units::asSelectArray());
+        ->with('unit', Unit::asSelectArray());
     }
 
     public function update(EventServiceUnitRequest $request): RedirectResponse

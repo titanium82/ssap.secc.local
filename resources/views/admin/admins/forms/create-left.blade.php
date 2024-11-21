@@ -35,7 +35,7 @@
             <div class="col-md-3 col-12">
                 <label class="form-label">@lang('Department'):</label>
                 <x-core-select name="admin[department_id]" :required="true">
-                    @foreach ($departments as $department)
+                    @foreach ($department as $department)
                         <x-core-select-option :value="$department->id" :title="$department->name" />
                     @endforeach
                 </x-core-select>

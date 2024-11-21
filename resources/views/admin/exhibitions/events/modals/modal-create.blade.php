@@ -1,9 +1,9 @@
 <div class="modal fade" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
-            <x-core-form class="ajax-modal-form" data-load-dt="true" data-table-id="exhibition_location" action="{{ route('admin.exhibition_location.store') }}" type="post" :validate="true">
+            <x-core-form class="ajax-modal-form" data-load-dt="true" data-table-id="exhibition_event" action="{{ route('admin.exhibition_event.store') }}" type="post" :validate="true">
                 <div class="modal-header">
-                    <h5 class="modal-title">@lang('Create Exhibition Location')</h5>
+                    <h5 class="modal-title">@lang('Create Exhibition Event')</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -11,9 +11,9 @@
                         <div class="row">
                             <div class="col-4">
                                 <div class="mb-3">
-                                    <label class="form-label">@lang('Exhibition Location Name'):</label>
+                                    <label class="form-label">@lang('Exhibition Event Name'):</label>
                                     <x-core-input name="name" :value="old('name')" :required="true"
-                                        :placeholder="__('Exhibition Location Name')" />
+                                        :placeholder="__('Exhibition Event Name')" />
                                 </div>
                             </div>
                             <div class="col-4">

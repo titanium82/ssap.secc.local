@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Admin\DataTables\ExhibitionLocation;
+namespace App\Admin\DataTables\Exhibition;
 
 use App\Core\DataTables\DataTables;
 use App\Models\ExhibitionLocation;
@@ -18,15 +18,15 @@ class ExhibitionLocationDataTable extends DataTables
     protected function setViewColumns(): void
     {
         $this->viewColumns = [
-            'name' => 'admin.exhibition_locations.datatable.name',
-            'location' => 'admin.exhibition_locations.datatable.location',
-            'action' => 'admin.exhibition_locations.datatable.action',
+            'fullname'      => 'admin.exhibitions.locations.datatable.fullname',
+            'location'      => 'admin.exhibitions.locations.datatable.location',
+            'action'        => 'admin.exhibitions.locations.datatable.action',
         ];
     }
 
     protected function setColumnHasSearch(): void
     {
-        $this->columnHasSearch = ['name', 'created_at'];
+        $this->columnHasSearch = ['fullname', 'created_at'];
     }
 
     protected function setColumnSearchDate(): void

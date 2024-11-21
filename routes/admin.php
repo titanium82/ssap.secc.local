@@ -65,9 +65,23 @@ Route::middleware([App\Admin\Http\Middleware\AuthAdminMiddleware::class, App\Adm
         Route::delete('/delete/{id}', 'delete')->name('delete');
     });
 
-    //Exhibition location
-    Route::prefix('/exhibition-location')->controller(App\Admin\Http\Controllers\ExhibitionLocation\ExhibitionLocationController::class)
+    //Exhibition Location
+    Route::prefix('/exhibition-location')->controller(App\Admin\Http\Controllers\Exhibition\ExhibitionLocationController::class)
     ->name('exhibition_location.')
+    ->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
+        Route::put('/update', 'update')->name('update');
+        Route::get('/edit/{id}', 'edit')->name('edit');
+        Route::delete('/delete/{id}', 'delete')->name('delete');
+        Route::get('/search-select', 'searchSelect')->name('search_select');
+        Route::get('/show/{id}', 'show')->name('show');
+    });
+
+    //Exhibition Event
+    Route::prefix('/exhibition-event')->controller(App\Admin\Http\Controllers\Exhibition\ExhibitionEventController::class)
+    ->name('exhibition_event.')
     ->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/create', 'create')->name('create');

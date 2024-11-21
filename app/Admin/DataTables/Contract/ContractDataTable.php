@@ -78,12 +78,12 @@ class ContractDataTable extends DataTables
     protected function setEditColumns(): void
     {
         $this->editColumns = [
-            'code' => $this->viewColumns['code'],
-            'contract_type_id' => $this->viewColumns['contract_type'],
-            'customer_id' => $this->viewColumns['customer'],
-            'admin_id' => fn($item) => $item->admin->fullname,
-            'status' => $this->viewColumns['status'],
-            'created_at' => '{{ date(config("core.format.date"), strtotime($created_at)) }}'
+            'code'              => $this->viewColumns['code'],
+            'contract_type_id'  => $this->viewColumns['contract_type'],
+            'customer_id'       => $this->viewColumns['customer'],
+            'admin_id'          => fn($item) => $item->admin->fullname,
+            'status'            => $this->viewColumns['status'],
+            'created_at'        => '{{ date(config("core.format.date"), strtotime($created_at)) }}'
         ];
     }
 

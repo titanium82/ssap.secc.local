@@ -19,10 +19,10 @@ class ContractPaymentDataTable extends DataTables
     protected function setViewColumns(): void
     {
         $this->viewColumns = [
-            'action' => 'admin.contracts.payments.datatable.action',
-            'code_contract' => 'admin.contracts.payments.datatable.code-contract',
-            'short_name_contract' => 'admin.contracts.payments.datatable.short-name-contract',
-            'status' => 'admin.contracts.payments.datatable.status',
+            'action'                => 'admin.contracts.payments.datatable.action',
+            'code_contract'         => 'admin.contracts.payments.datatable.code-contract',
+            'short_name_contract'   => 'admin.contracts.payments.datatable.short-name-contract',
+            'status'                => 'admin.contracts.payments.datatable.status',
         ];
     }
 
@@ -61,13 +61,14 @@ class ContractPaymentDataTable extends DataTables
      */
     public function query()
     {
-        return $this->repository->getByQueryBuilder([], ['contract.currency', 'admin'])->currentAuth();
+        return $this->repository->getByQueryBuilder([], ['contract.currency', 'admin', 'contract'])->currentAuth();
     }
 
     protected function setFilterColumns(): void
     {
         $this->filterColumns = [
             'contract_id' => fn($q, $k) => $q->whereRelation('contract', 'code', 'like', "%$k%"),
+            'contract_short_name' => fn($q, $k) => $q->whereRelation('contract', 'short_name', 'like', "%$k%"),
             'admin_id' => fn($q, $k) => $q->whereRelation('admin', 'fullname', 'like', "%$k%")
         ];
     }

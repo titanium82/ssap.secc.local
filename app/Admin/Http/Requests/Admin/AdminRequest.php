@@ -35,6 +35,7 @@ class AdminRequest extends Request
     {
         return [
             'id'                    => ['required', 'exists:App\Models\Admin,id'],
+            'admin.department_id'   => ['nullable', 'exists:App\Models\Department,id'],
             'admin.email'           => ['required', 'email', 'unique:App\Models\Admin,email,'.$this->id],
             'admin.fullname'        => ['required', 'string'],
             'admin.phone'           => ['required', 'regex:/((09|03|07|08|05)+([0-9]{8})\b)/', 'unique:App\Models\Admin,phone,'.$this->id],
