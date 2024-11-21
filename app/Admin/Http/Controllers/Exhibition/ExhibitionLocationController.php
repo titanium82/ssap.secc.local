@@ -8,7 +8,6 @@ use App\Admin\Http\Requests\Exhibition\ExhibitionLocationRequest;
 use App\Models\ExhibitionLocation;
 use Illuminate\Http\{JsonResponse, RedirectResponse, Request};
 use Illuminate\View\View;
-use App\admin\Enums\ExhibitionLocation\ScreenProjector;
 
 class ExhibitionLocationController extends Controller
 {
@@ -30,16 +29,14 @@ class ExhibitionLocationController extends Controller
     {
         if($request->ajax())
         {
-            return view('admin.exhibition_locations.modals.modal-create');
+            return view('admin.exhibitions.locations.modals.modal-create');
         }
 
-        return view('admin.exhibition_locations.create')
+        return view('admin.exhibition_location.create')
         ->with('breadcrums', $this->breadcrums()
             ->addByRouteName(trans('Exhibition location'), 'admin.exhibition_location.index')
             ->add(trans('Add'))
-        )
-        ->with('screen_projector', ScreenProjector::asSelectArray());
-
+    );
     }
 
     public function store(ExhibitionLocationRequest $request): RedirectResponse|JsonResponse
@@ -48,7 +45,7 @@ class ExhibitionLocationController extends Controller
 
             $data = $request->validated();
 
-            $exhibitionLocation = $this->model->create($data);
+            $exhibitionlocation = $this->model->create($data);
 
             if($request->ajax())
             {
@@ -57,10 +54,10 @@ class ExhibitionLocationController extends Controller
                 ]);
             }
 
-            if($exhibitionLocation)
+            if($exhibitionlocation)
             {
                 return $request->input('submitter') == 'save'
-                    ? to_route('admin.exhibition_location.edit', $exhibitionLocation->id)->with('success', __('notifySuccess'))
+                    ? to_route('admin.exhibition_location.edit', $exhibitionlocation->id)->with('success', __('notifySuccess'))
                     : to_route('admin.exhibition_location.index')->with('success', __('notifySuccess'));
             }
             return back()->withInput()->with('error', trans('notifyFail'));
@@ -77,28 +74,27 @@ class ExhibitionLocationController extends Controller
 
     public function edit($id, Request $request): View
     {
-        $exhibitionLocation = $this->model->findOrFail($id);
+        $exhibitionlocation = $this->model->findOrFail($id);
 
         if($request->ajax())
         {
-            return view('admin.exhibition_locations.modals.modal-edit')->with('exhibition_location', $exhibitionLocation);
+            return view('admin.exhibitions.locations.modals.modal-edit')->with('exhibition_location', $exhibitionlocation);
         }
 
-        return view('admin.exhibition_locations.edit')
+        return view('admin.exhibitions.locations.edit')
         ->with('breadcrums', $this->breadcrums()
             ->addByRouteName(trans('Exhibition location'), 'admin.exhibition_location.index')
             ->add(trans('Edit'))
         )
-        ->with('exhibition_location', $exhibitionLocation)
-        ->with('screen_projector', ScreenProjector::asSelectArray());
+        ->with('exhibition_location', $exhibitionlocation);
     }
 
     public function update(ExhibitionLocationRequest $request): RedirectResponse|JsonResponse
     {
         try {
-            $exhibitionLocation = $this->model->findOrFail($request->input('id'));
+            $exhibitionlocation = $this->model->findOrFail($request->input('id'));
 
-            $exhibitionLocation->update($request->validated());
+            $exhibitionlocation->update($request->validated());
 
             if($request->ajax())
             {
@@ -107,7 +103,7 @@ class ExhibitionLocationController extends Controller
                 ]);
             }
 
-            if($exhibitionLocation)
+            if($exhibitionlocation)
             {
                 return $request->input('submitter') == 'save'
                     ? back()->with('success', __('notifySuccess'))
@@ -126,12 +122,12 @@ class ExhibitionLocationController extends Controller
     }
     public function show($id): View
     {
-        $exhibitionLocation = $this->model->findOrFail($id);
+        $exhibitionlocation = $this->model->findOrFail($id);
 
         if(request()->ajax())
         {
-            return view('admin.exhibition_locations.modals.show')
-            ->with('exhibition_location', $exhibitionLocation);
+            return view('admin.exhibition_location.modals.show')
+            ->with('exhibition_location', $exhibitionlocation);
         }
 
         return view('admin.exhibition_locations.show')
@@ -139,7 +135,7 @@ class ExhibitionLocationController extends Controller
             ->addByRouteName(trans('Location'), 'admin.exhibition_location.index')
             ->add(trans('Show'))
         )
-        ->with('exhibition_location', $exhibitionLocation);
+        ->with('exhibition_location', $exhibitionlocation);
     }
 
     public function delete($id, Request $request): RedirectResponse|JsonResponse
@@ -171,7 +167,7 @@ class ExhibitionLocationController extends Controller
     {
         $keyword = $request->input('term', '');
 
-        $exhibitionLocation = $this->model->select('id', 'fullname')
+        $exhibitionlocation = $this->model->select('id', 'fullname')
         ->whereAny($this->model->getFillable(), 'like', "%$keyword%")
         ->limit(10)
         ->get()
@@ -183,7 +179,7 @@ class ExhibitionLocationController extends Controller
         });
 
         return [
-            'results' => $exhibitionLocation->toArray()
+            'results' => $exhibitionlocation->toArray()
         ];
     }
 }

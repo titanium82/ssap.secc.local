@@ -12,7 +12,7 @@
                             <div class="col-4">
                                 <div class="mb-3">
                                     <label class="form-label">@lang('Exhibition Location Name'):</label>
-                                    <x-core-input name="name" :value="old('name')" :required="true"
+                                    <x-core-input name="fullname" :value="old('fullname')" :required="true"
                                         :placeholder="__('Exhibition Location Name')" />
                                 </div>
                             </div>

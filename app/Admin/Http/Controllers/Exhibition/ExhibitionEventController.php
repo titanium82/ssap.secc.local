@@ -102,7 +102,8 @@ class ExhibitionEventController extends Controller
 
     public function edit($id, Request $request): View
     {
-        $exhibitionevent = $this->repository->findOrFail($id,['customer','exhibition_location']);
+        $customer = $this ->repoCustomer->getAll();
+        $exhibitionevent = $this->repository->findOrFail($id,['customer','exhibitionlocations']);
 
         return view('admin.exhibitions.events.edit')
         ->with('breadcrums', $this->breadcrums()
@@ -110,7 +111,7 @@ class ExhibitionEventController extends Controller
             ->add(trans('Edit'))
         )
         ->with('exhibition_events', $exhibitionevent)
-        ->with('event_manager', EventManager::asSelectArray())
+        ->with('eventmanager', EventManager::asSelectArray())
         ->with('eventstatus',EventStatus::asSelectArray())
         ->with('customer', $customer ?? null);
     }
@@ -190,12 +191,12 @@ class ExhibitionEventController extends Controller
             'results' => $this->repository->searchSelect($request->input('term', ''))
         ];
     }
-    public function updateStatus(Request $request, $id)
-{
-    $event = Event::findOrFail($id);
-    $event->status = EventStatus::from($request->status);
-    $event->save();
+//     public function updateStatus(Request $request, $id)
+// {
+//     $event = Event::findOrFail($id);
+//     $event->status = EventStatus::from($request->status);
+//     $event->save();
 
-    return redirect()->back()->with('success', 'Trạng thái đã được cập nhật.');
-}
+//     return redirect()->back()->with('success', 'Trạng thái đã được cập nhật.');
+// }
 }

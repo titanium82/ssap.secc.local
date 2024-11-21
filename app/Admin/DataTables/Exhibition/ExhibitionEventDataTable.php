@@ -33,7 +33,7 @@ class ExhibitionEventDataTable extends DataTables
     }
     protected function setColumnHasSearch(): void
     {
-        $this->columnHasSearch = ['name','exhibitionlocations','customer_id','locations','status', 'created_at'];
+        $this->columnHasSearch = ['name','exhibitionlocations','customer_id','locations','status','admin_id','created_at'];
     }
 
     protected function setColumnSearchDate(): void
@@ -79,6 +79,7 @@ class ExhibitionEventDataTable extends DataTables
             'exhibitionlocations'               =>$this->viewColumns['location'],
             'customer_id'                       =>$this->viewColumns['customer'],
             'status'                            =>$this->viewColumns['status'],
+            'admin_id'                          => fn($item) => $item->admin->fullname,
             'created_at'                        => '{{ date(config("core.format.date"), strtotime($created_at)) }}'
         ];
     }

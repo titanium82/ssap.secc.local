@@ -194,6 +194,10 @@ return [
             'orderable' => false,
             'visible' => false,
         ],
+        'admin_id' => [
+            'title' => 'Created by',
+            'orderable' => false,
+        ],
         'action' => [
             'title' => 'action',
             'orderable' => false,

@@ -42,7 +42,7 @@ class ExhibitionEventRepository extends EloquentRepository implements Exhibition
 
         if ($this->instance) {
 
-            // $this->authorize('update', 'admin');
+            $this->authorize('update', 'admin');
 
             $this->instance->update($data);
 

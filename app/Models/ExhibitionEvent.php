@@ -18,7 +18,6 @@ class ExhibitionEvent extends Model
 
     protected $fillable = [
         'admin_id',
-        'exhibition_location_id', // Sảnh sự kiện
         'customer_id',  //Khách hàng
         'name', //tên sự kiện
         'shortname', // tên viết tắt
@@ -65,10 +64,6 @@ class ExhibitionEvent extends Model
     public function admin(): BelongsTo
     {
         return $this->belongsTo(Admin::class, 'admin_id');
-    }
-    public function exhibitionlocation(): BelongsTo
-    {
-        return $this->belongsTo(ExhibitionLocation::class, 'exhibition_location_id');
     }
     public function exhibitionlocations(): BelongsToMany
     {
