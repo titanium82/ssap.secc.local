@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Admin\Enums\ExhibitionEvent\EventManager;
 use App\Admin\Enums\ExhibitionEvent\EventStatus;
+use App\Observers\ExhibitionEventObserver;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -35,28 +36,13 @@ class ExhibitionEvent extends Model
 
         ];
     }
-    //Cap nhat trang thai cho su kien
-    // public function updateStatusByDates()
-    // {
-    //     $now = now();
-
-    //     if ($now->lt($this->start_date)) {
-    //         $this->status = EventStatus::upcoming;
-    //     } elseif ($now->between($this->start_date, $this->end_date)) {
-    //         $this->status = EventStatus::ongoing    ;
-    //     } else {
-    //         $this->status = EventStatus::ended;
-    //     }
-
-    //     $this->save();
-    // }
-//     protected static function booted()
-// {
-//     static::saving(function ($event) {
-//         $event->updateStatusByDates(); // Tự động cập nhật status trước khi lưu
-//     });
-// }
-
+    public $observing = true;
+    protected static function boot()
+    {
+        parent::boot();
+        static::observe(ExhibitionEventObserver::class);
+    }
+    
     public function isCreator()
     {
         return $this->admin_id === auth('admin')->id();

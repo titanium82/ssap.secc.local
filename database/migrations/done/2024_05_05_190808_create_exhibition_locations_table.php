@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('exhibition_locations', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('admin_id');
-            $table->string('name');
+            $table->string('fullname');
             $table->float('stretch')->nullable();
             $table->string('location')->default(0);
             $table->string('classroom')->nullable();

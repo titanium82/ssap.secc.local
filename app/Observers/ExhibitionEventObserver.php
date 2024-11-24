@@ -4,20 +4,23 @@ namespace App\Observers;
 
 use App\Admin\Enums\ExhibitionEvent\EventStatus;
 use App\Models\ExhibitionEvent;
+use AWS\CRT\Log;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log as FacadesLog;
 
 class ExhibitionEventObserver
 {
-    public function saving(ExhibitionEvent $exhibitionevent)
+    public function updating(ExhibitionEvent $exhibitionevent)
     {
-         // Kiểm tra nếu sự kiện hiện đang có trạng thái "Hủy" hoặc "Hoãn"
+        if (!$exhibitionevent->observing) {
+            return;
+        }
          if (in_array($exhibitionevent->status, [EventStatus::cancelled, EventStatus::postponed])) {
-            // Không tự động thay đổi trạng thái
             return;
         }
         $now = Carbon::now();
 
-        if ($now->lt($exhibitionevent->day_begin)) {
+        if ($exhibitionevent->day_begin>$now) {
             $exhibitionevent->status = EventStatus::upcoming;
         }
         elseif ($now->between($exhibitionevent->day_begin, $exhibitionevent->day_end))
@@ -27,5 +30,20 @@ class ExhibitionEventObserver
         else {
             $exhibitionevent->status = EventStatus::ended;
         }
+        $exhibitionevent->observing = false;
+        $exhibitionevent->saveQuietly(['status']);
+        
+        FacadesLog::info('Observe đang hoạt động',[
+            'id'=>$exhibitionevent->id,
+            'day_begin' =>$exhibitionevent->day_begin,
+            'day_end'   =>$exhibitionevent->day_end,
+            'status'    =>$exhibitionevent->status,
+        ]);
+        dd('Observer hoạt động', $exhibitionevent->toArray());
+
+    }
+    public function updated(ExhibitionEvent $exhibitionevent)
+    {
+        $exhibitionevent->observing = true;
     }
 }
