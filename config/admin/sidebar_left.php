@@ -95,25 +95,19 @@ return [
         'route_name' => '',
         'icon' => '<i class="ti ti-image-in-picture"></i>',
         'sub' => [
-
-            [
-                'title' => 'Order Event Services',
-                'route_name' => '',
-                'icon' => '<i class="ti ti-list"></i>'
-            ],
             [
                 'title' => 'Event Services',
                 'route_name' => 'admin.event_service.index',
                 'icon' => '<i class="ti ti-list"></i>'
             ],
             [
-                'title' => 'Event Service Type',
-                'route_name' => 'admin.event_service_type.index',
+                'title' => 'Event Services Unit',
+                'route_name' => 'admin.event_service_unit.index',
                 'icon' => '<i class="ti ti-list"></i>'
             ],
             [
-                'title' => 'Event Services Unit',
-                'route_name' => 'admin.event_service_unit.index',
+                'title' => 'Event Service Type',
+                'route_name' => 'admin.event_service_type.index',
                 'icon' => '<i class="ti ti-list"></i>'
             ]
         ]

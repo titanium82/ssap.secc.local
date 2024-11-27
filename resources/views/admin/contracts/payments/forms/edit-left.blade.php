@@ -25,7 +25,7 @@
                     <x-core-input class="input-format-number" name="amount" :value="number_format($contract_payment->amount)" />
                 </div>
             </div>
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-6 mb-3">
                 <div class="mb-3">
                     <x-core-input-gallery-ckfinder name="license" :value="$contract_payment->license" :label="trans('Licenser')" />
                 </div>

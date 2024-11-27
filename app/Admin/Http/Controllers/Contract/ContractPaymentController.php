@@ -160,8 +160,7 @@ class ContractPaymentController extends Controller
                 ->getInstance();
             }
 
-;            $contractPayment = $this->repository->update($request->id, $data);
-
+            $contractPayment = $this->repository->update($request->id, $data);
             if($contractPayment)
             {
 

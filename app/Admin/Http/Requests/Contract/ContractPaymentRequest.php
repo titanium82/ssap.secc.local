@@ -59,7 +59,7 @@ class ContractPaymentRequest extends Request
         $data = $this->validator->getData();
 
         $data['license'] = empty($data['license']) ? [] : explode(',', $data['license']);
-
+        $data['license_files'] = empty($data['license_files']) ? [] : explode(',', $data['license_files']);
         $this->validator->setData($data);
     }
 }
