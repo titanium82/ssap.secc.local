@@ -61,9 +61,16 @@ class ContractPaymentController extends Controller
                 ->uploadFilepondEncode()
                 ->getInstance();
             }
-            
+            if(isset($data['license_files']) && $data['license_files'])
+            {
+                $data['license_files'] = $this->fileUploadService->setFolderForAdmin('contracts')
+                ->setFile($data['license_files'])
+                ->uploadFilepondEncode()
+                ->getInstance();
+            }
+
             $contractPayment = $this->repository->create($data);
-        
+
             if($contractPayment)
             {
 
@@ -78,18 +85,18 @@ class ContractPaymentController extends Controller
                     'uid' => auth('admin')->id(),
                     'cid' => $contractPayment->id
                 ]), [
-                    'user' => auth('admin')->user()->toArray(), 
+                    'user' => auth('admin')->user()->toArray(),
                     'request' => $request->all()
                 ]);
 
-                return $request->input('submitter') == 'save' 
-                    ? to_route($routeName, $contractPayment->id)->with('success', __('notifySuccess')) 
+                return $request->input('submitter') == 'save'
+                    ? to_route($routeName, $contractPayment->id)->with('success', __('notifySuccess'))
                     : to_route('admin.contract_payment.index')->with('success', __('notifySuccess'));
             }
         } catch (\Throwable $th) {
 
             logger()->error(trans('Add contract payment has error :err', ['err' => $th->getMessage()]), [
-                'user' => auth('admin')->user()->toArray(), 
+                'user' => auth('admin')->user()->toArray(),
                 'request' => $request->all()
             ]);
 
@@ -138,7 +145,7 @@ class ContractPaymentController extends Controller
         try {
 
             $data = $request->validated();
-            
+
             if(isset($data['file_send_mail']) && $data['file_send_mail'])
             {
                 $data['file_send_mail'] = $this->fileUploadService->setFolderForAdmin('contracts')
@@ -156,18 +163,18 @@ class ContractPaymentController extends Controller
                     'uid' => auth('admin')->id(),
                     'cid' => $contractPayment->id
                 ]), [
-                    'user' => auth('admin')->user()->toArray(), 
+                    'user' => auth('admin')->user()->toArray(),
                     'request' => $request->all()
                 ]);
 
-                return $request->input('submitter') == 'save' 
+                return $request->input('submitter') == 'save'
                     ? back()->with('success', __('notifySuccess'))
                     : to_route('admin.contract_payment.index')->with('success', __('notifySuccess'));
             }
         } catch (\Throwable $th) {
 
             logger()->error(trans('Add contract payment has error :err', ['err' => $th->getMessage()]), [
-                'user' => auth('admin')->user()->toArray(), 
+                'user' => auth('admin')->user()->toArray(),
                 'request' => $request->all()
             ]);
             return back()->withInput()->withErrors(['errors' => $th->getMessage()]);
@@ -182,7 +189,7 @@ class ContractPaymentController extends Controller
                 'uid' => auth('admin')->id(),
                 'cid' => $id
             ]), [
-                'user' => auth('admin')->user()->toArray(), 
+                'user' => auth('admin')->user()->toArray(),
                 'request' => request()->all()
             ]);
 
@@ -202,14 +209,14 @@ class ContractPaymentController extends Controller
     public function handleUploadLicense(UploadLicenseRequest $request)
     {
         $contractPayment = $this->repository->uploadLicense($request->id, $request->validated('license'));
-        
+
         if($contractPayment)
         {
             logger()->info(trans('User ID :uid upload license contract payment ID :cid', [
                 'uid' => auth('admin')->id(),
                 'cid' => $request->id
             ]), [
-                'user' => auth('admin')->user()->toArray(), 
+                'user' => auth('admin')->user()->toArray(),
                 'request' => $request->all()
             ]);
 
@@ -227,14 +234,14 @@ class ContractPaymentController extends Controller
     public function delete($id, Request $request): RedirectResponse|JsonResponse
     {
         try {
-            
+
             $this->repository->delete($id);
 
             logger()->info(trans('User ID :uid delete contract payment ID :cid', [
                 'uid' => auth('admin')->id(),
                 'cid' => $id
             ]), [
-                'user' => auth('admin')->user()->toArray(), 
+                'user' => auth('admin')->user()->toArray(),
                 'request' => $request->all()
             ]);
 
@@ -244,12 +251,12 @@ class ContractPaymentController extends Controller
                     'msg' => trans('notifySuccess')
                 ]);
             }
-        
+
             return to_route('admin.contract_payment.index')->with('success', __('notifySuccess'));
         } catch (\Throwable $th) {
 
             logger()->error(trans('Delete contract payment has error :err', ['err' => $th->getMessage()]), [
-                'user' => auth('admin')->user()->toArray(), 
+                'user' => auth('admin')->user()->toArray(),
                 'request' => $request->all()
             ]);
 

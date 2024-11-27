@@ -25,9 +25,15 @@
                     <x-core-input class="input-format-number" name="amount" :value="old('amount')" :required="true" :placeholder="trans('Amount')"/>
                 </div>
             </div>
-            <div class="col-12">
+            <div class="col-12 col-md-6">
                 <div class="mb-3">
                     <x-core-input-gallery-ckfinder name="license" :label="trans('Licenser')" />
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="mb-3">
+                    <label class="form-label">@lang('License Files'):</label>
+                    <x-core-input-file-pond class="filepond-inline-2" name="license_files" :multiple="true" :maxFiles="6" style="opacity: 0" />
                 </div>
             </div>
         </div>

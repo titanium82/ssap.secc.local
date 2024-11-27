@@ -25,6 +25,7 @@ class ContractPayment extends Model
         'status',
         'license',
         'approved_by',
+        'license_files', // bổ sung upload chứng từ thanh toán dạng file
         'file_send_mail'
     ];
 
@@ -35,7 +36,8 @@ class ContractPayment extends Model
             'period' => 'integer',
             'amount' => 'double',
             'status' => ContractPaymentStatus::class,
-            'license' => AsArrayObject::class
+            'license' => AsArrayObject::class,
+            'license_files' => AsArrayObject::class
         ];
     }
 
@@ -45,7 +47,8 @@ class ContractPayment extends Model
      * @var array
      */
     protected $attributes = [
-        'license' => '[]'
+        'license' => '[]',
+        'license_files'=> '[]'
     ];
 
     public function canUploadLicense()
