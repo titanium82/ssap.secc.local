@@ -62,6 +62,13 @@ class ContractPaymentController extends Controller
                 ->getInstance();
             }
             
+            if(isset($data['license_files']) && $data['license_files'])
+            {
+                $data['license_files'] = $this->fileUploadService->setFolderForAdmin('contracts')
+                ->uploadMultipleFilepondEncode($data['license_files'])
+                ->getInstance();
+            }
+            
             $contractPayment = $this->repository->create($data);
         
             if($contractPayment)
@@ -144,6 +151,12 @@ class ContractPaymentController extends Controller
                 $data['file_send_mail'] = $this->fileUploadService->setFolderForAdmin('contracts')
                 ->setFile($data['file_send_mail'])
                 ->uploadFilepondEncode()
+                ->getInstance();
+            }
+            if(isset($data['license_files']) && $data['license_files'])
+            {
+                $data['license_files'] = $this->fileUploadService->setFolderForAdmin('contracts')
+                ->uploadMultipleFilepondEncode($data['license_files'])
                 ->getInstance();
             }
 

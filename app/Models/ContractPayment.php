@@ -24,6 +24,7 @@ class ContractPayment extends Model
         'amount',
         'status',
         'license',
+        'license_files',
         'approved_by',
         'file_send_mail'
     ];
@@ -31,11 +32,12 @@ class ContractPayment extends Model
     protected function casts(): array
     {
         return [
-            'expired_at' => 'date',
-            'period' => 'integer',
-            'amount' => 'double',
-            'status' => ContractPaymentStatus::class,
-            'license' => AsArrayObject::class
+            'expired_at'    => 'date',
+            'period'        => 'integer',
+            'amount'        => 'double',
+            'status'        => ContractPaymentStatus::class,
+            'license'       => AsArrayObject::class,
+            'license_files' => AsArrayObject::class
         ];
     }
 
@@ -45,7 +47,9 @@ class ContractPayment extends Model
      * @var array
      */
     protected $attributes = [
-        'license' => '[]'
+        'license' => '[]',
+        'license_files' => '[]'
+
     ];
 
     public function canUploadLicense()

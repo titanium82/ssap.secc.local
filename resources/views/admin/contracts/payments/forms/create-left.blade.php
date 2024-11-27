@@ -25,7 +25,7 @@
                     <x-core-input class="input-format-number" name="amount" :value="old('amount')" :required="true" :placeholder="trans('Amount')"/>
                 </div>
             </div>
-            <div class="col-12">
+            <div class="col-12 col-md-6">
                 <div class="mb-3">
                     <x-core-input-gallery-ckfinder name="license" :label="trans('Licenser')" />
                 </div>

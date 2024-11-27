@@ -22,6 +22,7 @@ class ContractPaymentRequest extends Request
             'amount'                    => ['required', 'numeric', new ContractPaymentAmount($this->input('contract_id'))],
             'expired_at'                => ['required', 'date_format:Y-m-d'],
             'license'                   => ['nullable'],
+            'license_files'             => ['nullable'],
             'file_send_mail'            => ['nullable', 'json'],
         ];
     }
@@ -29,13 +30,14 @@ class ContractPaymentRequest extends Request
     protected function methodPut()
     {
         return [
-            'id' => ['required', 'exists:App\Models\ContractPayment,id'],
+            'id'                => ['required', 'exists:App\Models\ContractPayment,id'],
             // 'contract_id' => ['required', 'exists:App\Models\Contract,id'],
             // 'period' => ['required', 'integer', 'min:1'],
-            'amount' => ['required', 'numeric', 'min:1'],
-            'expired_at' => ['required', 'date_format:Y-m-d'],
-            'license' => ['nullable'],
-            'file_send_mail' => ['nullable', 'json'],
+            'amount'            => ['required', 'numeric', 'min:1'],
+            'expired_at'        => ['required', 'date_format:Y-m-d'],
+            'license'           => ['nullable'],
+            'license_files'     => ['nullable'],
+            'file_send_mail'    => ['nullable', 'json'],
         ];
     }
 

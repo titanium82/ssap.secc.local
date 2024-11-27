@@ -25,10 +25,14 @@
                     <x-core-input class="input-format-number" name="amount" :value="number_format($contract_payment->amount)" />
                 </div>
             </div>
-            <div class="col-12">
+            <div class="col-12 col-md-6">
                 <div class="mb-3">
                     <x-core-input-gallery-ckfinder name="license" :value="$contract_payment->license" :label="trans('Licenser')" />
                 </div>
+            </div>
+            <div class="col-12 col-md-6 mb-3">
+                <label class="form-label">@lang('License Files'):</label>
+                <x-core-input-file-pond name="license_files" :value="$contract_payment->license_files" style="opacity: 0" />
             </div>
         </div>
     </div>
