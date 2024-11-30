@@ -113,6 +113,33 @@ return [
         ]
     ],
     [
+        'title' => 'Electrical Equipment Services',
+        'route_name' => '',
+        'icon' => '<i class="ti ti-image-in-picture"></i>',
+        'sub' => [
+            [
+                'title' => 'Electrical Equipment Orders',
+                'route_name' => '',
+                'icon' => '<i class="ti ti-list"></i>'
+            ],
+            [
+                'title' => 'Electrical Equipment',
+                'route_name' =>  '',
+                'icon' => '<i class="ti ti-list"></i>'
+            ],
+            [
+                'title' => 'Electrical Equipment Type',
+                'route_name' => 'admin.electrical_equipment_type.index',
+                'icon' => '<i class="ti ti-list"></i>'
+            ],
+            [
+                'title' => 'Electrical Equipment Warehouse',
+                'route_name' => 'admin.warehouse.index',
+                'icon' => '<i class="ti ti-list"></i>'
+            ]
+        ]
+    ],
+    [
         'title' => 'Admins',
         'route_name' => '',
         'icon' => '<i class="ti ti-user"></i>',

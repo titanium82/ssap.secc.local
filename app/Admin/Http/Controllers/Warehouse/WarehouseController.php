@@ -1,27 +1,27 @@
 <?php
 
-namespace App\Admin\Http\Controllers\EventService;
+namespace App\Admin\Http\Controllers\Warehouse;
 
-use App\Admin\DataTables\EventService\EventServiceTypeDataTable;
+use App\Admin\DataTables\Warehouse\WarehouseDataTable;
 use App\Admin\Http\Controllers\Controller;
-use App\Admin\Http\Requests\EventService\EventServiceTypeRequest;
-use App\Models\EventServiceType;
+use App\Admin\Http\Requests\Warehouse\WarehouseRequest;
+use App\Models\Warehouse;
 use Illuminate\Http\{JsonResponse, RedirectResponse, Request};
 use Illuminate\View\View;
 
-class EventServiceTypeController extends Controller
+class WarehouseController extends Controller
 {
 
     public function __construct(
-        public EventServiceType $model,
+        public Warehouse $model,
     )
     {
     }
 
-    public function index(EventServiceTypeDataTable $datatable): View|JsonResponse
+    public function index(WarehouseDataTable $datatable): View|JsonResponse
     {
-        return $datatable->render('admin.eventservices.types.index', [
-            'breadcrums' => $this->breadcrums()->add(trans('Event Service Types'))
+        return $datatable->render('admin.warehouses.index', [
+            'breadcrums' => $this->breadcrums()->add(trans('Warehouse'))
         ]);
     }
 
@@ -29,23 +29,23 @@ class EventServiceTypeController extends Controller
     {
         if($request->ajax())
         {
-            return view('admin.eventservices.types.modals.modal-create');
+            return view('admin.warehouses.modals.modal-create');
         }
 
-        return view('admin.eventservices.types.create')
-        ->with('breadcrums', $this->breadcrums()->addByRouteName(trans('Event Service Type'), 'admin.event_service_type.index')
-        ->addByRouteName(trans('Event Services Types'), 'admin.event_service_type.index')
+        return view('admin.warehouses.create')
+        ->with('breadcrums', $this->breadcrums()->addByRouteName(trans('Warehouse'), 'admin.warehouses.index')
+        ->addByRouteName(trans('Warehouse'), 'admin.warehouse.index')
         ->add(trans('Add'))
     );
     }
 
-    public function store(EventServiceTypeRequest $request): RedirectResponse|JsonResponse
+    public function store(WarehouseRequest $request): RedirectResponse|JsonResponse
     {
         try {
 
             $data = $request->validated();
 
-            $eventservicetype = $this->model->create($data);
+            $warehouse = $this->model->create($data);
 
             if($request->ajax())
             {
@@ -54,11 +54,11 @@ class EventServiceTypeController extends Controller
                 ]);
             }
 
-            if($eventservicetype)
+            if($warehouse)
             {
                 return $request->input('submitter') == 'save'
-                    ? to_route('admin.event_service_type.edit', $eventservicetype->id)->with('success', __('notifySuccess'))
-                    : to_route('admin.event_service_type.index')->with('success', __('notifySuccess'));
+                    ? to_route('admin.warehouses.edit', $warehouse->id)->with('success', __('notifySuccess'))
+                    : to_route('admin.warehouses.index')->with('success', __('notifySuccess'));
             }
             return back()->withInput()->with('error', trans('notifyFail'));
         } catch (\Throwable $th) {
@@ -74,28 +74,27 @@ class EventServiceTypeController extends Controller
 
     public function edit($id, Request $request): View
     {
-        $eventservicetype = $this->model->findOrFail($id);
+        $warehouse = $this->model->findOrFail($id);
 
         if($request->ajax())
         {
-            return view('admin.eventservices.types.modals.modal-edit')
-            ->with('event_service_type', $eventservicetype);
+            return view('admin.warehouses.modals.modal-edit')->with('warehouse', $warehouse);
         }
 
-        return view('admin.eventservices.types.edit')
+        return view('admin.warehouse.edit')
         ->with('breadcrums', $this->breadcrums()
-            ->addByRouteName(trans('Service Type'), 'admin.event_service_type.index')
+            ->addByRouteName(trans('Warehouse'), 'admin.warehouses.index')
             ->add(trans('Edit'))
         )
-        ->with('event_service_type', $eventservicetype);
+        ->with('warehouse', $warehouse);
     }
 
-    public function update(EventServiceTypeRequest $request): RedirectResponse|JsonResponse
+    public function update(WarehouseRequest $request): RedirectResponse|JsonResponse
     {
         try {
-            $eventservicetype = $this->model->findOrFail($request->input('id'));
+            $warehouse = $this->model->findOrFail($request->input('id'));
 
-            $eventservicetype->update($request->validated());
+            $warehouse->update($request->validated());
 
             if($request->ajax())
             {
@@ -104,11 +103,11 @@ class EventServiceTypeController extends Controller
                 ]);
             }
 
-            if($eventservicetype)
+            if($warehouse)
             {
                 return $request->input('submitter') == 'save'
                     ? back()->with('success', __('notifySuccess'))
-                    : to_route('admin.event_service_type.index')->with('success', __('notifySuccess'));
+                    : to_route('admin.warehouses.index')->with('success', __('notifySuccess'));
             }
             return back()->withInput()->with('error', trans('notifyFail'));
         } catch (\Throwable $th) {
@@ -134,8 +133,7 @@ class EventServiceTypeController extends Controller
                 ]);
             }
 
-            return to_route('admin.event_service_type.index')
-            ->with('success', __('notifySuccess'));
+            return to_route('admin.warehouses.index')->with('success', __('notifySuccess'));
         } catch (\Throwable $th) {
 
             if($request->ajax())

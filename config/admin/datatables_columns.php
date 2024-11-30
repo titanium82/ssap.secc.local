@@ -433,6 +433,50 @@ return [
             'addClass' => 'text-center'
         ],
     ],
+    'electrical_equipment_type' => [
+        'name' => [
+            'title' => 'Electrical Equipment Type Name',
+            'orderable' => false,
+        ],
+        'desc' => [
+            'title' => 'Electrical Equipment Type Desc',
+            'orderable' => false,
+        ],
+        'created_at' => [
+            'title' => 'createdAt',
+            'orderable' => false,
+            'visible' => false,
+        ],
+        'action' => [
+            'title' => 'action',
+            'orderable' => false,
+            'exportable' => false,
+            'printable' => false,
+            'addClass' => 'text-center'
+        ],
+    ],
+    'warehouse'=>[
+        'name' => [
+            'title' => 'name',
+            'orderable' => false,
+        ],
+        'shortname' => [
+            'title' => 'shortname',
+            'orderable' => false,
+        ],
+        'created_at' => [
+            'title' => 'createdAt',
+            'orderable' => false,
+            'visible' => false,
+        ],
+        'action' => [
+            'title' => 'action',
+            'orderable' => false,
+            'exportable' => false,
+            'printable' => false,
+            'addClass' => 'text-center'
+        ],
+    ],
     'role' => [
         'name' => [
             'title' => 'name',

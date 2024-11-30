@@ -21,7 +21,7 @@ class ExhibitionLocationController extends Controller
     public function index(ExhibitionLocationDataTable $datatable): View|JsonResponse
     {
         return $datatable->render('admin.exhibitions.locations.index', [
-            'breadcrums' => $this->breadcrums()->add(trans('Exhibition location'))
+            'breadcrums' => $this->breadcrums()->add(trans('Exhibition Location'))
         ]);
     }
 
@@ -78,7 +78,8 @@ class ExhibitionLocationController extends Controller
 
         if($request->ajax())
         {
-            return view('admin.exhibitions.locations.modals.modal-edit')->with('exhibition_location', $exhibitionlocation);
+            return view('admin.exhibitions.locations.modals.modal-edit')
+            ->with('exhibition_location', $exhibitionlocation);
         }
 
         return view('admin.exhibitions.locations.edit')

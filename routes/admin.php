@@ -192,6 +192,28 @@ Route::middleware([App\Admin\Http\Middleware\AuthAdminMiddleware::class, App\Adm
         Route::get('/edit/{id}', 'edit')->name('edit');
         Route::delete('/delete/{id}', 'delete')->name('delete');
     });
+     //Manager Electrical Equipment Type
+     Route::prefix('/electrical-equipment-type')->controller(App\Admin\Http\Controllers\ElectricalEquipment\ElectricalEquipmentTypeController::class)
+     ->name('electrical_equipment_type.')
+     ->group(function () {
+         Route::get('/', 'index')->name('index');
+         Route::get('/create', 'create')->name('create');
+         Route::post('/store', 'store')->name('store');
+         Route::put('/update', 'update')->name('update');
+         Route::get('/edit/{id}', 'edit')->name('edit');
+         Route::delete('/delete/{id}', 'delete')->name('delete');
+     });
+     //Manager Warehouse
+    Route::prefix('/warehouse')->controller(App\Admin\Http\Controllers\Warehouse\WarehouseController::class)
+    ->name('warehouse.')
+    ->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
+        Route::put('/update', 'update')->name('update');
+        Route::get('/edit/{id}', 'edit')->name('edit');
+        Route::delete('/delete/{id}', 'delete')->name('delete');
+    });
     //Manager Department
     Route::prefix('/department')->controller(App\Admin\Http\Controllers\Admin\DepartmentController::class)
     ->name('department.')
