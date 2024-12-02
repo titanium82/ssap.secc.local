@@ -442,8 +442,16 @@ return [
             'title' => 'Electrical Equipment Type Name',
             'orderable' => false,
         ],
+        'price' => [
+            'title' => 'Electrical Equipment Price',
+            'orderable' => false,
+        ],
         'desc' => [
             'title' => 'Electrical Equipment Desc',
+            'orderable' => false,
+        ],
+        'admin_id' => [
+            'title' => 'Created by',
             'orderable' => false,
         ],
         'created_at' => [

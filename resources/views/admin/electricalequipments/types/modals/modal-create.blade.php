@@ -17,6 +17,13 @@
                         </div>
                         <div class="col-12">
                             <div class="mb-3">
+                                <label class="form-label">@lang('Event Electrical Equipment Type Short Name'):</label>
+                                <x-core-input name="shortname" :value="old('shortname')" :required="true"
+                                    :placeholder="__('Event Electrical Equipment Type Short Name')" />
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="mb-3">
                                 <label class="form-label">@lang('Event Electrical Equipment Type Desc'):</label>
                                 <x-core-input name="desc" :value="old('desc')" :required="true"
                                     :placeholder="__('Event Electrical Equipment Type Desc')" />

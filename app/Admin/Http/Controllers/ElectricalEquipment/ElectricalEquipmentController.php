@@ -7,6 +7,7 @@ use App\Admin\Http\Controllers\Controller;
 use App\Admin\Http\Requests\ElectricalEquipment\ElectricalEquipmentRequest;
 use App\Admin\Repositories\ElectricalEquipment\ElectricalEquipmentRepositoryInterface;
 use App\Admin\Repositories\ElectricalEquipment\ElectricalEquipmentTypeRepositoryInterface;
+use App\Admin\Repositories\Warehouse\WarehouseRepositoryInterface;
 use App\Admin\Services\ElectricalEquipment\ElectricalEquipment;
 use Illuminate\Http\{JsonResponse, RedirectResponse, Request};
 use Illuminate\Support\Facades\DB;
@@ -19,6 +20,7 @@ class ElectricalEquipmentController extends Controller
     public function __construct(
         public ElectricalEquipmentRepositoryInterface $repository,
         public ElectricalEquipmentTypeRepositoryInterface $repoElectricalEquipmentType,
+        public WarehouseRepositoryInterface $repoWWarehouse,
         public ElectricalEquipment $service
     )
     {
@@ -43,10 +45,12 @@ class ElectricalEquipmentController extends Controller
     public function create(): View
     {
         $types = $this ->repoElectricalEquipmentType->getAll();
+        $warehouses = $this ->repoWWarehouse->getAll();
 
-        return view('admin.eventservices.create')
-        ->with('breadcrums', $this->breadcrums()->addByRouteName(trans('Event Service'), 'admin.event_service.index')->add(trans('Add')))
+        return view('admin.electricalequipments.create')
+        ->with('breadcrums', $this->breadcrums()->addByRouteName(trans('Electrical Equipment'), 'admin.electrical_equipment.index')->add(trans('Add')))
         ->with('unit', Unit::asSelectArray())
+        ->with('warehouses',$warehouses)
         ->with('types',$types);
     }
 
@@ -68,7 +72,7 @@ class ElectricalEquipmentController extends Controller
 
                 return $request->input('submitter') == 'save'
                     ? to_route($routeName, $electricalequipment->id)->with('success', __('notifySuccess'))
-                    : to_route('admin.electricalequipment.index')->with('success', __('notifySuccess'));
+                    : to_route('admin.electrical_equipment.index')->with('success', __('notifySuccess'));
             }
 
             return back()->withInput()->withErrors(['errors' => trans('notifyFail')]);
@@ -82,12 +86,14 @@ class ElectricalEquipmentController extends Controller
     public function edit($id): View
     {
         $types = $this->repoElectricalEquipmentType->getAll();
+        $warehouses = $this ->repoWWarehouse->getAll();
         $electricalequipment = $this->repository->findOrFail($id);
 
         return view('admin.electricalequipments.edit')
-        ->with('breadcrums', $this->breadcrums()->addByRouteName(trans('Event Service'), 'admin.event_service.index')->add(trans('Edit')))
+        ->with('breadcrums', $this->breadcrums()->addByRouteName(trans('Electrical Equipment'), 'admin.electrical_equipment.index')->add(trans('Edit')))
         ->with('electricalequipment', $electricalequipment)
         ->with('unit', Unit::asSelectArray())
+        ->with('warehouses',$warehouses)
         ->with('types', $types);
     }
 
@@ -102,7 +108,7 @@ class ElectricalEquipmentController extends Controller
                 {
                     return $request->input('submitter') == 'save'
                         ? back()->with('success', __('notifySuccess'))
-                        : to_route('admin.event_service.index')->with('success', __('notifySuccess'));
+                        : to_route('admin.electrical_equipment.index')->with('success', __('notifySuccess'));
                 }
 
                 return back()->withInput()->withErrors(['errors' => trans('notifyFail')]);
@@ -132,7 +138,7 @@ class ElectricalEquipmentController extends Controller
                 ]);
             }
 
-            return to_route('admin.event_service.index')->with('success', __('notifySuccess'));
+            return to_route('admin.electrical_equipment.index')->with('success', __('notifySuccess'));
         } catch (\Throwable $th) {
 
             logger()->error(trans('Delete customer has error :err', ['err' => $th->getMessage()]), [

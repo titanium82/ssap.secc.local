@@ -2,8 +2,8 @@
     <div class="card">
         <div class="row card-body">
             <div class="col-12 mb-3">
-                <label class="form-label">@lang('Event Service Type'):</label>
-                <x-core-select name="event_service_type_id" :required="true">
+                <label class="form-label">@lang('Electrical Equipment Type'):</label>
+                <x-core-select name="electrical_equipment_type_id" :required="true">
                     @foreach ($types as $type)
                         <x-core-select-option :value="$type->id" :title="$type->name" />
                     @endforeach
@@ -12,9 +12,16 @@
             <!-- name -->
             <div class="col-12">
                 <div class="mb-3">
-                    <label class="form-label">@lang('Event Service Name'):</label>
+                    <label class="form-label">@lang('Electrical Equipment Name'):</label>
                     <x-core-input name="name" :value="old('name')" :required="true"
-                        :placeholder="__('Event Service Name')" />
+                        :placeholder="__('Electrical Equipment Name')" />
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="mb-3">
+                    <label class="form-label">@lang('Electrical Equipment Short Name'):</label>
+                    <x-core-input name="shortname" :value="old('shortname')" :required="true"
+                        :placeholder="__('Electrical Equipment Short Name')" />
                 </div>
             </div>
             <div class="col-12">
@@ -29,10 +36,25 @@
             </div>
             <div class="col-12">
                 <div class="mb-3">
+                    <label class="form-label">@lang('Cost'):</label>
+                    <x-core-input class="input-format-number" name="cost" :value="old('cost')" :required="true"
+                        :placeholder="__('Cost')" />
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="mb-3">
                     <label class="form-label">@lang('Price'):</label>
                     <x-core-input class="input-format-number" name="price" :value="old('price')" :required="true"
                         :placeholder="__('Price')" />
                 </div>
+            </div>
+            <div class="col-12 mb-3">
+                <label class="form-label">@lang('Warehouse'):</label>
+                <x-core-select name="warehouse_id" :required="true">
+                    @foreach ($warehouses as $warehouse)
+                        <x-core-select-option :value="$warehouse->id" :title="$warehouse->name" />
+                    @endforeach
+                </x-core-select>
             </div>
             <div class="col-12">
                 <div class="mb-3">

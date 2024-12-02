@@ -3,13 +3,15 @@
 namespace App\Admin\Services\ElectricalEquipment;
 
 use App\Admin\Repositories\ElectricalEquipment\ElectricalEquipmentRepositoryInterface;
+use App\Admin\Repositories\ElectricalEquipment\ElectricalEquipmentTypeRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class ElectricalEquipment
 {
     public function __construct(
-        public ElectricalEquipmentRepositoryInterface $repo
+        public ElectricalEquipmentRepositoryInterface $repository,
+        public ElectricalEquipmentTypeRepositoryInterface $repoElectricalEquipmentType,
     )
     {
 
@@ -22,32 +24,18 @@ class ElectricalEquipment
 
             $data = $request->validated();
 
-            $types = $data['electrical_equipment_type_id'];
-
-            $electricalequipments = $this->repo->create($data);
-
-            logger()->info(trans('User ID :uid add customer ID :cid', [
-                'uid' => auth('admin')->id(),
-                'cid' => $electricalequipments->id
-            ]), [
-                'user' => auth('admin')->user()->toArray(),
-                'request' => $request->all()
-            ]);
+            $electricalequipments = $this->repository->create($data);
+            
+            $adminId = auth('admin')->id();
 
             DB::commit();
-            return $eventservices;
+            return $electricalequipments;
 
         } catch (\Throwable $th) {
-
-            logger()->error(trans('Add Event Services has error :err', ['err' => $th->getMessage()]), [
-                'user' => auth('admin')->user()->toArray(),
-                'request' => $request->all()
-            ]);
 
             DB::rollBack();
             throw $th;
         }
-        DD();
     }
 
     public function update(Request $request)
@@ -59,27 +47,13 @@ class ElectricalEquipment
 
             $types = $data['electrical_equipment_type_id'];
 
-            $electricalequipments = $this->repo->update($data['id'], $data);
-
+            $electricalequipments = $this->repository->update($data['id'], $data);;
             // $eventservices->type()->sync($types);
-
-            logger()->info(trans('User ID :uid update customer ID :cid', [
-                'uid' => auth('admin')->id(),
-                'cid' => $electricalequipments->id
-            ]), [
-                'user' => auth('admin')->user()->toArray(),
-                'request' => $request->all()
-            ]);
-
             DB::commit();
             return $electricalequipments;
+            dd($electricalequipments);
 
         } catch (\Throwable $th) {
-
-            logger()->error(trans('Update customer has error :err', ['err' => $th->getMessage()]), [
-                'user' => auth('admin')->user()->toArray(),
-                'request' => $request->all()
-            ]);
 
             DB::rollBack();
             throw $th;
