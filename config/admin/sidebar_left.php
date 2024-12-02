@@ -124,7 +124,7 @@ return [
             ],
             [
                 'title' => 'Electrical Equipment',
-                'route_name' =>  '',
+                'route_name' =>  'admin.electrical_equipment.index',
                 'icon' => '<i class="ti ti-list"></i>'
             ],
             [

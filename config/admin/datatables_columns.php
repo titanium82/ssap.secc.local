@@ -433,6 +433,32 @@ return [
             'addClass' => 'text-center'
         ],
     ],
+    'electrical_equipment' => [
+        'name' => [
+            'title' => 'Electrical Equipment Name',
+            'orderable' => false,
+        ],
+        'electrical_equipment_type_id' => [
+            'title' => 'Electrical Equipment Type Name',
+            'orderable' => false,
+        ],
+        'desc' => [
+            'title' => 'Electrical Equipment Desc',
+            'orderable' => false,
+        ],
+        'created_at' => [
+            'title' => 'createdAt',
+            'orderable' => false,
+            'visible' => false,
+        ],
+        'action' => [
+            'title' => 'action',
+            'orderable' => false,
+            'exportable' => false,
+            'printable' => false,
+            'addClass' => 'text-center'
+        ],
+    ],
     'electrical_equipment_type' => [
         'name' => [
             'title' => 'Electrical Equipment Type Name',
