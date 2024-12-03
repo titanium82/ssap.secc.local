@@ -12,6 +12,7 @@ use App\Admin\Services\ElectricalEquipment\ElectricalEquipment;
 use Illuminate\Http\{JsonResponse, RedirectResponse, Request};
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Admin\Enums\ElectricalEquipment\Unit;
 
 class ElectricalEquipmentController extends Controller
@@ -152,6 +153,17 @@ class ElectricalEquipmentController extends Controller
             }
 
             return back()->withErrors('error', $th->getMessage());
+        }
+    }
+    public function importExcel(ElectricalEquipment $request)
+    {
+        try {
+            Excel::import(new ElectricalEquipmentImport, $request->file('file'));
+
+            return back()->with('success', __('importExcelSuccess'));
+
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
         }
     }
     public function searchSelect(Request $request)

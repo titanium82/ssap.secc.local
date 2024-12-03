@@ -25,7 +25,7 @@ class ElectricalEquipment
             $data = $request->validated();
 
             $electricalequipments = $this->repository->create($data);
-            
+
             $adminId = auth('admin')->id();
 
             DB::commit();
@@ -51,8 +51,6 @@ class ElectricalEquipment
             // $eventservices->type()->sync($types);
             DB::commit();
             return $electricalequipments;
-            dd($electricalequipments);
-
         } catch (\Throwable $th) {
 
             DB::rollBack();

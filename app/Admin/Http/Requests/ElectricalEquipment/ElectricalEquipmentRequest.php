@@ -15,6 +15,12 @@ class ElectricalEquipmentRequest extends Request
      */
     protected function methodPost()
     {
+        if($this->routeIs('admin.electrical_equipment.import_excel'))
+        {
+            return [
+                'file' => ['required', 'file', 'mimes:xls,xlsx']
+            ];
+        }
         return [
             'admin_id'                      => ['required', 'exists:App\Models\Admin,id'],
             'name'                          => ['required', 'string'],
@@ -24,6 +30,7 @@ class ElectricalEquipmentRequest extends Request
             'price'                         => ['nullable','numeric'],
             'electrical_equipment_type_id'  => ['required','exists:App\Models\ElectricalEquipmentType,id'],
             'warehouse_id'                  => ['required','exists:App\Models\Warehouse,id'],
+            'image'                         =>['nullable'],
             'desc'                          => ['nullable', 'string']
         ];
     }
@@ -39,6 +46,7 @@ class ElectricalEquipmentRequest extends Request
             'price'                         => ['nullable','numeric'],
             'electrical_equipment_type_id'  => ['required','exists:App\Models\ElectricalEquipmentType,id'],
             'warehouse_id'                  => ['required','exists:App\Models\Warehouse,id'],
+            'image'                         =>['nullable'],
             'desc'                          => ['nullable', 'string']
          ];
     }
@@ -58,6 +66,7 @@ class ElectricalEquipmentRequest extends Request
     protected function passedValidation(): void
     {
         $data = $this->validator->getData();
+        $data['image'] = empty($data['image']) ? [] : explode(',', $data['image']);
         $this->validator->setData($data);
     }
 }

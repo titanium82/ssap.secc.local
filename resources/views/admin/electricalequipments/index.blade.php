@@ -6,12 +6,22 @@
             <div class="card">
                 <div class="card-header justify-content-between">
                     <h2 class="mb-0">@lang('list')</h2>
-                    @adminaccessroutename('admin.electrical_equipment.create')
-                    <a href="{{ route('admin.electrical_equipment.create') }}" class="btn btn-primary">
-                        <i class="ti ti-plus"></i>
-                        <span>@lang('add')</span>
-                    </a>
-                @endadminaccessroutename
+                        <div class="d-flex gap-2">
+                            @adminaccessroutename('admin.customer.import_excel')
+                                <x-core-form :action="route('admin.customer.import_excel')" enctype="multipart/form-data" type="post">
+                                    <input type="file" name="file" id="importExcel" class="form-control d-none" onchange="this.form.submit()" />
+                                    <button type="button" class="btn btn-primary gap-1" onclick="document.getElementById('importExcel').click()">
+                                        <i class="ti ti-file-upload"></i> @lang('Import Excel')
+                                    </button>
+                                </x-core-form>
+                            @endadminaccessroutename
+                            @adminaccessroutename('admin.electrical_equipment.create')
+                                <a href="{{ route('admin.electrical_equipment.create') }}" class="btn btn-primary">
+                                    <i class="ti ti-plus"></i>
+                                    <span>@lang('add')</span>
+                                </a>
+                            @endadminaccessroutename
+                        </div>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive position-relative">

@@ -15,5 +15,5 @@
 @endsection
 
 @push('libs-js')
-
+@include('ckfinder::setup')
 @endpush
