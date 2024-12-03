@@ -15,4 +15,11 @@
             </button>
         </div>
     </div>
+    <div class="card mt-3">
+        <div class="card-header">@lang('Image')
+        </div>
+        <div class="card-body p-2">
+            <x-core-input-image-ckfinder name="image" :value="$electricalequipment->image" showImage="image" />
+        </div>
+    </div>
 </div>

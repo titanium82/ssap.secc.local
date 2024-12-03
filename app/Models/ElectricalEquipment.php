@@ -20,6 +20,7 @@ class ElectricalEquipment extends Model
         'unit',
         'cost',
         'price',
+        'image', //bổ sung hình ảnh sản phẩm
         'electrical_equipment_type_id',
         'warehouse_id',
         'desc'

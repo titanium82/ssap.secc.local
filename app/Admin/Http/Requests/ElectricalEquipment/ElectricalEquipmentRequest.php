@@ -66,7 +66,6 @@ class ElectricalEquipmentRequest extends Request
     protected function passedValidation(): void
     {
         $data = $this->validator->getData();
-        $data['image'] = empty($data['image']) ? [] : explode(',', $data['image']);
         $this->validator->setData($data);
     }
 }
