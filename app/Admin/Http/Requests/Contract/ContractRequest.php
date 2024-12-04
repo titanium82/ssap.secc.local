@@ -51,23 +51,23 @@ class ContractRequest extends Request
     protected function methodPut()
     {
         return [
-            'id' => ['required', 'exists:App\Models\Contract,id'],
-            'contract.name' => ['required', 'string'],
-            'contract.short_name' => ['required', 'string'],    //tên viết tắt cho tên sự kiện
-            'contract.day_begin' => ['required', 'date_format:Y-m-d'],
-            'contract.day_end' => ['required', 'date_format:Y-m-d'],
-            'contract.deposit' => ['nullable', 'numeric', 'min:0'],
-            'contract.payment_method' => ['required', new Enum(ContractPaymentMethod::class)],
-            'contract.sub_total_amount' => ['nullable', 'numeric'],
-            'contract.annex' => ['nullable', 'array'],
-            'contract.annex.*' => ['nullable', 'json'],
-            'contract.files' => ['nullable', 'array'],
-            'contract.files.*' => ['nullable', 'json'],
-            'contract.note' => ['nullable'],
-            'exhibition_location_id' => ['required', 'array'],
-            'exhibition_location_id.*' => ['required', 'exists:App\Models\ExhibitionLocation,id'],
-            'sector_id' => ['required', 'array'],
-            'sector_id.*' => ['required', 'exists:App\Models\CustomerSector,id'],
+            'id'                            => ['required', 'exists:App\Models\Contract,id'],
+            'contract.name'                 => ['required', 'string'],
+            'contract.short_name'           => ['required', 'string'],    //tên viết tắt cho tên sự kiện
+            'contract.day_begin'            => ['required', 'date_format:Y-m-d'],
+            'contract.day_end'              => ['required', 'date_format:Y-m-d'],
+            'contract.deposit'              => ['nullable', 'numeric', 'min:0'],
+            'contract.payment_method'       => ['required', new Enum(ContractPaymentMethod::class)],
+            'contract.sub_total_amount'     => ['nullable', 'numeric'],
+            'contract.annex'                => ['nullable', 'array'],
+            'contract.annex.*'              => ['nullable', 'json'],
+            'contract.files'                => ['nullable', 'array'],
+            'contract.files.*'              => ['nullable', 'json'],
+            'contract.note'                 => ['nullable'],
+            'exhibition_location_id'        => ['required', 'array'],
+            'exhibition_location_id.*'      => ['required', 'exists:App\Models\ExhibitionLocation,id'],
+            'sector_id'                     => ['required', 'array'],
+            'sector_id.*'                   => ['required', 'exists:App\Models\CustomerSector,id'],
         ];
     }
 

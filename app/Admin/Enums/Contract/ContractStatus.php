@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 namespace App\Admin\Enums\Contract;
 
@@ -11,7 +11,7 @@ enum ContractStatus: int
     case Pending = 10;
 
     case Processing = 20;
-    
+
     case Completed = 30;
 
     public function badge()

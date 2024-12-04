@@ -13,7 +13,7 @@ if (! function_exists('uniqid_real')) {
             throw new \Exception("no cryptographically secure random function available");
         }
         return Str::upper(substr(bin2hex($bytes), 0, $lenght));
-    } 
+    }
 }
 
 if (! function_exists('format_price')) {
@@ -26,7 +26,7 @@ if (! function_exists('format_price')) {
             $currency = config('core.currency');
         }
         return $positionCurrent == 'left' ? $currency.number_format($price) : number_format($price).$currency;
-    } 
+    }
 }
 
 if (! function_exists('format_date')) {
@@ -36,7 +36,7 @@ if (! function_exists('format_date')) {
             return date($format, strtotime($date));
         }
         return null;
-    } 
+    }
 }
 
 if (! function_exists('format_datetime')) {
@@ -46,14 +46,20 @@ if (! function_exists('format_datetime')) {
             return date($format, strtotime($datetime));
         }
         return null;
-    } 
+    }
 }
 
 if (! function_exists('contract_code')) {
     function contract_code(string $code, string $contract_type_shortname = null)
     {
         return $code . '/' . date('Y'). '-' . $contract_type_shortname . '-' . config('core.project_name');
-    } 
+    }
+}
+if (! function_exists('electricalequipment_code')) {
+    function electricalequipment_code(string $code, string $customer_type_shortname = null)
+    {
+        return $code . '/' . date('Y'). '-' . $customer_type_shortname . '-' . config('core.project_name');
+    }
 }
 
 if (! function_exists('format_to_number')) {

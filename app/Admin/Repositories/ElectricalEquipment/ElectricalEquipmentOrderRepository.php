@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Admin\Repositories\ElectricalEquipment;
+
+use App\Admin\Enums\Contract\ContractStatus;
 use App\Core\Repositories\EloquentRepository;
 use App\Admin\Repositories\ElectricalEquipment\ElectricalEquipmentOrderRepositoryInterface;
 use App\Models\ElectricalEquipmentOrder;
@@ -11,7 +13,20 @@ class ElectricalEquipmentOrderRepository extends EloquentRepository implements E
     public function getModel(){
         return ElectricalEquipmentOrder::class;
     }
+    public function accept($id)
+    {
+        $cp = $this->findOrFail($id);
+        if($cp->canAccept())
+        {
+            $cp->update([
+                'approved_by' => auth('admin')->id(),
+                'status' => ContractStatus::Processing
+            ]);
+            return true;
+        }
 
+        return false;
+    }
     public function searchSelect(string $keyword = '', int $limit = 10): array
     {
         $electricalequipmentorder = $this->model->select('id', 'name')

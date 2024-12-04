@@ -24,6 +24,7 @@ class RepositoryServiceProvider extends ServiceProvider
         'App\Admin\Repositories\Exhibition\ExhibitionEventRepositoryInterface'                   => 'App\Admin\Repositories\Exhibition\ExhibitionEventRepository',
         'App\Admin\Repositories\Exhibition\ExhibitionLocationRepositoryInterface'                => 'App\Admin\Repositories\Exhibition\ExhibitionLocationRepository',
         'App\Admin\Repositories\ElectricalEquipment\ElectricalEquipmentTypeRepositoryInterface'  => 'App\Admin\Repositories\ElectricalEquipment\ElectricalEquipmentTypeRepository',
+        'App\Admin\Repositories\ElectricalEquipment\ElectricalEquipmentOrderRepositoryInterface'  => 'App\Admin\Repositories\ElectricalEquipment\ElectricalEquipmentOrderRepository',
         'App\Admin\Repositories\ElectricalEquipment\ElectricalEquipmentRepositoryInterface'      => 'App\Admin\Repositories\ElectricalEquipment\ElectricalEquipmentRepository',
         'App\Admin\Repositories\Warehouse\WarehouseRepositoryInterface'                          => 'App\Admin\Repositories\Warehouse\WarehouseRepository',
 
