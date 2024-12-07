@@ -1,4 +1,4 @@
- <?php
+<?php
 
 namespace App\Admin\Enums\Contract;
 
@@ -18,9 +18,9 @@ enum ContractStatus: int
     {
         return match($this)
         {
-            ContractStatus::Pending => 'bg-yellow',
-            ContractStatus::Processing => 'bg-cyan',
-            ContractStatus::Completed => 'bg-green',
+            ContractStatus::Pending         => 'bg-yellow',
+            ContractStatus::Processing      => 'bg-cyan',
+            ContractStatus::Completed       => 'bg-green',
         };
     }
 }
