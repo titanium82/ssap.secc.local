@@ -192,6 +192,18 @@ Route::middleware([App\Admin\Http\Middleware\AuthAdminMiddleware::class, App\Adm
         Route::get('/edit/{id}', 'edit')->name('edit');
         Route::delete('/delete/{id}', 'delete')->name('delete');
     });
+    //Manager Electrical Equipment Order
+    Route::prefix('/electrical-equipment-order')->controller(App\Admin\Http\Controllers\ElectricalEquipment\ElectricalEquipmentOrderController::class)
+    ->name('electrical_equipment_order.')
+    ->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
+        Route::put('/update', 'update')->name('update');
+        Route::get('/edit/{id}', 'edit')->name('edit');
+        Route::post('/import-excel', 'importExcel')->name('import_excel');
+        Route::delete('/delete/{id}', 'delete')->name('delete');
+    });
     //Manager Electrical Equipment
     Route::prefix('/electrical-equipment')->controller(App\Admin\Http\Controllers\ElectricalEquipment\ElectricalEquipmentController::class)
     ->name('electrical_equipment.')

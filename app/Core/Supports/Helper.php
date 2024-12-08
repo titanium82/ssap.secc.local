@@ -50,15 +50,15 @@ if (! function_exists('format_datetime')) {
 }
 
 if (! function_exists('contract_code')) {
-    function contract_code(string $code, string $contract_type_shortname = null)
+    function contract_code(string $code, string $contract_type_short_name = null)
     {
-        return $code . '/' . date('Y'). '-' . $contract_type_shortname . '-' . config('core.project_name');
+        return $code . '/' . date('Y'). '-' . $contract_type_short_name . '-' . config('core.project_name');
     }
 }
 if (! function_exists('electricalequipment_code')) {
-    function electricalequipment_code(string $code, string $customer_type_shortname = null)
+    function electricalequipment_code(string $code, string $contract_type_short_name = null)
     {
-        return $code . '/' . date('Y'). '-' . $customer_type_shortname . '-' . config('core.project_name');
+        return $code . '/' . date('Y'). '-' . config('core.electrical_team') . '-' . config('core.electrical_team');
     }
 }
 

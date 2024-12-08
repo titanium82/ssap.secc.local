@@ -16,7 +16,7 @@ class CustomerImport extends BaseImport
             return new Customer([
                 'admin_id' => $adminId,
                 'fullname' => $row['company_name'],
-                'shortname' => $row['shortname'],
+                'short_name' => $row['short_name'],
                 'phone' => $row['tel'],
                 'gender' => Gender::Male,
                 'fax' => $row['fax'],

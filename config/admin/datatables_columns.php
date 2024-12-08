@@ -148,7 +148,7 @@ return [
             'orderable' => false,
             'width' => '200px',
         ],
-        'shortname' => [
+        'short_name' => [
             'title' => 'Exhibition Event Short Name',
             'orderable' => false,
             'width' => '100px',
@@ -234,8 +234,8 @@ return [
             'orderable' => false,
             'width' => '300px',
         ],
-        'shortname' => [
-            'title' => 'Shortname Customer',
+        'short_name' => [
+            'title' => 'Short Name Customer',
             'orderable' => false,
             'width' => '200px',
         ],
@@ -433,6 +433,48 @@ return [
             'addClass' => 'text-center'
         ],
     ],
+    'electrical_equipment_order' => [
+        'exhibition_event_id' => [
+            'title' => 'Exhibition Event',
+            'orderable' => false,
+        ],
+        'code' => [
+            'title' => 'Electrical Equipment Order Code',
+            'orderable' => false,
+        ],
+        'customer_id' => [
+            'title' => 'Customer',
+            'orderable' => false,
+        ],
+        'booth_no' => [
+            'title' => 'Booth No',
+            'orderable' => false,
+        ],
+        'contact_fullname' => [
+            'title' => 'Contact Fullname',
+            'orderable' => false,
+        ],
+        'contact_phone' => [
+            'title' => 'Contact Phone',
+            'orderable' => false,
+        ],
+        'admin_id' => [
+            'title' => 'Created by',
+            'orderable' => false,
+        ],
+        'created_at' => [
+            'title' => 'createdAt',
+            'orderable' => false,
+            'visible' => false,
+        ],
+        'action' => [
+            'title' => 'action',
+            'orderable' => false,
+            'exportable' => false,
+            'printable' => false,
+            'addClass' => 'text-center'
+        ],
+    ],
     'electrical_equipment' => [
         'name' => [
             'title' => 'Electrical Equipment Name',
@@ -494,8 +536,8 @@ return [
             'title' => 'name',
             'orderable' => false,
         ],
-        'shortname' => [
-            'title' => 'shortname',
+        'short_name' => [
+            'title' => 'Short Name',
             'orderable' => false,
         ],
         'created_at' => [
@@ -552,8 +594,8 @@ return [
             'title' => 'name',
             'orderable' => false,
         ],
-        'shortname' => [
-            'title' => 'shortname',
+        'short_name' => [
+            'title' => 'Short Name',
             'orderable' => false,
         ],
         'created_at' => [

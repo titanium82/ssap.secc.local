@@ -10,9 +10,9 @@
             </div>
             <div class="col-12 col-md-3">
                 <div class="mb-3">
-                    <label class="form-label">@lang('Shortname'):</label>
-                    <x-core-input name="shortname" :value="$customer->shortname" :required="true"
-                        :placeholder="__('Shortname')" />
+                    <label class="form-label">@lang('Short Name'):</label>
+                    <x-core-input name="short_name" :value="$customer->short_name" :required="true"
+                        :placeholder="__('Short Name')" />
                 </div>
             </div>
             <div class="col-12 mb-3">

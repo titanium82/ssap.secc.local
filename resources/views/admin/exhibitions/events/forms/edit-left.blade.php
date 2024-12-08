@@ -11,7 +11,7 @@
             <div class="col-6">
                 <div class="mb-3">
                     <label class="form-label">@lang('Short Name'):</label>
-                    <x-core-input name="exhibitionevent[shortname]" :value="$exhibition_events->shortname" :required="true"
+                    <x-core-input name="exhibitionevent[short_name]" :value="$exhibition_events->short_name" :required="true"
                         :placeholder="__('Short Name')" />
                 </div>
             </div>
@@ -27,7 +27,7 @@
                     <label class="form-label">@lang('Customer'):</label>
                     <x-core-select name="exhibitionevent[customer_id]" :required="true">
                     @foreach($customer as $customer)
-                        <x-core-select-option :option="$exhibition_events->customer_id" :value="$customer->id" :title="$customer->shortname"/>
+                        <x-core-select-option :option="$exhibition_events->customer_id" :value="$customer->id" :title="$customer->short_name"/>
                     @endforeach
                     </x-core-select>
                 </div>

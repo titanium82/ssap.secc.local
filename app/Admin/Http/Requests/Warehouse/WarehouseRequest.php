@@ -17,7 +17,7 @@ class WarehouseRequest extends Request
             'admin_id'      => ['required', 'exists:App\Models\Admin,id'],
             'department_id' => ['nullable','exists:App\Models\Department,id'],
             'name'          => ['required', 'string', 'unique:App\Models\Warehouse,name'],
-            'shortname'     => ['nullable', 'string'],
+            'short_name'     => ['nullable', 'string'],
             'desc'          => ['nullable', 'string']
         ];
     }
@@ -27,7 +27,7 @@ class WarehouseRequest extends Request
         return [
             'id'            => ['required', 'exists:App\Models\Warehouse,id'],
             'name'          => ['required', 'string', 'unique:App\Models\Warehouse,name,'.$this->id],
-            'shortname'     => ['nullable', 'string'],
+            'short_name'     => ['nullable', 'string'],
             'desc'          => ['nullable', 'string']
         ];
     }

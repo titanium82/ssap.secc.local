@@ -16,7 +16,7 @@ class Warehouse extends Model
         'admin_id',
         'department_id',
         'name',
-        'shortname',
+        'short_name',
         'desc'
     ];
     public function department(): BelongsTo

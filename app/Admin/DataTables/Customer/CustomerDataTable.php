@@ -32,7 +32,7 @@ class CustomerDataTable extends DataTables
     }
     protected function setColumnHasSearch(): void
     {
-        $this->columnHasSearch = ['fullname', 'shortname', 'email', 'phone', 'customer_type_id', 'sectors', 'admin_id', 'created_at'];
+        $this->columnHasSearch = ['fullname', 'short_name', 'email', 'phone', 'customer_type_id', 'sectors', 'admin_id', 'created_at'];
     }
 
     protected function setColumnSearchDate(): void

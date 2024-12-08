@@ -5,7 +5,7 @@ namespace App\Admin\Imports;
 use App\Admin\Enums\ElectricalEquipment\Unit;
 use App\Models\ElectricalEquipment;
 
-class ElectricalEquipmentImport extends BaseImport
+class ElectricalEquipmentOrderImport extends BaseImport
 {
     public function model(array $row)
     {
@@ -15,8 +15,8 @@ class ElectricalEquipmentImport extends BaseImport
 
             return new ElectricalEquipment([
                 'admin_id'                      => $adminId,
-                'name'                          => $row['name'],
-                'short_name'                     => $row['short_name'],
+                'code'                          => $row['code'],
+                'customer_id'                   => $row['customer'],
                 'unit'                          => Unit::Pieces,
                 'cost'                          => $row['cost'],
                 'price'                         => $row['price'],

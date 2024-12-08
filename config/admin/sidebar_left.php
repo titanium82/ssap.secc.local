@@ -119,7 +119,7 @@ return [
         'sub' => [
             [
                 'title' => 'Electrical Equipment Orders',
-                'route_name' => '',
+                'route_name' => 'admin.electrical_equipment_order.index',
                 'icon' => '<i class="ti ti-list"></i>'
             ],
             [

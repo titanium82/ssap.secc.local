@@ -16,7 +16,7 @@ class ElectricalEquipment extends Model
     protected $fillable = [
         'admin_id',
         'name',
-        'shortname',
+        'short_name',
         'unit',
         'cost',
         'price',

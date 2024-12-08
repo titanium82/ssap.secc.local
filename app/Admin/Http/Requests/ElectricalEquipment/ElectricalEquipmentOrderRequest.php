@@ -58,6 +58,7 @@ class ElectricalEquipmentOrderRequest extends Request
         $data = $this->all();
         $data['electricalequipment']['admin_id'] = auth('admin')->id();
 
+        $data['electricalequipment']['vat'] = format_to_number($data['electricalequipment']['vat'] ?? 0);
         $data['electricalequipment']['amount'] = format_to_number($data['electricalequipment']['amount'] ?? 0);
         $data['electricalequipment']['total_amount'] = format_to_number($data['electricalequipment']['total_amount'] ?? 0);
 

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('electrical_equipment_types', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('shortname');
+            $table->string('short_name');
             $table->string('desc');
             $table->timestamps();
             $table->unsignedBigInteger('admin_id')->nullable();

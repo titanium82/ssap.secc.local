@@ -20,7 +20,7 @@
             <div class="col-12">
                 <div class="mb-3">
                     <label class="form-label">@lang('Electrical Equipment Short Name'):</label>
-                    <x-core-input name="shortname" :value="old('shortname')" :required="true"
+                    <x-core-input name="short_name" :value="old('short_name')" :required="true"
                         :placeholder="__('Electrical Equipment Short Name')" />
                 </div>
             </div>

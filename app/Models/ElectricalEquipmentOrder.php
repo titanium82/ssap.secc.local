@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Admin\Enums\Contract\ContractStatus;
 use App\Admin\Enums\ElectricalEquipment\Discount;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -12,7 +13,7 @@ class ElectricalEquipmentOrder extends Model
 {
     use HasFactory;
 
-    protected $table = 'electrical_equipments';
+    protected $table = 'electrical_equipment_orders';
 
     protected $fillable = [
         'admin_id',
@@ -33,7 +34,9 @@ class ElectricalEquipmentOrder extends Model
     public function casts():  array
     {
         return[
-            'discount' => Discount::class
+            'discount' => Discount::class,
+            'status' => ContractStatus::class,
+
         ];
     }
     public function isCreator()

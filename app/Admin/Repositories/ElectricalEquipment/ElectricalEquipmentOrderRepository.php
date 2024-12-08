@@ -2,7 +2,6 @@
 
 namespace App\Admin\Repositories\ElectricalEquipment;
 
-use App\Admin\Enums\Contract\ContractStatus;
 use App\Core\Repositories\EloquentRepository;
 use App\Admin\Repositories\ElectricalEquipment\ElectricalEquipmentOrderRepositoryInterface;
 use App\Models\ElectricalEquipmentOrder;
@@ -12,20 +11,6 @@ class ElectricalEquipmentOrderRepository extends EloquentRepository implements E
 
     public function getModel(){
         return ElectricalEquipmentOrder::class;
-    }
-    public function accept($id)
-    {
-        $cp = $this->findOrFail($id);
-        if($cp->canAccept())
-        {
-            $cp->update([
-                'approved_by' => auth('admin')->id(),
-                'status' => ContractStatus::Processing
-            ]);
-            return true;
-        }
-
-        return false;
     }
     public function searchSelect(string $keyword = '', int $limit = 10): array
     {
@@ -40,7 +25,6 @@ class ElectricalEquipmentOrderRepository extends EloquentRepository implements E
                 'text' => $item->name
             ];
         });
-
         return $electricalequipmentorder->toArray();
     }
 
@@ -51,36 +35,5 @@ class ElectricalEquipmentOrderRepository extends EloquentRepository implements E
         $this->authorize('view', 'admin');
 
         return $this->instance;
-    }
-    public function update($id, array $data)
-    {
-        $this->find($id);
-
-        if ($this->instance) {
-
-            // $this->authorize('update', 'admin');
-
-            $this->instance->update($data);
-
-            return $this->instance;
-        }
-
-        return false;
-    }
-
-    public function delete($id)
-    {
-        $this->find($id);
-
-        if ($this->instance){
-
-/*             $this->authorize(action: 'delete', 'admin');
- */
-            $this->instance->delete();
-
-            return true;
-        }
-
-        return false;
     }
 }

@@ -19,7 +19,7 @@ class Customer extends Model
         'admin_id',
         'customer_type_id',
         'fullname',
-        'shortname',
+        'short_name',
         'phone',
         'gender',
         'fax',

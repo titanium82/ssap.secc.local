@@ -21,7 +21,7 @@ class ExhibitionEvent extends Model
         'admin_id',
         'customer_id',  //Khách hàng
         'name', //tên sự kiện
-        'shortname', // tên viết tắt
+        'short_name', // tên viết tắt
         'day_begin',  //ngày bắt đầu sự kiện
         'day_end',  // ngày kết thúc sự kiện
         'event_manager',

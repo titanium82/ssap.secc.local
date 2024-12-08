@@ -17,7 +17,7 @@
                         </div>
                         <div class="col">
                             <div class="fw-bold fs-2">
-                                {{ $customer->fullname }} - {{$customer->shortname}}
+                                {{ $customer->fullname }} - {{$customer->short_name}}
                             </div>
                         </div>
                     </div>

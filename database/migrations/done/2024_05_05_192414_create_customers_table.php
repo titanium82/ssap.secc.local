@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('admin_id')->nullable();
             $table->unsignedBigInteger('customer_type_id')->nullable();
             $table->string('fullname')->nullable();
-            $table->string('shortname')->nullable();
+            $table->string('short_name')->nullable();
             $table->string('phone')->nullable();
             $table->char('gender', 20)->nullable();
             $table->string('fax')->nullable();

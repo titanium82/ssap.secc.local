@@ -11,7 +11,7 @@
             <div class="col-6">
                 <div class="mb-3">
                     <label class="form-label">@lang('Short Name'):</label>
-                    <x-core-input name="exhibitionevent[shortname]" :value="old('exhibitionevent.shortname')" :required="true"
+                    <x-core-input name="exhibitionevent[short_name]" :value="old('exhibitionevent.short_name')" :required="true"
                         :placeholder="__('Short Name')" />
                 </div>
             </div>

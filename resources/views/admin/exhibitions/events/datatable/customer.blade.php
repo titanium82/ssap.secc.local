@@ -1,7 +1,7 @@
 @if($customer_id)
     @adminaccessroutename('admin.customer.edit')
-        <a href="{{ route('admin.customer.edit', $customer_id) }}">{{ $customer['shortname'] ?? '' }}</a>
+        <a href="{{ route('admin.customer.edit', $customer_id) }}">{{ $customer['short_name'] ?? '' }}</a>
     @elseadminaccessroutename
-        <span>{{ $customer['shortname'] ?? '' }}</span>
+        <span>{{ $customer['short_name'] ?? '' }}</span>
     @endadminaccessroutename
 @endif

@@ -68,7 +68,7 @@ class ExhibitionEventDataTable extends DataTables
     {
         $this->filterColumns = [
             'exhibitionlocations'    => fn($q, $keyword)    => $q->whereRelation('exhibitionlocations', 'fullname', 'like', "%{$keyword}%"),
-            'customer_id'            => fn($q, $keyword)    => $q->whereRelation('customer', 'shortname', 'like', "%{$keyword}%"),
+            'customer_id'            => fn($q, $keyword)    => $q->whereRelation('customer', 'short_name', 'like', "%{$keyword}%"),
             'admin_id'               => fn($q, $k)          => $q->whereRelation('admin', 'fullname', 'like', "%$k%")
         ];
     }

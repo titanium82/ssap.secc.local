@@ -1,6 +1,7 @@
 <?php
 return [
     'project_name' => 'SECC',
+    'electrical_team' =>'TBĐ', // Team Thiết Bị Điện
     'frontend_url' => env('APP_URL'),
     'images' => [
         'favicon' => '/public/core/assets/images/logo.png',

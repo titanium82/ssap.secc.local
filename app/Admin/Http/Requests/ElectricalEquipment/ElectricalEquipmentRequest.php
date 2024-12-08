@@ -24,7 +24,7 @@ class ElectricalEquipmentRequest extends Request
         return [
             'admin_id'                      => ['required', 'exists:App\Models\Admin,id'],
             'name'                          => ['required', 'string'],
-            'shortname'                     => ['nullable', 'string'],
+            'short_name'                     => ['nullable', 'string'],
             'unit'                          => ['nullable', new Enum(Unit::class)],
             'cost'                          => ['nullable','numeric'],
             'price'                         => ['nullable','numeric'],
@@ -40,7 +40,7 @@ class ElectricalEquipmentRequest extends Request
         return [
             'id'                            => ['required', 'exists:App\Models\ElectricalEquipment,id'],
             'name'                          => ['required', 'string','unique:App\Models\ElectricalEquipment,name,'.$this->id],
-            'shortname'                     => ['nullable', 'string'],
+            'short_name'                     => ['nullable', 'string'],
             'unit'                          => ['nullable', new Enum(Unit::class)],
             'cost'                          => ['nullable','numeric'],
             'price'                         => ['nullable','numeric'],

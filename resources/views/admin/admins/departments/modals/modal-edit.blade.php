@@ -19,7 +19,7 @@
                         <div class="col-12">
                             <div class="mb-3">
                                 <label class="form-label">@lang('Edit Department Short Name'):</label>
-                                <x-core-input name="shortname" :value="$department->shortname" :required="true"
+                                <x-core-input name="short_name" :value="$department->short_name" :required="true"
                                     :placeholder="__('Department Short Name')" />
                             </div>
                         </div>

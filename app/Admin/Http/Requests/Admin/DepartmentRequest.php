@@ -14,9 +14,9 @@ class DepartmentRequest extends Request
     protected function methodPost()
     {
         return [
-            'admin_id' => ['required', 'exists:App\Models\Admin,id'],
-            'name' => ['required', 'string', 'unique:App\Models\Department,name'],
-            'shortname' => ['required', 'string', 'unique:App\Models\Department,shortname']
+            'admin_id'          => ['required', 'exists:App\Models\Admin,id'],
+            'name'              => ['required', 'string', 'unique:App\Models\Department,name'],
+            'short_name'        => ['required', 'string', 'unique:App\Models\Department,short_name']
 
         ];
     }
@@ -24,9 +24,9 @@ class DepartmentRequest extends Request
     protected function methodPut()
     {
         return [
-            'id' => ['required', 'exists:App\Models\Department,id'],
-            'name' => ['nullable', 'string'],
-            'shortname' => ['nullable', 'string']
+            'id'                => ['required', 'exists:App\Models\Department,id'],
+            'name'              => ['nullable', 'string'],
+            'short_name'        => ['nullable', 'string']
 
         ];
     }
