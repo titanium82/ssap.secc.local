@@ -3,7 +3,9 @@
 namespace App\Admin\Http\Controllers\ElectricalEquipment;
 
 use App\Admin\DataTables\ElectricalEquipment\ElectricalEquipmentOrderDataTable;
+use App\Admin\Enums\Contract\ContractPaymentMethod;
 use App\Admin\Enums\Contract\ContractStatus;
+use App\Admin\Enums\ElectricalEquipment\Surcharge;
 use App\Admin\Http\Controllers\Controller;
 use App\Admin\Http\Requests\ElectricalEquipment\ElectricalEquipmentOrderRequest;
 use App\Admin\Repositories\ElectricalEquipment\ElectricalEquipmentOrderRepositoryInterface;
@@ -15,8 +17,10 @@ use App\Admin\Enums\ElectricalEquipment\Unit;
 use App\Admin\Http\Requests\ElectricalEquipment\ElectricalEquipmentRequest;
 use App\Admin\Imports\ElectricalEquipmentOrderImport;
 use App\Admin\Repositories\Customer\CustomerRepositoryInterface;
+use App\Admin\Repositories\Customer\CustomerTypeRepositoryInterface;
 use App\Admin\Repositories\Exhibition\ExhibitionEventRepositoryInterface;
-use App\Admin\Services\ElectricalEquipment\ElectricalEquipmentOrder;
+use App\Admin\Repositories\Exhibition\ExhibitionLocationRepositoryInterface;
+use App\Admin\Services\ElectricalEquipment\ElectricalEquipmentOrderService;
 
 class ElectricalEquipmentOrderController extends Controller
 {
@@ -24,8 +28,10 @@ class ElectricalEquipmentOrderController extends Controller
     public function __construct(
         public ElectricalEquipmentOrderRepositoryInterface $repository,
         public CustomerRepositoryInterface $repoCustomer,
+        public CustomerTypeRepositoryInterface $repoCustomerType,
         public ExhibitionEventRepositoryInterface $repoExhibitionEvent,
-        public ElectricalEquipmentOrder $service
+        public ExhibitionLocationRepositoryInterface $repoExhibitionLocation,
+        public ElectricalEquipmentOrderService $service
     )
     {
     }
@@ -46,16 +52,26 @@ class ElectricalEquipmentOrderController extends Controller
         )
         ->with('electricalequipmentorders', $electricalequipmentorder);
     }
-    public function create(): View
+    public function create(Request $request): View
     {
         $exhibitionevent = $this ->repoExhibitionEvent->getAll();
-        $customer = $this ->repoCustomer->getAll();
+        $exhibitionlocations = $this ->repoExhibitionLocation->getAll();
+
+        if($customer_id = $request->route()->parameter('customer_id'))
+        {
+            $customer = $this->repoCustomer->findOrFail($customer_id);
+        }
+            $customertype = $this ->repoCustomerType->getAll();
 
         return view('admin.electricalequipments.orders.create')
         ->with('breadcrums', $this->breadcrums()->addByRouteName(trans('Electrical Equipment Order'), 'admin.electrical_equipment_order.index')->add(trans('Add')))
         ->with('status', ContractStatus::asSelectArray())
-        ->with('customers',$customer)
-        ->with('exhibitionevents',$exhibitionevent);
+        ->with('payment_methods', ContractPaymentMethod::asSelectArray())
+        ->with('surcharge', Surcharge::asSelectArray())
+        ->with('customer',$customer ?? null)
+        ->with('customertypes',$customertype)
+        ->with('exhibitionevents',$exhibitionevent)
+        ->with('exhibitionlocations',$exhibitionlocations);
     }
 
     public function store(ElectricalEquipmentOrderRequest $request): RedirectResponse
@@ -90,15 +106,20 @@ class ElectricalEquipmentOrderController extends Controller
     public function edit($id): View
     {
         $exhibitionevent = $this ->repoExhibitionEvent->getAll();
+        $exhibitionlocations = $this ->repoExhibitionLocation->getAll();
         $customer = $this ->repoCustomer->getAll();
+        $customertype = $this ->repoCustomerType->getAll();
         $electricalequipmentorder = $this->repository->findOrFail($id);
 
         return view('admin.electricalequipments.orders.edit')
         ->with('breadcrums', $this->breadcrums()->addByRouteName(trans('Electrical Equipment Order'), 'admin.electrical_equipment_order.index')->add(trans('Edit')))
         ->with('electricalequipment', $electricalequipmentorder)
-        ->with('unit', Unit::asSelectArray())
+        ->with('surcharge', Surcharge::asSelectArray())
+        ->with('payment_methods', ContractPaymentMethod::asSelectArray())
         ->with('customer',$customer)
-        ->with('exhibitionevent', $exhibitionevent);
+        ->with('customertypes',$customertype)
+        ->with('exhibitionevent', $exhibitionevent)
+        ->with('exhibitionlocations', $exhibitionlocations);
     }
 
     public function update(ElectricalEquipmentOrderRequest $request): RedirectResponse

@@ -14,7 +14,7 @@ class ElectricalEquipmentOrderRepository extends EloquentRepository implements E
     }
     public function searchSelect(string $keyword = '', int $limit = 10): array
     {
-        $electricalequipmentorder = $this->model->select('id', 'name')
+        $electricalequipmentorder = $this->model->select('id', 'code')
         ->currentAuth()
         ->whereAny($this->model->getFillable(), 'like', "%$keyword%")
         ->limit($limit)
@@ -22,7 +22,7 @@ class ElectricalEquipmentOrderRepository extends EloquentRepository implements E
         ->map(function($item) {
             return [
                 'id' => $item->id,
-                'text' => $item->name
+                'text' => $item->code
             ];
         });
         return $electricalequipmentorder->toArray();

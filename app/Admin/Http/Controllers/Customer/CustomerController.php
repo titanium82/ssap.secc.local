@@ -34,7 +34,7 @@ class CustomerController extends Controller
 
     public function show($id, OneCustomerContactDataTable $customerContactDataTable, CustomerContractDataTable $customerContractDataTable)
     {
-        $customer = $this->repository->findOrFail($id, ['sector']);
+        $customer = $this->repository->findOrFail($id, ['sectors']);
 
         $customerContactDataTable = $customerContactDataTable->with([
             'customer_id' => $id
@@ -79,7 +79,7 @@ class CustomerController extends Controller
         try {
 
             $customer = $this->service->store($request);
-        
+
             if($customer)
             {
 
@@ -90,8 +90,8 @@ class CustomerController extends Controller
                     $routeName = 'admin.customer.edit';
                 }
 
-                return $request->input('submitter') == 'save' 
-                    ? to_route($routeName, $customer->id)->with('success', __('notifySuccess')) 
+                return $request->input('submitter') == 'save'
+                    ? to_route($routeName, $customer->id)->with('success', __('notifySuccess'))
                     : to_route('admin.customer.index')->with('success', __('notifySuccess'));
             }
 
@@ -127,7 +127,7 @@ class CustomerController extends Controller
 
             if($customer)
             {
-                return $request->input('submitter') == 'save' 
+                return $request->input('submitter') == 'save'
                     ? back()->with('success', __('notifySuccess'))
                     : to_route('admin.customer.index')->with('success', __('notifySuccess'));
             }
@@ -142,14 +142,14 @@ class CustomerController extends Controller
     public function delete($id, Request $request): RedirectResponse|JsonResponse
     {
         try {
-            
+
             $this->repository->delete($id);
 
             logger()->info(trans('User ID :uid delete customer ID :cid', [
                 'uid' => auth('admin')->id(),
                 'cid' => $id
             ]), [
-                'user' => auth('admin')->user()->toArray(), 
+                'user' => auth('admin')->user()->toArray(),
                 'request' => $request->all()
             ]);
 
@@ -159,12 +159,12 @@ class CustomerController extends Controller
                     'msg' => trans('notifySuccess')
                 ]);
             }
-        
+
             return to_route('admin.customer.index')->with('success', __('notifySuccess'));
         } catch (\Throwable $th) {
 
             logger()->error(trans('Delete customer has error :err', ['err' => $th->getMessage()]), [
-                'user' => auth('admin')->user()->toArray(), 
+                'user' => auth('admin')->user()->toArray(),
                 'request' => $request->all()
             ]);
 

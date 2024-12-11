@@ -3,7 +3,7 @@
 namespace App\Admin\Enums\ElectricalEquipment;
 
 use App\Core\Supports\Enum;
-enum    Discount: int
+enum    Surcharge: int
 {
     use Enum;
         case TenPercent = 10;

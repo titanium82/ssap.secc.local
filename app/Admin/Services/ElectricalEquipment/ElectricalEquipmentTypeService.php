@@ -6,7 +6,7 @@ use App\Admin\Repositories\ElectricalEquipment\ElectricalEquipmentTypeRepository
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class ElectricalEquipmentType
+class ElectricalEquipmentTypeService
 {
     public function __construct(
         public ElectricalEquipmentTypeRepositoryInterface $repo
@@ -47,7 +47,7 @@ class ElectricalEquipmentType
             DB::rollBack();
             throw $th;
         }
-        DD();
+        // DD();
     }
 
     public function update(Request $request)

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Admin\Enums\Contract\ContractStatus;
 use App\Admin\Enums\ElectricalEquipment\Discount;
+use App\Admin\Enums\ElectricalEquipment\Surcharge;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -18,11 +19,14 @@ class ElectricalEquipmentOrder extends Model
     protected $fillable = [
         'admin_id',
         'customer_id',
+        'customer_type_id',
         'exhibition_event_id',
+        'exhibition_location_id',
         'code',
         'booth_no',
-        'discount',
-        'vat',
+        'surcharge',
+        'taxrate',
+        'payment_method',
         'amount',
         'total_amount',
         'contact_fullname',
@@ -34,7 +38,7 @@ class ElectricalEquipmentOrder extends Model
     public function casts():  array
     {
         return[
-            'discount' => Discount::class,
+            'surcharge' => Surcharge::class,
             'status' => ContractStatus::class,
 
         ];
@@ -51,9 +55,17 @@ class ElectricalEquipmentOrder extends Model
     {
         return $this->belongsTo(Customer::class, foreignKey:'customer_id');
     }
+    public function type()
+    {
+        return $this->belongsTo(CustomerType::class, 'customer_type_id');
+    }
     public function exhibitionevent(): BelongsTo
     {
         return $this->belongsTo(ExhibitionEvent::class, foreignKey:'exhibition_event_id');
+    }
+    public function exhibitionlocation(): BelongsTo
+    {
+        return $this->belongsTo(ExhibitionLocation::class, foreignKey:'exhibition_location_id');
     }
     public function electricalequipments(): BelongsToMany
     {

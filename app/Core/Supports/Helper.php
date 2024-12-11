@@ -56,9 +56,9 @@ if (! function_exists('contract_code')) {
     }
 }
 if (! function_exists('electricalequipment_code')) {
-    function electricalequipment_code(string $code, string $contract_type_short_name = null)
+    function electricalequipment_code(string $code, string $customer_type_short_name = null)
     {
-        return $code . '/' . date('Y'). '-' . config('core.electrical_team') . '-' . config('core.electrical_team');
+        return $code . '/' . date('Y'). '-' . config('core.electrical_team') . '-' .$customer_type_short_name.'-'. config('core.project_name');
     }
 }
 

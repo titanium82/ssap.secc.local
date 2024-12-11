@@ -26,9 +26,8 @@
 @endsection
 
 @push('libs-js')
-<script src="{{ asset('public/core/libs/ckeditor/ckeditor.js') }}"></script>
-<script src="{{ asset('public/core/libs/ckeditor/adapters/jquery.js') }}"></script>
 <!-- button in datatable -->
+<script src="{{ asset('public/core/libs/ckeditor/adapters/jquery.js') }}"></script>
 <script src="{{ asset('/public/vendor/datatables/buttons.server-side.js') }}"></script>
 @endpush
 

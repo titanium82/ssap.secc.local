@@ -39,15 +39,15 @@ class Contract extends Model
     protected function casts(): array
     {
         return [
-            'day_begin' => 'date',
-            'day_end' => 'date',
-            'total_amount' => 'double',
-            'sub_total_amount' => 'double',
-            'deposit' => 'double',
-            'status' => ContractStatus::class,
-            'payment_method' => ContractPaymentMethod::class,
-            'annex' => AsArrayObject::class,
-            'files' => AsArrayObject::class
+            'day_begin'             => 'date',
+            'day_end'               => 'date',
+            'total_amount'          => 'double',
+            'sub_total_amount'      => 'double',
+            'deposit'               => 'double',
+            'status'                => ContractStatus::class,
+            'payment_method'        => ContractPaymentMethod::class,
+            'annex'                 => AsArrayObject::class,
+            'files'                 => AsArrayObject::class
         ];
     }
     /**

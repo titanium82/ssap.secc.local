@@ -8,7 +8,7 @@ use App\Admin\Repositories\ElectricalEquipment\ElectricalEquipmentOrderRepositor
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class ElectricalEquipmentOrder
+class ElectricalEquipmentOrderService
 {
     public function __construct(
         public ElectricalEquipmentOrderRepositoryInterface $repository,
@@ -26,7 +26,7 @@ class ElectricalEquipmentOrder
             $data = $request->validated();
 
             $electricalequipmentorders = $this->repository->create($data['electricalequipment']);
-            $electricalequipmentorders->electricalequipments()->attach($data['electrical_equipment_id']);
+            // $electricalequipmentorders->electricalequipments()->attach($data['electrical_equipment_id']);
             $adminId = auth('admin')->id();
 
             DB::commit();

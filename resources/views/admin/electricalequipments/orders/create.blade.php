@@ -15,5 +15,6 @@
 @endsection
 
 @push('libs-js')
+@include('admin.electricalequipments.orders.scripts.js')
 
 @endpush

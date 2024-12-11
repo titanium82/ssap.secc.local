@@ -462,6 +462,11 @@ return [
             'title' => 'Created by',
             'orderable' => false,
         ],
+             'status' => [
+            'title' => 'Status',
+            'orderable' => false,
+            'addClass' => 'text-center'
+        ],
         'created_at' => [
             'title' => 'createdAt',
             'orderable' => false,

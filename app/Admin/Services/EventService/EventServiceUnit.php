@@ -47,7 +47,7 @@ class EventServiceUnit
             DB::rollBack();
             throw $th;
         }
-        DD();
+        // DD();
     }
 
     public function update(Request $request)

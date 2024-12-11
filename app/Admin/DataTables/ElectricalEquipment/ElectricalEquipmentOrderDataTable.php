@@ -2,6 +2,7 @@
 
 namespace App\Admin\DataTables\ElectricalEquipment;
 
+use App\Admin\Enums\Contract\ContractStatus;
 use App\Core\DataTables\DataTables;
 use App\Admin\Repositories\ElectricalEquipment\ElectricalEquipmentOrderRepositoryInterface;
 
@@ -17,6 +18,7 @@ class ElectricalEquipmentOrderDataTable extends DataTables
         $this->viewColumns = [
             'action'                 => 'admin.electricalequipments.orders.datatable.action',
             'code'                   => 'admin.electricalequipments.orders.datatable.code',
+            'status'                 => 'admin.electricalequipments.orders.datatable.status',
             'exhibitionevent'        => 'admin.electricalequipments.orders.datatable.exhibitionevent',
             'customer'               => 'admin.electricalequipments.orders.datatable.customer',
             'booth_no'               => 'admin.electricalequipments.orders.datatable.booth',
@@ -35,12 +37,20 @@ class ElectricalEquipmentOrderDataTable extends DataTables
 
     protected function setColumnHasSearch(): void
     {
-        $this->columnHasSearch = ['code','contact_fullname','contact_phone','admin_id','customer_id','exhibition_event_id','created_at'];
+        $this->columnHasSearch = ['code','status','contact_fullname','contact_phone','admin_id','customer_id','exhibition_event_id','created_at'];
     }
 
     protected function setColumnSearchDate(): void
     {
         $this->columnSearchDate = ['created_at'];
+    }
+    protected function setColumnSearchSelect(): void
+    {
+        $this->columnSearchSelect = [
+            'status' => [
+                'data' => ContractStatus::asSelectArray()
+            ]
+        ];
     }
 
     // protected function urlFetchData(): void
@@ -56,7 +66,7 @@ class ElectricalEquipmentOrderDataTable extends DataTables
      */
     public function query()
     {
-        return $this->repository->getByQueryBuilder([],['customer', 'admin','exhibitionevent']); 
+        return $this->repository->getByQueryBuilder([],['customer', 'admin','exhibitionevent']);
     }
     protected function setFilterColumns(): void
     {
@@ -72,6 +82,7 @@ class ElectricalEquipmentOrderDataTable extends DataTables
             'code'                          =>$this->viewColumns['code'],
             'customer_id'                   =>$this->viewColumns['customer'],
             'exhibition_event_id'           =>$this->viewColumns['exhibitionevent'],
+            'status'                        =>$this->viewColumns['status'],
             'amount'                        =>fn($cp) =>format_price($cp->price, '', $cp->contract?->currency->name), //hiển thị dạng tiền tệ cho bảng datatable
             'total_amount'                  =>fn($cp) =>format_price($cp->price, '', $cp->contract?->currency->name), //hiển thị dạng tiền tệ cho bảng datatable
             'admin_id'                      => fn($item) => $item->admin->fullname,
@@ -88,6 +99,6 @@ class ElectricalEquipmentOrderDataTable extends DataTables
 
     protected function setRawColumns(): void
     {
-        $this->rawColumns = ['code','customer_id','exhibition_event_id', 'action'];
+        $this->rawColumns = ['code','customer_id','exhibition_event_id','status','action'];
     }
 }
