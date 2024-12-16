@@ -2,7 +2,7 @@
 
 namespace App\Admin\Http\Controllers\Customer;
 
-use App\Admin\DataTables\Customer\{CustomerContractDataTable, CustomerDataTable, OneCustomerContactDataTable};
+use App\Admin\DataTables\Customer\{CustomerContractDataTable, CustomerDataTable, CustomerExhibitionEventDataTable, OneCustomerContactDataTable};
 use App\Admin\Http\Controllers\Controller;
 use App\Admin\Http\Requests\Customer\CustomerRequest;
 use App\Admin\Imports\CustomerImport;
@@ -32,7 +32,7 @@ class CustomerController extends Controller
         ]);
     }
 
-    public function show($id, OneCustomerContactDataTable $customerContactDataTable, CustomerContractDataTable $customerContractDataTable)
+    public function show($id, OneCustomerContactDataTable $customerContactDataTable, CustomerContractDataTable $customerContractDataTable, CustomerExhibitionEventDataTable $customerExhibitionEventDataTable)
     {
         $customer = $this->repository->findOrFail($id, ['sectors']);
 
@@ -43,11 +43,15 @@ class CustomerController extends Controller
         $customerContractDataTable = $customerContractDataTable->with([
             'customer_id' => $id
         ])->html();
+        $customerExhibitionEventDataTable = $customerExhibitionEventDataTable->with([
+            'customer_id' => $id
+        ])->html();
 
         return view('admin.customers.show')
         ->with('breadcrums', $this->breadcrums()->addByRouteName(trans('Customer'), 'admin.customer.index')->add(trans('Show')))
         ->with('customer_contact_datatable', $customerContactDataTable)
         ->with('customer_contract_datatable', $customerContractDataTable)
+        ->with('customer_exhibitionevent_datatable', $customerExhibitionEventDataTable)
         ->with('customer', $customer);
     }
 
@@ -59,6 +63,10 @@ class CustomerController extends Controller
     public function renderContractDT($customer_id, CustomerContractDataTable $customerContractDataTable)
     {
         return $customerContractDataTable->with('customer_id', $customer_id)->render('admin.customers.show');
+    }
+    public function renderExhibitionEventDT($customer_id, CustomerExhibitionEventDataTable $customerExhibitionEventDataTable)
+    {
+        return $customerExhibitionEventDataTable->with('customer_id', $customer_id)->render('admin.customers.show');
     }
 
     public function create(): View

@@ -7,37 +7,50 @@
                 <div class="row card-body">
                     <div class="col-12 col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">@lang('Contract'):</label>
-                            <x-core-input name="contract_id" :value="$contract_payment->contract?->code" readonly />
+                            <label class="form-label">@lang('Exhibition Event Name'):</label>
+                            <x-core-input name="contract_id" :value="$exhibitionevent->name" readonly />
                         </div>
                     </div>
                     <div class="col-12 col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">@lang('Period'):</label>
-                            <x-core-input name="period" :value="$contract_payment->period" readonly />
+                            <label class="form-label">@lang('Exhibition Event Short Name'):</label>
+                            <x-core-input name="period" :value="$exhibitionevent->short_name" readonly />
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="mb-3">
+                            <label class="form-label">@lang('Customer'):</label>
+                            <x-core-input name="status" :value="$exhibitionevent->customer?->fullname" readonly />
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="mb-3">
+                            <label class="form-label">@lang('Day Begin'):</label>
+                            <x-core-input type="date" name="expired_at" :value="$exhibitionevent->day_begin" readonly />
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="mb-3">
+                            <label class="form-label">@lang('Day End'):</label>
+                            <x-core-input type="date" name="expired_at" :value="$exhibitionevent->day_end" readonly />
                         </div>
                     </div>
                     <div class="col-12 col-md-4">
                         <div class="mb-3">
                             <label class="form-label">@lang('Status'):</label>
-                            <x-core-input name="status" :value="$contract_payment->status->description()" readonly />
+                            <x-core-input name="amount" :value="$exhibitionevent->event_manager" readonly="true"/>
                         </div>
                     </div>
                     <div class="col-12 col-md-4">
                         <div class="mb-3">
-                            <label class="form-label">@lang('Expired'):</label>
-                            <x-core-input type="date" name="expired_at" :value="$contract_payment->expired_at->format('Y-m-d')" readonly />
+                            <label class="form-label">@lang('Status'):</label>
+                            <x-core-input name="amount" :value="$exhibitionevent->status->description()" readonly="true"/>
                         </div>
                     </div>
                     <div class="col-12 col-md-4">
                         <div class="mb-3">
-                            <label class="form-label">@lang('Amount'):</label>
-                            <x-core-input-number name="amount" :value="format_price($contract_payment->amount)" readonly/>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="mb-3">
-                            <x-core-input-gallery-ckfinder name="license" :value="$contract_payment->license" readonly :label="trans('Licenser')" />
+                            <label class="form-label">@lang('Status'):</label>
+                            <x-core-input name="amount" :value="$exhibitionevent->desc" readonly="true"/>
                         </div>
                     </div>
                 </div>

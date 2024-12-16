@@ -116,6 +116,7 @@ Route::middleware([App\Admin\Http\Middleware\AuthAdminMiddleware::class, App\Adm
         Route::get('/show/{id}', 'show')->name('show');
         Route::get('/render-contact-dt/{id}', 'renderContactDT')->name('render_contact_dt');
         Route::get('/render-contract-dt/{id}', 'renderContractDT')->name('render_contract_dt');
+        Route::get('/render-exhibitionevent-dt/{id}', 'renderExhibitionEventDT')->name('render_exhibitionevent_dt');
         Route::delete('/delete/{id}', 'delete')->name('delete');
         Route::post('/import-excel', 'importExcel')->name('import_excel');
         Route::get('/search-select', 'searchSelect')->name('search_select');

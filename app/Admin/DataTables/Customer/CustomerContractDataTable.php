@@ -9,7 +9,7 @@ class CustomerContractDataTable extends ContractDataTable
     public string $nameModule = 'admin';
 
     public string $nameTable = 'contract';
-    
+
     protected string $dataTableVariable = 'customer_contract_datatable';
 
     protected function setUrlFetchData(): void

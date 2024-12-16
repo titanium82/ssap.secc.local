@@ -10,19 +10,19 @@
                     <div class="col-12 col-md-6">
                         <div class="mb-3">
                             <label class="form-label">@lang('Exhibition Location Name'):</label>
-                            <x-core-input name="name" :value="$exhibition_location->name" readonly />
+                            <x-core-input name="name" :value="$exhibitionevent->name" readonly />
                         </div>
                     </div>
                     <div class="col-12 col-md-6">
                         <div class="mb-3">
                             <label class="form-label">@lang('Location'):</label>
-                            <x-core-input name="location" :value="$exhibition_location->location" readonly />
+                            <x-core-input name="location" :value="$exhibitionevent->short_name" readonly />
                         </div>
                     </div>
                     <div class="col-12 col-md-4">
                         <div class="mb-3">
                             <label class="form-label">@lang('Exhibition Location Stretch'):</label>
-                            <x-core-input name="stretch" :value="$$exhibition_location->stretch" readonly />
+                            <x-core-input name="stretch" :value="$$exhibitionevent->customer->short_name" readonly />
                         </div>
                     </div>
                     <div class="col-12 col-md-4">

@@ -103,7 +103,7 @@
             <div class="col-12 col-md-1">
                 <div class="mb-3">
                     <label class="form-label">@lang('VAT'):</label>
-                    <x-core-input name="electricalequipment[vat]" :value="old('electricalequipment.vat')" :required="true"
+                    <x-core-input name="electricalequipment[taxrate]" :value="old('electricalequipment.taxrate')" :required="true"
                         :placeholder="__('VAT')" />
                 </div>
             </div>
