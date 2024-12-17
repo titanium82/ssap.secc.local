@@ -23,24 +23,24 @@ class CustomerRequest extends Request
         }
 
         return [
-            'admin_id' => ['required', 'exists:App\Models\Admin,id'],
-            'customer_type_id' => ['required', 'exists:App\Models\CustomerType,id'],
-            'customer_sector_id' => ['required', 'array'],
-            'customer_sector_id.*' => ['required', 'exists:App\Models\CustomerSector,id'],
-            'fullname' => ['required', 'string'],
-            'short_name' => ['nullable', 'string'],
-            'gender' => ['required', new Enum(Gender::class)],
-            'phone' => ['required', 'regex:/((0[2|9|3|7|8|5]|[4|8])+([0-9]{8})\b)/'],
-            'fax' => ['nullable', 'string'],
-            'email' => ['required', 'email', 'unique:App\Models\Customer,email'],
-            'taxcode' => ['nullable', 'unique:App\Models\Customer,taxcode'],
-            'logo' => ['nullable'],
-            'address' => ['nullable'],
-            'address_vat' => ['nullable'],
-            'delegate' => ['nullable'],
-            'website' => ['nullable'],
-            'note' => ['nullable']
-
+            'admin_id'                  => ['required', 'exists:App\Models\Admin,id'],
+            'customer_type_id'          => ['required', 'exists:App\Models\CustomerType,id'],
+            'customer_sector_id'        => ['required', 'array'],
+            'customer_sector_id.*'      => ['required', 'exists:App\Models\CustomerSector,id'],
+            'fullname'                  => ['required', 'string'],
+            'short_name'                => ['nullable', 'string'],
+            'gender'                    => ['required', new Enum(Gender::class)],
+            'phone'                     => ['required', 'regex:/((0[2|9|3|7|8|5]|[4|8])+([0-9]{8})\b)/'],
+            'fax'                       => ['nullable', 'string'],
+            'email'                     => ['required', 'email', 'unique:App\Models\Customer,email'],
+            'taxcode'                   => ['nullable', 'unique:App\Models\Customer,taxcode'],
+            'logo'                      => ['nullable'],
+            'address'                   => ['nullable'],
+            'address_vat'               => ['nullable'],
+            'delegate'                  => ['nullable'],
+            'website'                   => ['nullable'],
+            'note'                      => ['nullable']
+            
         ];
     }
 

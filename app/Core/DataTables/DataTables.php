@@ -61,7 +61,7 @@ abstract class DataTables extends BaseDataTable
     public string $nameModule = '';
 
     public string $nameTable = '';
-
+    
     protected array $parameters;
 
     protected string $urlFetchData = '';
@@ -69,12 +69,12 @@ abstract class DataTables extends BaseDataTable
     protected function getConfigColumns(): void
     {
         $arr = explode('\\', (new \ReflectionClass(get_class($this)))->name);
-
+        
         if($this->nameModule == '')
         {
             $this->nameModule = strtolower($arr[1]);
         }
-
+        
         if($this->nameTable == '')
         {
             $this->nameTable = str()->snake(str_replace('DataTable', '', $arr[count($arr)-1]));
@@ -86,7 +86,7 @@ abstract class DataTables extends BaseDataTable
         {
             foreach($this->removeColumns as $value)
             {
-                unset($this->configColumns[$value]);
+                unset($this->configColumns[$value]);    
             }
         }
     }
@@ -124,7 +124,7 @@ abstract class DataTables extends BaseDataTable
             'autoWidth' => false,
             // 'searching' => false,
             // 'searchDelay' => 350,
-            'lengthMenu' => [ [15, 50, -1], [20, 50, 100, "All"] ], //Số lượng dòng hiển thị trên trang DS Hợp Đồng
+             'lengthMenu' => [ [30, 25, 50, -1], [20, 50, 100, "All"] ],
             'language' => [
                 'url' => asset('/public/core/libs/datatables/lang/'.trans()->getLocale().'.json')
             ]
@@ -154,7 +154,7 @@ abstract class DataTables extends BaseDataTable
 
     protected function buildColumns(): array
     {
-
+        
         $this->exportVisiableColumns();
 
         foreach($this->configColumns as $key => $items)
@@ -162,7 +162,7 @@ abstract class DataTables extends BaseDataTable
             if(!in_array($key, $this->removeColumns))
             {
                 $buildColumn = Column::make($key);
-
+                
                 if(empty($items['addClass']))
                 {
                     $items['addClass'] = '';
@@ -316,7 +316,7 @@ abstract class DataTables extends BaseDataTable
         if(count($columns) || count($this->configColumns))
         {
             $col = [];
-
+            
             $configColumns = array_keys($this->configColumns);
 
             foreach($columns as $key => $item)
@@ -339,7 +339,7 @@ abstract class DataTables extends BaseDataTable
         if(count($columns) || count($this->configColumns))
         {
             $col = [];
-
+            
             $configColumns = array_keys($this->configColumns);
 
             foreach($columns as $value)

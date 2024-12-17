@@ -60,7 +60,7 @@
             console.log("Total Number:", totalNumber);
         });
     })
-
+    //Lấy dữ liệu Giá trị phụ lục
     $(document).on('change', '#subtotal .input-format-number', function(){
         subtotalNumber = 0;
         $('#subtotal .input-format-number').each(function(i,e){

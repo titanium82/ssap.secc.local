@@ -44,7 +44,7 @@
             <div class="col-12 col-md-2">
                 <div class="mb-3">
                     <label class="form-label">@lang('Exhibition location'):</label>
-                    <x-core-select name="electricalequipment[exhibition_location_id]" onchange="loadShortNameCT(this)" :required="true">
+                    <x-core-select name="electricalequipment[exhibition_location_id]" :required="true">
                         @foreach ($exhibitionlocations as $exhibitionlocation)
                             <x-core-select-option :data-short-name="$exhibitionlocation->fullname" :value="$exhibitionlocation->id" :title="$exhibitionlocation->fullname" />
                         @endforeach

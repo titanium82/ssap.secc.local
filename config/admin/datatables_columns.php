@@ -17,6 +17,7 @@ return [
         'contract_type_id' => [
             'title' => 'Contract Type',
             'orderable' => false,
+            'width' => '170px',
         ],
         'customer_id' => [
             'title' => 'Customer',
@@ -25,6 +26,7 @@ return [
         'status' => [
             'title' => 'Status',
             'orderable' => false,
+            'width' => '130px',
         ],
         'admin_id' => [
             'title' => 'Created by',
@@ -34,12 +36,14 @@ return [
             'title' => 'createdAt',
             'orderable' => false,
             'visible' => false,
+            'width' => '100px',
         ],
         'action' => [
             'title' => 'action',
             'orderable' => false,
             'exportable' => false,
             'printable' => false,
+            'width' => '200px',
             'addClass' => 'text-center'
         ],
     ],
