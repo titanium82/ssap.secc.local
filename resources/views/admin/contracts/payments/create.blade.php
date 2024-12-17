@@ -29,7 +29,7 @@
 <script src="{{ asset('public/core/libs/filepond/dist/filepond.min.js') }}"></script>
 
 <!-- include FilePond plugins -->
-<script src="{{ asset('public/core/libs/fihihilepond/plugins/image-preview/dist/filepond-plugin-image-preview.min.js') }}"></script>
+<script src="{{ asset('public/core/libs/filepond/plugins/image-preview/dist/filepond-plugin-image-preview.min.js') }}"></script>
 <script src="{{ asset('public/core/libs/filepond/plugins/file-validate-size/dist/filepond-plugin-file-validate-size.min.js') }}"></script>
 <script src="{{ asset('public/core/libs/filepond/plugins/file-validate-type/dist/filepond-plugin-file-validate-type.min.js') }}"></script>
 <script src="{{ asset('public/core/libs/filepond/plugins/image-resize/dist/filepond-plugin-image-resize.min.js') }}"></script>
@@ -43,4 +43,5 @@
 
 @push('js')
 <script src="{{ asset('public/core/assets/js/filepond.js') }}"></script>
+
 @endpush

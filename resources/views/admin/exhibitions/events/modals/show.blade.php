@@ -2,39 +2,63 @@
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">@lang('Exhibition Location')</h5>
+                <h5 class="modal-title">@lang('Information Exhibition Event')</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-12 col-md-6">
+                    <div class="col-12 col-md-8">
                         <div class="mb-3">
-                            <label class="form-label">@lang('Exhibition Location Name'):</label>
+                            <label class="form-label">@lang('Exhibition Event Name'):</label>
                             <x-core-input name="name" :value="$exhibitionevent->name" readonly />
                         </div>
                     </div>
-                    <div class="col-12 col-md-6">
+                    <div class="col-12 col-md-4">
                         <div class="mb-3">
-                            <label class="form-label">@lang('Location'):</label>
-                            <x-core-input name="location" :value="$exhibitionevent->short_name" readonly />
+                            <label class="form-label">@lang('Exhibition Event Short Name'):</label>
+                            <x-core-input name="short_name" :value="$exhibitionevent->short_name" readonly />
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-8">
+                        <div class="mb-3">
+                            <label class="form-label">@lang('Customer'):</label>
+                            <x-core-input name="stretch" :value="$exhibitionevent->customer?->fullname" readonly />
                         </div>
                     </div>
                     <div class="col-12 col-md-4">
                         <div class="mb-3">
-                            <label class="form-label">@lang('Exhibition Location Stretch'):</label>
-                            <x-core-input name="stretch" :value="$$exhibitionevent->customer->short_name" readonly />
+                            <label class="form-label">@lang('Event Manager'):</label>
+                            <x-core-input name="amount" :value="$exhibitionevent->event_manager" readonly="true"/>
                         </div>
                     </div>
                     <div class="col-12 col-md-4">
                         <div class="mb-3">
-                            <label class="form-label">@lang('Classroom'):</label>
-                            <x-core-input name="classroom" :value="$exhibition_location->classroom" readonly />
+                            <label class="form-label">@lang('Day Begin'):</label>
+                            <x-core-input type="date" name="day_begin" :value="$exhibitionevent->day_begin" readonly />
                         </div>
                     </div>
                     <div class="col-12 col-md-4">
                         <div class="mb-3">
-                            <label class="form-label">@lang('Theater'):</label>
-                            <x-core-input-number name="theater" :value="$exhibition_location->theater" readonly/>
+                            <label class="form-label">@lang('Day End'):</label>
+                            <x-core-input type="date" name="day_end" :value="$exhibitionevent->day_end" readonly />
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="mb-3">
+                            <label class="form-label">@lang('Status'):</label>
+                            <x-core-input name="status" :value="$exhibitionevent->status->description()" readonly="true"/>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="mb-3">
+                            <label class="form-label">@lang('Status'):</label>
+                            <x-core-input name="location_name" :value="$exhibitionevent->exhibitionlocation?->fullname" readonly="true"/>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-8">
+                        <div class="mb-3">
+                            <label class="form-label">@lang('Desc'):</label>
+                            <x-core-input name="desc" :value="$exhibitionevent->desc" readonly="true"/>
                         </div>
                     </div>
                 </div>

@@ -34,7 +34,7 @@ class CustomerTypeDataTable extends DataTables
     // {
     //     $this->urlFetchData = route('admin.admin.index');
     // }
-
+    
     /**
      * Get query source of dataTable.
      *

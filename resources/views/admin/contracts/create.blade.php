@@ -20,6 +20,7 @@
         </div>
     </div>
 @endsection
+
 @push('libs-js')
 @include('ckfinder::setup')
 
@@ -56,9 +57,10 @@
         $('#total .input-format-number').each(function(i,e){
             var total = $(e).val()|| 0;
             totalNumber = cleanNumberString(total);
+            console.log("Total Number:", totalNumber);
         });
     })
-    //Lấy dữ liệu Giá trị phụ lục
+
     $(document).on('change', '#subtotal .input-format-number', function(){
         subtotalNumber = 0;
         $('#subtotal .input-format-number').each(function(i,e){
@@ -82,19 +84,24 @@
             totalAmount += Amount;
 
             var totalAmountString = totalAmount.toLocaleString();
+            console.log(typeof totalAmountString);
+            console.log(subtotal);
             $('#total_amount .input-format-number').text(totalAmountString);
             //kiểm tra totalAmount
             if(totalAmount >subtotalNumber && totalNumber==0){
                     $('#error_message').text('Số tiền vượt quá tổng giá trị phụ lục');
                     $('#error_message').show();
+                    console.log("Sub total cuối cùng",subtotalNumber);
             }
-            else if(totalAmount > totalNumber && subtotalNumber==0){
+            else if(totalAmount > totalNumber && subtotalNumber ==0){
                     $('#error_message').text('Số tiền vượt quá tổng giá trị');
                     $('#error_message').show();
+                    console.log("total cuối cùng",subtotalNumber);
             }
             else if(totalAmount >subtotalNumber && subtotalNumber>totalNumber){
                     $('#error_message').text('Số tiền vượt quá tổng giá trị phụ lục');
                     $('#error_message').show();
+                    console.log("Sub total cuối cùng",subtotalNumber);
             }
             else{
                 $('#error_message').hide();

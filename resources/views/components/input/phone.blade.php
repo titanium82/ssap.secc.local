@@ -1,4 +1,4 @@
-<input type="text"
+<input type="text" 
 {{ $attributes
     ->class(['form-control'])
     ->merge([

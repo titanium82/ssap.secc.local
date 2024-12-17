@@ -61,7 +61,7 @@ class ContractPaymentDataTable extends DataTables
      */
     public function query()
     {
-        return $this->repository->getByQueryBuilder([], ['contract.currency', 'admin', 'contract'])->currentAuth();
+        return $this->repository->getByQueryBuilder([], ['contract.currency', 'admin'])->currentAuth();
     }
 
     protected function setFilterColumns(): void
@@ -76,13 +76,13 @@ class ContractPaymentDataTable extends DataTables
     protected function setEditColumns(): void
     {
         $this->editColumns = [
-            'contract_id' => $this->viewColumns['code_contract'],
-            'contract_short_name' => $this->viewColumns['short_name_contract'],
-            'status' => $this->viewColumns['status'],
-            'amount' => fn($cp) => format_price($cp->amount, '', $cp->contract?->currency->name),
-            'admin_id' => fn($item) => $item->admin->fullname,
-            'expired_at' => fn($cp) => $cp->expired_at->format(config('core.format.date')),
-            'created_at' => fn($cp) => $cp->created_at->format(config('core.format.date'))
+            'contract_id'               => $this->viewColumns['code_contract'],
+            'contract_short_name'       => $this->viewColumns['short_name_contract'],
+            'status'                    => $this->viewColumns['status'],
+            'amount'                    => fn($cp) => format_price($cp->amount, '', $cp->contract?->currency->name),
+            'admin_id'                  => fn($item) => $item->admin->fullname,
+            'expired_at'                => fn($cp) => $cp->expired_at->format(config('core.format.date')),
+            'created_at'                => fn($cp) => $cp->created_at->format(config('core.format.date'))
         ];
     }
 

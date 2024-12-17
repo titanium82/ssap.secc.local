@@ -44,7 +44,7 @@
     <div class="col-md-6 col-12">
         <div class="mb-3">
             <label for="" class="form-label">@lang('Customer Sector'):</label>
-            <x-core-input :value="$customer->sector?->name" :readonly="true" />
+            <x-core-input :value="$customer->sectors->pluck('name')->implode(', ')" :readonly="true" />
         </div>
     </div>
 </div>
