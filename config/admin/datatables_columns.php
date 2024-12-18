@@ -150,18 +150,18 @@ return [
         'name' => [
             'title' => 'Exhibition Event Name',
             'orderable' => false,
-            'width' => '200px',
+            'width' => '300px',
         ],
         'short_name' => [
             'title' => 'Exhibition Event Short Name',
             'orderable' => false,
-            'width' => '100px',
+            'width' => '200px',
 
         ],
         'exhibitionlocations' => [
             'title' => 'Exhibition Location Area',
             'orderable' => false,
-            'width' => '250px',
+            'width' => '350px',
 
         ],
         'customer_id' => [
@@ -185,6 +185,7 @@ return [
         'status' => [
             'title' => 'Status',
             'orderable' => false,
+            'width' => '170px',
             'addClass' => 'text-center'
         ],
         'event_manager' => [
@@ -201,6 +202,8 @@ return [
         'admin_id' => [
             'title' => 'Created by',
             'orderable' => false,
+            'width' => '300px',
+
         ],
         'action' => [
             'title' => 'action',

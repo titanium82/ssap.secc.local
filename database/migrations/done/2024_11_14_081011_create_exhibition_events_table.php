@@ -21,6 +21,7 @@ return new class extends Migration
             $table->dateTime('day_end');    //Ngày kết thúc sự kiện
             $table->string('event_manager'); //Người vận hành sự kiện
             $table->string('desc');           //Mô tả
+            $table->json('layouts')->nullable(); // Layout sự kiện
             $table->foreign('admin_id')->references('id')->on('admins')->restrictOnDelete();
             $table->foreign('customer_id')->references('id')->on('customers')->restrictOnDelete();
             $table->timestamps();

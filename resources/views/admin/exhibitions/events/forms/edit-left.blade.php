@@ -17,8 +17,11 @@
             </div>
             <div class="col-12 col-md-6">
                 <div class="mb-3">
-                    <label class="form-label">@lang('Exhibition Location'):</label>
+                    <label class="form-label">@lang('Exhibition location'):</label>
                     <x-core-select class="select2-bs5-ajax-many" name="exhibition_location_id[]" :required="true" :multiple="true" :data-url="route('admin.exhibition_location.search_select')">
+                        @foreach ($exhibition_events->exhibitionLocations as $exhibition_location)
+                            <x-core-select-option :option="$exhibition_location->id" :value="$exhibition_location->id" :title="$exhibition_location->fullname" />
+                        @endforeach
                     </x-core-select>
                 </div>
             </div>
@@ -35,14 +38,14 @@
             <div class="col-3">
                 <div class="mb-3">
                     <label class="form-label">@lang('Day Begin'):</label>
-                    <x-core-input type="date" name="exhibitionevent[day_begin]" :value="$exhibition_events->day_begin" :required="true"
+                    <x-core-input type="date" name="exhibitionevent[day_begin]" :value="$exhibition_events->day_begin" readonly :required="true"
                         :placeholder="__('Day Begin')" />
                 </div>
             </div>
             <div class="col-3">
                 <div class="mb-3">
                     <label class="form-label">@lang('Day End'):</label>
-                    <x-core-input type="date" name="exhibitionevent[day_end]" :value="$exhibition_events->day_end" :required="true"
+                    <x-core-input type="date" name="exhibitionevent[day_end]" :value="$exhibition_events->day_end" readonly :required="true"
                         :placeholder="__('Day End')" />
                 </div>
             </div>
@@ -65,6 +68,10 @@
                         @endforeach
                     </x-core-select>
                 </div>
+            </div>
+            <div class="col-12 col-md-6 mb-3">
+                <label class="form-label">@lang('Layouts'):</label>
+                <x-core-input-file-pond name="exhibitionevent[layouts][]" :value="$exhibition_events->layouts?->toArray()" style="opacity: 0" />
             </div>
         </div>
     </div>

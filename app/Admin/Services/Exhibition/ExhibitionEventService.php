@@ -4,6 +4,7 @@ namespace App\Admin\Services\Exhibition;
 
 use App\Admin\Repositories\Customer\CustomerRepositoryInterface;
 use App\Admin\Repositories\Exhibition\{ExhibitionEventRepositoryInterface, ExhibitionLocationRepositoryInterface};
+use App\Core\Services\File\FileUploadService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -14,6 +15,7 @@ class ExhibitionEventService
         public ExhibitionEventRepositoryInterface $repository,
         public ExhibitionLocationRepositoryInterface $repoExhibitionLocation,
         public CustomerRepositoryInterface $repoCustomer,
+        public FileUploadService $fileUploadService
     )
     {
 
@@ -24,6 +26,10 @@ class ExhibitionEventService
 
         try {
             $data = $request->validated();
+            if(isset($data['exhibitionevent']['layouts']) && $data['exhibitionevent']['layouts'])
+            {
+                $data['exhibitionevent']['layouts'] = $this->fileUploadService->setFolderForAdmin('exhibitionevents')->uploadMultipleFilepondEncode($data['exhibitionevent']['layouts'])->getInstance();
+            }
 
             $exhibitionevent = $this->repository->create($data['exhibitionevent']);
 
@@ -48,6 +54,10 @@ class ExhibitionEventService
         try {
             $data = $request->validated();
 
+            if(isset($data['exhibitionevent']['layouts']) && $data['exhibitionevent']['layouts'])
+            {
+                $data['exhibitionevent']['layouts'] = $this->fileUploadService->setFolderForAdmin('exhibitionevents')->uploadMultipleFilepondEncode($data['exhibitionevent']['layouts'])->getInstance();
+            }
             $exhibitionevent = $this->repository->update($request->id, $data['exhibitionevent']);
 
             $exhibitionevent->exhibitionLocations()->sync($data['exhibition_location_id']);

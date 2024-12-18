@@ -26,7 +26,7 @@
                     <div class="col-12 col-md-4">
                         <div class="mb-3">
                             <label class="form-label">@lang('Day Begin'):</label>
-                            <x-core-input type="date" name="expired_at" :value="$exhibitionevent->day_begin" readonly />
+                            <x-core-input type="date" name="expired_at" :value="$exhibitionevent->day_begin->format('d-m-Y')" readonly />
                         </div>
                     </div>
                     <div class="col-12 col-md-4">
@@ -52,6 +52,9 @@
                             <label class="form-label">@lang('Status'):</label>
                             <x-core-input name="amount" :value="$exhibitionevent->desc" readonly="true"/>
                         </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <x-core-input-file-ckfinder name="layouts" :value="$exhibitionevent->layouts" :readonly="true" :label="trans('Layouts')"/>
                     </div>
                 </div>
             </div>

@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Casts\AsArrayObject;
 
 class ExhibitionEvent extends Model
 {
@@ -25,6 +26,7 @@ class ExhibitionEvent extends Model
         'day_begin',  //ngày bắt đầu sự kiện
         'day_end',  // ngày kết thúc sự kiện
         'event_manager',
+        'layouts',      //layout sự kiện
         'status',    //trạng thái sự kiện
         'desc'
     ];
@@ -33,9 +35,14 @@ class ExhibitionEvent extends Model
         return [
             'eventmanger'   => EventManager::class,
             'status'        => EventStatus::class,
+            'layouts'       => AsArrayObject::class
+
 
         ];
     }
+    protected $attributes = [
+        'layouts' => '[]',
+    ];
     public $observing = true;
     protected static function boot()
     {

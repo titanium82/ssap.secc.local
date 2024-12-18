@@ -64,6 +64,10 @@
                     </x-core-select>
                 </div>
             </div>
+            <div class="col-12 col-md-12 mb-3">
+                <label class="form-label">@lang('Layouts'):</label>
+                <x-core-input-file-pond class="filepond-inline-2" name="exhibitionevent[layouts][]" :multiple="true" :maxFiles="6" style="opacity: 0" />
+            </div>
         </div>
     </div>
 </div>

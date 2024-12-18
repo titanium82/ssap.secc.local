@@ -22,12 +22,14 @@ class ExhibitionEventRequest extends Request
             'exhibition_location_id'                    => ['required', 'array'],
             'exhibitionevent.customer_id'               => ['required', 'exists:App\Models\Customer,id'],
             'exhibitionevent.name'                      => ['required', 'string'],
-            'exhibitionevent.short_name'                 => ['required', 'string'],
+            'exhibitionevent.short_name'                => ['required', 'string'],
             'exhibitionevent.day_begin'                 => ['required', 'date_format:Y-m-d'],
             'exhibitionevent.day_end'                   => ['required', 'date_format:Y-m-d'],
             'exhibitionevent.event_manager'             => ['nullable', new Enum(EventManager::class)],
             'exhibitionevent.status'                    => ['nullable', new Enum(EventStatus::class)],
             'exhibitionevent.desc'                      => ['nullable','string'],
+            'exhibitionevent.layouts'                   => ['nullable', 'array'],
+            'exhibitionevent.layouts.*'                 => ['nullable', 'json'],
         ];
     }
 
@@ -39,12 +41,14 @@ class ExhibitionEventRequest extends Request
             'exhibition_location_id'                    => ['required', 'array'],
             'exhibitionevent.customer_id'               => ['required', 'exists:App\Models\Customer,id'],
             'exhibitionevent.name'                      => ['required', 'string'],
-            'exhibitionevent.short_name'                 => ['required', 'string'],
+            'exhibitionevent.short_name'                => ['required', 'string'],
             'exhibitionevent.day_begin'                 => ['required', 'date_format:Y-m-d'],
             'exhibitionevent.day_end'                   => ['required', 'date_format:Y-m-d'],
             'exhibitionevent.event_manager'             => ['nullable', new Enum(EventManager::class)],
             'exhibitionevent.status'                    => ['nullable', new Enum(EventStatus::class)],
             'exhibitionevent.desc'                      => ['nullable','string'],
+            'exhibitionevent.layouts'                   => ['nullable', 'array'],
+            'exhibitionevent.layouts.*'                 => ['nullable', 'json'],
          ];
     }
 
