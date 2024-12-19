@@ -56,6 +56,10 @@ class Customer extends Model
     {
         return $this->belongsToMany(CustomerSector::class, 'customers_to_sectors', 'customer_id', 'sector_id');
     }
+    public function ehibitionevents(): BelongsToMany
+    {
+        return $this->belongsToMany(ExhibitionEvent::class, 'exhibition_events_to_locations', 'customer_id', 'exhibition_event_id');
+    }
 
     public function type()
     {
