@@ -24,18 +24,18 @@ class ElectricalEquipmentTypeService
 
             $types = $data['event_service_type_id'];
 
-            $eventservices = $this->repo->create($data);
+            $electricalequipmenttypes = $this->repo->create($data);
 
             logger()->info(trans('User ID :uid add customer ID :cid', [
                 'uid' => auth('admin')->id(),
-                'cid' => $eventservices->id
+                'cid' => $electricalequipmenttypes->id
             ]), [
                 'user' => auth('admin')->user()->toArray(),
                 'request' => $request->all()
             ]);
 
             DB::commit();
-            return $eventservices;
+            return $electricalequipmenttypes;
 
         } catch (\Throwable $th) {
 
@@ -59,20 +59,20 @@ class ElectricalEquipmentTypeService
 
             $types = $data['event_service_type_id'];
 
-            $eventservices = $this->repo->update($data['id'], $data);
+            $electricalequipmenttypes = $this->repo->update($data['id'], $data);
 
             // $eventservices->type()->sync($types);
 
             logger()->info(trans('User ID :uid update customer ID :cid', [
                 'uid' => auth('admin')->id(),
-                'cid' => $eventservices->id
+                'cid' => $electricalequipmenttypes->id
             ]), [
                 'user' => auth('admin')->user()->toArray(),
                 'request' => $request->all()
             ]);
 
             DB::commit();
-            return $eventservices;
+            return $electricalequipmenttypes;
 
         } catch (\Throwable $th) {
 

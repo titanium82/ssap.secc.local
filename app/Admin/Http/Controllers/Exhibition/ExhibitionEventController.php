@@ -169,7 +169,7 @@ class ExhibitionEventController extends Controller
                 ]);
             }
 
-            return to_route('admin.contract.index')->with('success', __('notifySuccess'));
+            return to_route('admin.exhibition_event.index')->with('success', __('notifySuccess'));
         } catch (\Throwable $th) {
 
             logger()->error(trans('Delete contract has error :err', ['err' => $th->getMessage()]), [

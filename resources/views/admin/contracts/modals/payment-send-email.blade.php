@@ -48,7 +48,7 @@
                         <div class="col-12">
                             <div class="mb-3">
                                 <label class="form-label">@lang('Content'):</label>
-                                <textarea name="content" class="form-control ckeditor"></textarea>
+                                <textarea name="content" class="form-control"></textarea>
                             </div>
                         </div>
                     </div>
