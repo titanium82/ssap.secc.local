@@ -1,4 +1,4 @@
-<?php
+1<?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('exhibition_locations', function (Blueprint $table) {
+        Schema::create('electrical_equipment_types', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('admin_id');
             $table->string('name');
-            $table->float('stretch')->nullable();
-            $table->integer('position')->default(0);
+            $table->string('short_name');
+            $table->string('desc');
             $table->timestamps();
+            $table->unsignedBigInteger('admin_id')->nullable();
+            $table->foreign('admin_id')->references('id')->on('admins')->restrictOnDelete();
         });
     }
 
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('exhibition_location');
+        Schema::dropIfExists('electrical_equipment_types');
     }
 };
